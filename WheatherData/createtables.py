@@ -5,20 +5,31 @@ import psycopg2
 def create_tables():
     """ create tables in the PostgreSQL database"""
     
-
-    command1 = """CREATE TABLE cities (
-            city_name VARCHAR(255) NOT NULL,
-            city_state VARCHAR(255) NOT NULL,
-            city_population INTEGER NOT NULL,
-            city_lat REAL NOT NULL,
-            city_lon REAL NOT NULL
+# Jeremiah's Tables
+    command1 = """CREATE TABLE country (
+            country VARCHAR(255) NOT NULL,
+            location_name VARCHAR(255) NOT NULL,
+            latitude REAL NOT NULL,
+            longitude REAL NOT NULL,
+            timezone TIMESTAMPTZ NOT NULL
         )"""
 
-    command2 = """CREATE TABLE states(
-            state_name VARCHAR(255) NOT NULL,
-            state_abb VARCHAR(255) NOT NULL
+    command2 = """CREATE TABLE weather_r(
+            country VARCHAR(255) NOT NULL,
+            last_updated VARCHAR(255) NOT NULL
         )"""
-        
+    
+    command3 = """CREATE TABLE weather_r(
+            country VARCHAR(255) NOT NULL,
+            last_updated VARCHAR(255) NOT NULL
+        )"""
+    
+    command4 = """CREATE TABLE weather_r(
+            country VARCHAR(255) NOT NULL,
+            last_updated VARCHAR(255) NOT NULL
+        )"""
+
+    #Daya's Tables
     
     
     conn = None
