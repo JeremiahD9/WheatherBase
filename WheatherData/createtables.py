@@ -16,17 +16,27 @@ def create_tables():
 
     command2 = """CREATE TABLE weather_r(
             country VARCHAR(255) NOT NULL,
-            last_updated VARCHAR(255) NOT NULL
+            last_updated DATE NOT NULL,
+            instance_id INT NOT NULL
         )"""
     
-    command3 = """CREATE TABLE weather_r(
-            country VARCHAR(255) NOT NULL,
-            last_updated VARCHAR(255) NOT NULL
+    command3 = """CREATE TABLE wind_table(
+            instance_id INT NOT NULL,
+            wind_mph REAL NOT NULL,
+            wind_kmh REAL NOT NULL,
+            wind_degree INT NOT NULL,
+            wind_direction VARCHAR(255) NOT NULL,
+            gust_mph REAL NOT NULL,
+            gust_kmh REAL NOT NULL
         )"""
     
-    command4 = """CREATE TABLE weather_r(
-            country VARCHAR(255) NOT NULL,
-            last_updated VARCHAR(255) NOT NULL
+    command4 = """CREATE TABLE temperature_table(
+            instance_id INT NOT NULL,
+            tempc REAL NOT NULL,
+            tempf REAL NOT NULL,
+            feelslikec REAL NOT NULL,
+            feelslikef REAL NOT NULL
+            
         )"""
 
     #Daya's Tables
