@@ -54,6 +54,8 @@ def create_tables():
         # create table one by one
         cur.execute(command1)
         cur.execute(command2)
+        cur.execute(command3)
+        cur.execute(command4)
         # close communication with the PostgreSQL database server
         cur.close()
         # commit the changes
