@@ -40,6 +40,41 @@ def create_tables():
         )"""
 
     #Daya's Tables
+    command5 = """CREATE TABLE pressure/others (
+            instance_id INT NOT NULL,
+            pressure_mb REAL NOT NULL,
+            pressure_in REAL NOT NULL,
+            precip_mm REAL NOT NULL,
+            precip_in REAL NOT NULL,
+            humidity INT NOT NULL,
+            cloud INT NOT NULL,
+            visibility_km REAL NOT NULL,
+            visibility_miles REAL NOT NULL,
+            uv_index REAL NOT NULL,
+            condition_text TEXT NOT NULL
+        )"""
+
+    command6 = """CREATE TABLE airqual(
+            instance_id INT NOT NULL,
+            co REAL NOT NULL,
+            ozone REAL NOT NULL,
+            no2 REAL NOT NULL,
+            so2 REAL NOT NULL,
+            pm25 REAL NOT NULL,
+            pm10 REAL NOT NULL,
+            epa INT NOT NULL,
+            defra INT NOT NULL
+        )"""
+    
+    command7 = """CREATE TABLE sunmoon(
+            instance_id INT NOT NULL,
+            sunrise TIMESTAMP NOT NULL,
+            sunset TIMESTAMP NOT NULL,
+            moonrise TIMESTAMP NOT NULL,
+            moonset TIMESTAMP NOT NULL,
+            moon_phase TEXT NOT NULL,
+            moon_illumination INT NOT NULL
+        )"""
     
     
     conn = None
@@ -56,6 +91,9 @@ def create_tables():
         cur.execute(command2)
         cur.execute(command3)
         cur.execute(command4)
+        cur.execute(command5)
+        cur.execute(command6)
+        cur.execute(command7)
         # close communication with the PostgreSQL database server
         cur.close()
         # commit the changes
