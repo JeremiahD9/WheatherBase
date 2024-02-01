@@ -40,7 +40,7 @@ def create_tables():
         )"""
 
     #Daya's Tables
-    command5 = """CREATE TABLE pressure/others (
+    command5 = """CREATE TABLE pressure_others (
             instance_id INT NOT NULL,
             pressure_mb REAL NOT NULL,
             pressure_in REAL NOT NULL,
