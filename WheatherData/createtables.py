@@ -11,7 +11,7 @@ def create_tables():
             location_name VARCHAR(255) NOT NULL,
             latitude REAL NOT NULL,
             longitude REAL NOT NULL,
-            timezone TIMESTAMPTZ NOT NULL
+            timezone VARCHAR(255) NOT NULL
         )"""
 
     command2 = """CREATE TABLE weather_r(
