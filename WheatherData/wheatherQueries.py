@@ -1,1 +1,52 @@
+# This code was written by Noah and Warren
 
+import psycopg2
+
+def test_connection():
+
+    conn = psycopg2.connect(
+    host="localhost",
+    port=5432,
+    database="dawsonj2",
+    user="dawsonj2",
+    password="eyebrow529redm")
+
+    if conn is not None:
+        print( "Connection Worked!" )
+    else:
+        print( "Problem with Connection" )
+
+    return None
+
+def get_everything_from(table):
+    try:
+        cur = conn.cursor()
+
+        sql = """
+        SELECT * FROM %s;
+        """
+        
+        cur.execute(sql, table)
+        row = cur.fetchone()
+
+        if(row is not None):
+            while row is not None:
+                print(row)
+                row = cur.fetchone()
+        else:
+            print("No instance found")
+
+        cur.close()
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()
+
+
+def main():
+    test_connection()
+    get_everything_from(country)
+
+
+main()
