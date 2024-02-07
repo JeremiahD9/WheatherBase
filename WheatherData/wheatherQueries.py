@@ -20,7 +20,6 @@ def test_connection():
 
 def get_everything_from(table):
     try:
-
         conn = psycopg2.connect(
         host="localhost",
         port=5432,
@@ -31,10 +30,10 @@ def get_everything_from(table):
         cur = conn.cursor()
 
         sql = """
-        SELECT * FROM %s;
+        SELECT * FROM """+table+""";
         """
         
-        cur.execute(sql, (table,))
+        cur.execute(sql)
         rows = cur.fetchall()
 
         if(row is not None):
