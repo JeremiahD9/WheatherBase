@@ -20,6 +20,14 @@ def test_connection():
 
 def get_everything_from(table):
     try:
+
+        conn = psycopg2.connect(
+        host="localhost",
+        port=5432,
+        database="dawsonj2",
+        user="dawsonj2",
+        password="eyebrow529redm")
+
         cur = conn.cursor()
 
         sql = """
