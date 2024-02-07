@@ -36,10 +36,9 @@ def get_everything_from(table):
         cur.execute(sql)
         rows = cur.fetchall()
 
-        if(row is not None):
-            while row is not None:
+        if(rows is not None):
+            for row in rows:
                 print(row)
-                row = cur.fetchone()
         else:
             print("No instance found")
 
