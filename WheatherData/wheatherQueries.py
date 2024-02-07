@@ -26,8 +26,8 @@ def get_everything_from(table):
         SELECT * FROM %s;
         """
         
-        cur.execute(sql, table)
-        row = cur.fetchone()
+        cur.execute(sql, (table,))
+        rows = cur.fetchall()
 
         if(row is not None):
             while row is not None:
@@ -46,7 +46,7 @@ def get_everything_from(table):
 
 def main():
     test_connection()
-    get_everything_from(country)
+    get_everything_from("country")
 
 
 main()
