@@ -52,7 +52,7 @@ def get_everything_from(table): #Works well
 
 def main():
     test_connection()
-    get_everything_from("temperature_table")
+    get_everything_from("pressure_others")
 
 
 main()
