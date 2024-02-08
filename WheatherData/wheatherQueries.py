@@ -84,7 +84,7 @@ def get_country_temps(country): #by Noah - Works well!
         if conn is not None:
             conn.close()
 
-def get_highest_temp(country): #by Noah 
+def get_highest_temp(country): #by Noah - works fine
     try:
         conn = psycopg2.connect(
         host="localhost",
