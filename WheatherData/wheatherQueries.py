@@ -18,7 +18,7 @@ def test_connection():
 
     return None
 
-def get_everything_from(table):
+def get_everything_from(table): #Works well
     try:
         conn = psycopg2.connect(
         host="localhost",
@@ -52,7 +52,7 @@ def get_everything_from(table):
 
 def main():
     test_connection()
-    get_everything_from("country")
+    get_everything_from("weather_r")
 
 
 main()
