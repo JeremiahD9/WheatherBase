@@ -96,11 +96,11 @@ def get_highest_temp(country): #by Noah
         cur = conn.cursor()
 
         sql = """
-        SELECT TOP 3 temperature_table.tempc, weather_r.last_updated 
+        SELECT temperature_table.tempc, weather_r.last_updated 
         FROM temperature_table 
         JOIN weather_r ON temperature_table.instance_id = weather_r.instance_id 
         JOIN country ON weather_r.country = country.country
-        ORDER BY temperature_table.tempc DESC  
+        ORDER BY temperature_table.tempc DESC LIMIT 3
         WHERE country.country = %s;
         """
         
