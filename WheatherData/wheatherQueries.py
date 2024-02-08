@@ -52,7 +52,7 @@ def get_everything_from(table): #Works well
 
 def main():
     test_connection()
-    get_everything_from("weather_r")
+    get_everything_from("wind_table")
 
 
 main()
