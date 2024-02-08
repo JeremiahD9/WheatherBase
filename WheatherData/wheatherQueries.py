@@ -68,7 +68,7 @@ def get_country_temp(country): #by Noah
         WHERE country.country = %s;
         """
         
-        cur.execute(sql, country)
+        cur.execute(sql, (country,))
         rows = cur.fetchall()
 
         if(rows is not None):
