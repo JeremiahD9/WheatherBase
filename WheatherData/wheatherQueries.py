@@ -101,8 +101,8 @@ def get_highest_temp(country): #by Noah
         JOIN weather_r ON temperature_table.instance_id = weather_r.instance_id 
         JOIN country ON weather_r.country = country.country
         WHERE country.country = %s
-        ORDER BY temperature_table.tempc DESC 
-        LIMIT 3;
+        ORDER BY temperature_table.tempc ASC 
+        LIMIT 1;
         """
         
         cur.execute(sql, (country,))
