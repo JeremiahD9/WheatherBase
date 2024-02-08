@@ -101,7 +101,7 @@ def get_highest_temp(country): #by Noah
         JOIN weather_r ON temperature_table.instance_id = weather_r.instance_id 
         JOIN country ON weather_r.country = country.country
         WHERE country.country = %s
-        ORDER BY temperature_table.tempc ASC 
+        ORDER BY temperature_table.tempc DESC 
         LIMIT 1;
         """
         
@@ -125,7 +125,7 @@ def get_highest_temp(country): #by Noah
 
 def main():
     test_connection()
-    get_highest_temp("China")
+    get_highest_temp("Malaysia")
 
 
 
