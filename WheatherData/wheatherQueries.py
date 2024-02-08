@@ -86,7 +86,7 @@ def get_country_temp(country): #by Noah
 
 def main():
     test_connection()
-    get_country_temp("Argentina")
+    get_country_temp("Malaysia")
 
 
 
