@@ -158,48 +158,16 @@ def getMoonPhase(dateOfBirth, country): # works
         if conn is not None:
             conn.close()
 
-def getAllMoonPhase(): # works
-    try:
-        conn = psycopg2.connect(
-        host="localhost",
-        port=5432,
-        database="dawsonj2",
-        user="dawsonj2",
-        password="eyebrow529redm")
-
-        cur = conn.cursor()
-
-        sql = """
-        SELECT sunmoon.moon_phase
-        FROM sunmoon
-        """
-        
-        cur.execute(sql)
-        rows = cur.fetchall()
-
-        if(rows is not None):
-            for row in rows:
-                print(row)
-        else:
-            print("No instance found for ", dateOfBirth)
-
-        cur.close()
-    except (Exception, psycopg2.DatabaseError) as error:
-        print(error)
-    finally:
-        if conn is not None:
-            conn.close()
-
 def getHorroscopeScore(dateOfBirth): 
-    
+    moonphases = ["Waxing Gibbous", "Full Moon", "Waning Gibbous", "Last Quarter", "Waning Crescent", "New Moon", "Waxing Crescent", "First Quarter"]
     return None
+
+
+
 
 
 def main():
     test_connection()
-    getAllMoonPhase()
-    
-
 
 
 main()
