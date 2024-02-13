@@ -124,7 +124,7 @@ def get_highest_temp(country): #by Noah - works fine
 
 
 #NOAH'S HORROSCOPE QUERIES
-def getMoonPhase(dateOfBirth):
+def getMoonPhase(dateOfBirth, country):
     try:
         conn = psycopg2.connect(
         host="localhost",
@@ -139,11 +139,11 @@ def getMoonPhase(dateOfBirth):
         SELECT sunmoon.moon_phase
         FROM sunmoon
         JOIN weather_r ON sunmoon.instance_id = weather_r.instance_id 
-        WHERE weather_r.last_updated = %s
+        WHERE weather_r.last_updated = %s AND wheather_r.country = %s
         """
         
-        cur.execute(sql, (dateOfBirth,))
-        rows = cur.fetchall()
+        cur.execute(sql, (dateOfBirth,), (country),)
+        rows = cur.fetchone()
 
         if(rows is not None):
             for row in rows:
