@@ -165,7 +165,7 @@ def getHorroscopeScore(dateOfBirth):
 
 def main():
     test_connection()
-    getMoonPhase("8/29/23")
+    getMoonPhase("8/29/23", "Malaysia")
     
 
 
