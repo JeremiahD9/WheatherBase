@@ -139,7 +139,7 @@ def getMoonPhase(dateOfBirth, country):
         SELECT sunmoon.moon_phase
         FROM sunmoon
         JOIN weather_r ON sunmoon.instance_id = weather_r.instance_id 
-        WHERE weather_r.last_updated = %s AND wheather_r.country = %s
+        WHERE weather_r.last_updated = %s AND weather_r.country = %s
         """
         
         cur.execute(sql, (dateOfBirth,country),)
