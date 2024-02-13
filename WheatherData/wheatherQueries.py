@@ -1,5 +1,6 @@
 # This code was written by Noah and Warren
 
+from datetime import date
 import psycopg2
 
 def test_connection():
@@ -121,11 +122,51 @@ def get_highest_temp(country): #by Noah - works fine
         if conn is not None:
             conn.close()
 
+
+#NOAH'S HORROSCOPE QUERIES
+def getMoonPhase(dateOfBirth):
+    try:
+        conn = psycopg2.connect(
+        host="localhost",
+        port=5432,
+        database="dawsonj2",
+        user="dawsonj2",
+        password="eyebrow529redm")
+
+        cur = conn.cursor()
+
+        sql = """
+        SELECT sunmoon.moon_phase
+        FROM sunmoon
+        JOIN weather_r ON sunmoon.instance_id = weather_r.instance_id 
+        WHERE weather_r.last_updated = %s
+        """
+        
+        cur.execute(sql, (dateOfBirth,))
+        rows = cur.fetchall()
+
+        if(rows is not None):
+            for row in rows:
+                print(row)
+        else:
+            print("No instance found for ", dateOfBirth)
+
+        cur.close()
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()
+
+def getHorroscopeScore(dateOfBirth):
     
+    return None
+
 
 def main():
     test_connection()
-    get_highest_temp("Malaysia")
+    getMoonPhase("8/29/23")
+    
 
 
 
