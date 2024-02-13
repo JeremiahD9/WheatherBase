@@ -142,7 +142,7 @@ def getMoonPhase(dateOfBirth, country):
         WHERE weather_r.last_updated = %s AND wheather_r.country = %s
         """
         
-        cur.execute(sql, (dateOfBirth,), (country),)
+        cur.execute(sql, (dateOfBirth,country),)
         rows = cur.fetchone()
 
         if(rows is not None):
