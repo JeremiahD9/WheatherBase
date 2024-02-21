@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <title>Login</title>
+</head>
+ 
+<body>
+    <p>Enter your username and password:</p>
+    <form action="/submit" method="POST">
+	<label for="username">username:</label>
+	<input type="text" id="username" name="username"><br>
+	<label for="password">password:</label>
+	<input type="password" id="password" name="password"><br>
+	<p>{{loginText}}</p>
+	<input type="submit" name="login" value="login">
+	<input type="submit" name="register" value="register">
+    </form>
+    <br>
+</body>
+ 
+</html>
