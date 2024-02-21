@@ -65,4 +65,4 @@ def h(user_password, salt):
 
 if __name__ == '__main__':
     my_port = 5127
-    app.run(host='0.0.0.0', port = my_port, ssl_context='adhoc') 
+    app.run(host='0.0.0.0', port = my_port) 
