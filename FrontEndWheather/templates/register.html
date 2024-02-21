@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <title>Fun With Random Numbers</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+ 
+<body class="home">
+    
+    <div class="register-container">
+        <h2>Register</h2>
+        <form action="/submit-register" method="post">
+            <input type="text" placeholder="Username" name="username" required>
+            <input type="email" placeholder="Email" name="email" required>
+            <input type="password" placeholder="Password" name="password" required>
+            <input type="password" placeholder="Confirm Password" name="password" required>
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="/">Login here</a></p>
+    </div>
+
+</body>
+ 
+</html>
