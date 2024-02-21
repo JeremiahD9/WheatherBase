@@ -15,10 +15,10 @@ def isUserInDB(Username, Password):
         #CHANGE THIS TO JEREMIAH'S LOG IN!
         conn = psycopg2.connect(
         host="localhost",
-        port=5432,
-        database="leen2",
-        user="leen2",
-        password="chip574pencil")
+        port=5124,
+        database="dawsonj2",
+        user="dawsonj2",
+        password="Eyebrow529redm")
         
         cur = conn.cursor()
 
@@ -68,6 +68,6 @@ def submit_login():
         return render_template("index.html")
         
 if __name__ == '__main__':
-    my_port = 5128 #CHANGE PORT TO WHATEVER YOUR DEVICE IS ON
+    my_port = 5124 #CHANGE PORT TO WHATEVER YOUR DEVICE IS ON
     app.run(host='0.0.0.0', port = my_port) 
 
