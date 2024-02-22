@@ -10,53 +10,75 @@
     }
   }
 
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 3rem;
+    background-color: #1e274f;
+    color: white;
+    text-align: center;
+}
+
 body{
     font-family: Arial, sans-serif;
-    background-color: #103619;
+    background-image: url("mountain.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
     margin: 0;
     padding: 0;
+}
+
+.body-div {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    position: relative;
 }
 
 .login-title {
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(230, 230, 230, 0.6);
     padding: 15px;
     text-align: center;
-    border-radius: 5px 5px 0px 0px;
+    border-radius: 7px 7px 0px 0px;
+    backdrop-filter: blur(5px);
 }
 
 .main-window {
     display: block
+    border-style: solid;
+    border-radius: 7px;
+    margin-bottom: 40px;
 }
 
 .login-container, .register-container{
     animation: slideDown 1s ease-in-out forwards;
     background-color: #d0e7fd;
     padding: 25px;
-    border-radius: 0px 0px 5px 5px;
+    border-radius: 0px 0px 7px 7px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 400px;
     text-align: center;
+    margin-bottom: 65px;
 }
 
 
 input[type="text"],
 input[type="password"],
 input[type="email"]{
-    width: 100%;
+    width: 75%;
     padding: 10px;
     margin: 10px 0;
-    border: 1px solid #111111;
+    border: 1px solid #666666;
     border-radius: 5px;
     box-sizing: border-box;
 }
 
 
-button{
-    width: 100%;
+input[type="submit"] {
+    width: 35%;
     padding: 10px;
     margin: 10px 0;
     border: none;
