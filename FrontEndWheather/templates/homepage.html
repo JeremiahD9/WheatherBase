@@ -1,12 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHEATHER BASE</title>
+    <link rel="stylesheet" href="styles.css">
 
-    <head>
-        <title>Weather Page</title>
-        <link rel="stylesheet" type="text/css" href="/static/style.css">
-    </head>
-    <body>
-        <h1>Welcome hoe.</h1>
-    </body>
+    <!-- LINKS TO LEAFLET LIBRARY -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" /> 
 
+</head>
+<body>
+    <div class="top-bar">
+        <div class="logo">Wheather Base</div>
+        <div class="nav-links">
+            <a href="#current">Current</a>
+            <a href="#forecast">Forecast</a>
+            <a href="#about">About</a>
+        </div>
+    </div>
+    <div class="main-content">
+        <div id="map"></div>
+        <!-- Add more content here for weather conditions and forecast -->
+    </div>
+
+    <!-- LINKS TO LEAFLET LIBRARY -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <script src="scripts.js"></script>
+</body>
 </html>
