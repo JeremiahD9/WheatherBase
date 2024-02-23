@@ -1,4 +1,3 @@
-
 @keyframes slideDown {
     from {
       transform: translateY(-100%);
@@ -15,14 +14,42 @@
     bottom: 0;
     width: 100%;
     height: 3rem;
-    background-color: #1e274f;
+    /* background-color: #1e274f; */
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
     color: white;
     text-align: center;
 }
 
+.top-bar {
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.logo {
+    font-weight: bold;
+}
+
+#map {
+    height: 100%;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+.main-content {
+    height: calc(100% - 40px); /* Adjust height based on the top bar height */
+    position: relative;
+}
+
 body{
     font-family: Arial, sans-serif;
-    background-image: url("mountain.jpg");
+    background-image: url("dark-clouds.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -39,29 +66,36 @@ body{
 }
 
 .login-title {
-    background-color: rgba(230, 230, 230, 0.6);
+    background-color: rgba(230, 230, 230, 0.4);
     padding: 15px;
     text-align: center;
     border-radius: 7px 7px 0px 0px;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(6px);
+}
+
+.window-container {
+    padding-bottom: 110px;
 }
 
 .main-window {
-    display: block
+    animation: slideDown 1s ease-in-out forwards;
+    border-style: solid;
+    position: relative;
+    z-index: 10;
+    display: block;
     border-style: solid;
     border-radius: 7px;
-    margin-bottom: 40px;
+    box-shadow: 0px 0px 100px 10px black;
 }
 
 .login-container, .register-container{
-    animation: slideDown 1s ease-in-out forwards;
     background-color: #d0e7fd;
     padding: 25px;
     border-radius: 0px 0px 7px 7px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
     width: 400px;
     text-align: center;
-    margin-bottom: 65px;
+    margin-bottom: 0px;
 }
 
 
@@ -71,7 +105,7 @@ input[type="email"]{
     width: 75%;
     padding: 10px;
     margin: 10px 0;
-    border: 1px solid #666666;
+    border: 1px solid #444444;
     border-radius: 5px;
     box-sizing: border-box;
 }
