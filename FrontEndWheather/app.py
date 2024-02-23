@@ -2,7 +2,7 @@
 
 # Imports
 from flask import Flask
-from flask import render_template, request, redirect
+from flask import render_template, request, redirect, session, url_for
 import psycopg2
 import random
 import hashlib
@@ -24,7 +24,7 @@ conn = psycopg2.connect(
 cur = conn.cursor()
 
 @app.route('/')
-def home():
+def index():
     return redirect('/login')
 
 @app.route('/login')
@@ -34,6 +34,10 @@ def login_page():
 @app.route('/register')
 def register_page():
     return render_template("register.html")
+
+@app.route('/user/<username>')
+def home(username):
+    return render_template("homepage.html", username = username)
 
 @app.route('/submit', methods=['POST'])
 def login_post():
@@ -51,7 +55,8 @@ def login_post():
                 correct_pass, salt = pass_info
 
             if hash(user_password, salt) == correct_pass:
-                return render_template("homepage.html", username = user_username)
+                #return render_template("homepage.html", username = user_username)
+                return redirect(url_for('home', username = user_username))
             else:
                 return render_template("login.html", loginText = "Incorrect password.")
 
