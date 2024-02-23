@@ -3,25 +3,27 @@
  
 <head>
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <link rel="stylesheet" type="text/css" href="static/style.css">
 </head>
  
 <body>
     
     <div class="body-div">
-        <div class="main-window">
-            <div class="login-title">
-                <h2>WheatherBase</h2>
-            </div>
-            <div class="login-container">
-                <h2>Login</h2>
-                <form action="/submit" method="POST">
-                    <input type="text" id="username" name="username" placeholder="Username"><br>
-                    <input type="password" id="password" name="password" placeholder="Password"><br>
-                    <p>{{loginText}}</p>
-                    <input type="submit" name="login" value="Login">
-                    <p>Don't have an account? <a href="Register"></p>
-                </form>
+        <div class="window-container">
+            <div class="main-window">
+                <div class="login-title">
+                    <h2>WheatherBase</h2>
+                </div>
+                <div class="login-container">
+                    <h2>Login</h2>
+                    <form action="/submit" method="POST">
+                        <input type="text" id="username" name="username" placeholder="Username"><br>
+                        <input type="password" id="password" name="password" placeholder="Password"><br>
+                        <p>{{loginText}}</p>
+                        <input type="submit" name="login" value="Login">
+                        <p>Don't have an account? <a href="/register">Register</a></p>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
