@@ -22,6 +22,7 @@ function onLocationError(e) {
 function closeError() {
     errorBox = document.getElementById("error-message");
     errorBox.style.display = "none";
+    
 }
 
 map.on('locationfound', onLocationFound);

@@ -9,6 +9,13 @@
     }
 }
 
+.top-buttons:hover{
+    color:rgba(18, 17, 17, 0)
+}
+.top-buttons{
+    flex:1;
+}
+
 .footer {
     position: fixed;
     bottom: 0;
@@ -25,7 +32,7 @@
     color: white;
     display: flex;
     justify-content: space-between;
-    padding: 10px 20px;
+    padding: 20px 20px;
 }
 
 .logo {
@@ -51,9 +58,10 @@ body{
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    height: 100%;
 }
 
-#login-body {
+#login-body, .register-body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
