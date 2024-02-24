@@ -68,7 +68,7 @@ body{
     position: relative;
 }
 
-.login-title {
+.login-title, .register-title {
     background-color: rgba(230, 230, 230, 0.4);
     padding: 15px;
     text-align: center;
