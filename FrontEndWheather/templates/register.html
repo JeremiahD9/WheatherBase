@@ -8,15 +8,21 @@
  
 <body class="register-body">
     
-    <div class="register-container">
-        <h2>Register</h2>
-        <form action="/submit-register" method="post">
-            <input type="text" placeholder="Username" name="username" required>
-            <input type="email" placeholder="Email" name="email" required>
-            <input type="password" placeholder="Password" name="password" required>
-            <input type="password" placeholder="Confirm Password" name="password" required>
-            <button type="submit">Register</button>
-        </form>
+    <div class="window-container">
+        <div class="main-window">
+            <div class="register-title">
+                <h2>Register</h2>
+            </div>
+            <div class="register-container">
+                <form action="/submit-register" method="post">
+                    <input type="text" placeholder="Username" name="username" required>
+                    <input type="email" placeholder="Email" name="email" required>
+                    <input type="password" placeholder="Password" name="password" required>
+                    <input type="password" placeholder="Confirm Password" name="password" required>
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+        </div>
         <p>Already have an account? <a href="/">Login here</a></p>
     </div>
 
