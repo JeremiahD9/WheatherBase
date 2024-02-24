@@ -29,7 +29,7 @@ def index():
 
 @app.route('/login')
 def login_page():
-    return render_template("login.html", loginText = "")
+    return render_template("login.html")
 
 @app.route('/register')
 def register_page():
@@ -50,7 +50,7 @@ def login_post():
             pass_info = cur.fetchone()
 
             if pass_info is None:
-                return render_template("login.html", loginText = "No account found. Please register.")
+                return render_template("login.html", incorrect_pass = True)
             else:
                 correct_pass, salt = pass_info
 
@@ -58,7 +58,7 @@ def login_post():
                 #return render_template("homepage.html", username = user_username)
                 return redirect(url_for('home', username = user_username))
             else:
-                return render_template("login.html", loginText = "Incorrect password.")
+                return render_template("login.html", incorrect_pass = True)
 
         elif 'register' in request.form:
             cur.execute("SELECT login FROM users WHERE login='" + user_username + "';")
