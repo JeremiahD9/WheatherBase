@@ -12,6 +12,9 @@
 .top-buttons:hover{
     color:rgba(18, 17, 17, 0)
 }
+.top-buttons{
+    flex:1;
+}
 
 .footer {
     position: fixed;
