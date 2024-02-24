@@ -53,7 +53,7 @@ body{
     padding: 0;
 }
 
-#login-body, #register-body {
+#login-body, .register-body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
