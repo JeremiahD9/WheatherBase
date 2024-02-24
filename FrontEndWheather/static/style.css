@@ -9,6 +9,10 @@
     }
 }
 
+.top-buttons:hover{
+    color:rgba(18, 17, 17, 0)
+}
+
 .footer {
     position: fixed;
     bottom: 0;

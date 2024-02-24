@@ -14,11 +14,21 @@
     <div class="top-bar">
         <div class="logo">WheatherBase</div>
         <div class="nav-links">
-            <a href="#current">Current</a>
-            <a href="#map">Map</a>
-            <a href="#forecast">Forecast</a>
-            <a href="#about">About</a>
-            <a href="#profile"">{{username}}</a>
+            <div class="top-buttons">
+                <a href="#current">Current</a>
+            </div>
+            <div class="top-buttons">
+                <a href="#map">Map</a>
+            </div>
+            <div class="top-buttons">
+                <a href="#forecast">Forecast</a>
+            </div>
+            <div class="top-buttons">
+                <a href="#about">About</a>
+            </div>
+            <div class="top-buttons">
+                <a href="#profile"">{{username}}</a>
+            </div>
         </div>
     </div>
     <div class="main-content">
@@ -29,9 +39,8 @@
         </p>
     </div>
 
-    <!-- LINKS TO LEAFLET LIBRARY -->
+    <!-- LINKS TO LEAFLET LIBRARY -->  
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-
     <script src="scripts.js"></script>
 </body>
 </html>
