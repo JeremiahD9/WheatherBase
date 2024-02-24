@@ -1,19 +1,16 @@
 #!/usr/bin/python
 
-# Imports
 from flask import Flask
-from flask import render_template, request, redirect, session, url_for
+from flask import render_template, request
 import psycopg2
 import random
 import hashlib
 import os
 import binascii
 
-# Constants
-PORT = 5127
-
 app = Flask(__name__)
 
+#CHANGE THIS TO JEREMIAH
 conn = psycopg2.connect(
     host = "localhost",
     port = "5432",
@@ -24,20 +21,8 @@ conn = psycopg2.connect(
 cur = conn.cursor()
 
 @app.route('/')
-def index():
-    return redirect('/login')
-
-@app.route('/login')
-def login_page():
+def home_page():
     return render_template("login.html", loginText = "")
-
-@app.route('/register')
-def register_page():
-    return render_template("register.html")
-
-@app.route('/user/<username>')
-def home(username):
-    return render_template("homepage.html", username = username)
 
 @app.route('/submit', methods=['POST'])
 def login_post():
@@ -46,17 +31,16 @@ def login_post():
     
     if request.method == 'POST':
         if 'login' in request.form:
-            cur.execute("SELECT password,salt FROM users WHERE login='{0}';".format(user_username))
+            cur.execute("SELECT password,salt FROM users WHERE login='" + user_username + "';")
             pass_info = cur.fetchone()
-
             if pass_info is None:
                 return render_template("login.html", loginText = "No account found. Please register.")
             else:
-                correct_pass, salt = pass_info
+                actual_password = pass_info[0]
+                salt = pass_info[1]
 
-            if hash(user_password, salt) == correct_pass:
-                #return render_template("homepage.html", username = user_username)
-                return redirect(url_for('home', username = user_username))
+            if h(user_password, salt.encode()) == actual_password:
+                return render_template("valid.html", username = user_username)
             else:
                 return render_template("login.html", loginText = "Incorrect password.")
 
@@ -72,23 +56,14 @@ def login_post():
             conn.commit()
             return render_template("registered.html", username = user_username)
 
-def query_result(query):
-    pass
-
-def hash(password, salt):
-    # Initialize the sha256 instance
+def h(user_password, salt):
     sha256 = hashlib.sha256()
-
-    # Encode both the password and the salt in bytes
-    b_password = password.encode()
-    b_salt = salt.encode()
-
-    # Feed both the password and salt into the hashing algorithm
-    sha256.update(b_password)
-    sha256.update(b_salt)
-
-    # Return the hash
-    return sha256.hexdigest()
+    user_password_bytes = user_password.encode()
+    sha256.update(user_password_bytes)
+    sha256.update(salt)
+    user_password_hash = sha256.hexdigest()
+    return user_password_hash
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=PORT, debug=True) 
+    my_port = 5127
+    app.run(host='0.0.0.0', port = my_port, ssl="adhoc") 
