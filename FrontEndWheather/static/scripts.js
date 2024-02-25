@@ -19,10 +19,10 @@ function onLocationError(e) {
     alert(e.message);
 }
 
+// Close the incorrect password error message
 function closeError() {
     errorBox = document.getElementById("error-message");
     errorBox.style.display = "none";
-    
 }
 
 map.on('locationfound', onLocationFound);
