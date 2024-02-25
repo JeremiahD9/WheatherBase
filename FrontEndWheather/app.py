@@ -12,8 +12,10 @@ import binascii
 # Constants
 PORT = 5127
 
+# Initialize flask app
 app = Flask(__name__)
 
+# Initialize connection to the database
 conn = psycopg2.connect(
     host = "localhost",
     port = "5432",
@@ -55,20 +57,19 @@ def login_post():
                 correct_pass, salt = pass_info
 
             if hash(user_password, salt) == correct_pass:
-                #return render_template("homepage.html", username = user_username)
                 return redirect(url_for('home', username = user_username))
             else:
                 return render_template("login.html", incorrect_pass = True)
 
         elif 'register' in request.form:
-            cur.execute("SELECT login FROM users WHERE login='" + user_username + "';")
+            cur.execute("SELECT login FROM users WHERE login='{0}';".format(user_username))
             if cur.fetchone() is not None:
                 return render_template("login.html", loginText = "That username is already taken. Try again.")
 
             if user_username == "" or user_password == "":
                 return render_template("login.html", loginText = "Please enter a username and password.")              
-            salt = binascii.hexlify(os.urandom(16))
-            cur.execute("INSERT INTO users VALUES ('" + user_username + "', '" + h(user_password, salt) + "', '" + salt.decode() + "')")
+            salt = binascii.hexlify(os.urandom(16)).decode()
+            cur.execute("INSERT INTO users VALUES ('" + user_username + "', '" + hash(user_password, salt) + "', '" + salt + "')")
             conn.commit()
             return render_template("registered.html", username = user_username)
 
