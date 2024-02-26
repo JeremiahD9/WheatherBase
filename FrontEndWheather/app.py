@@ -25,6 +25,15 @@ conn = psycopg2.connect(
 )
 cur = conn.cursor()
 
+data_conn = psycopg2.connect(
+    host="localhost",
+    port=5432,
+    database="dawsonj2",
+    user="dawsonj2",
+    password="eyebrow529redm"
+)
+data_cur = data_conn.cursor()
+
 @app.route('/')
 def index():
     return redirect('/login')
