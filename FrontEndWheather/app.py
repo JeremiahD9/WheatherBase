@@ -25,12 +25,13 @@ conn = psycopg2.connect(
 )
 cur = conn.cursor()
 
+# Initialize connection to the database with the weather data
 data_conn = psycopg2.connect(
-    host="localhost",
-    port=5432,
-    database="dawsonj2",
-    user="dawsonj2",
-    password="eyebrow529redm"
+    host = "localhost",
+    port = 5432,
+    database = "dawsonj2",
+    user = "dawsonj2",
+    password = "eyebrow529redm"
 )
 data_cur = data_conn.cursor()
 
@@ -124,4 +125,4 @@ def hash(password, salt):
     return sha256.hexdigest()
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=PORT, debug=True) 
+    app.run(host = '0.0.0.0', port = PORT, debug = True) 
