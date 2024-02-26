@@ -135,7 +135,6 @@ input[type="email"]{
     background-color: #eaebf1;
 }
 
-
 input[type="submit"] {
     width: 75%;
     padding: 10px;
@@ -168,14 +167,15 @@ input[type="submit"] {
 }
 
 #error-message {
-    background-color: rgba(255, 0, 0, 0.3);
+    /* background-color: rgba(255, 0, 0, 0.3);*/
+    background-color: #ffacbc;
     width: 75%;
     padding-top: 6px;
     padding-bottom: 6px;
     margin: auto;
     border-radius: 7px;
     border-style: solid;
-    border-color: red;
+    border-color: #f7768e;
     border-width: 1px;
     font-size: 14px;
     display: flex;
