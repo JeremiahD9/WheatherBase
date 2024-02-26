@@ -1,32 +1,12 @@
-// Initialize the map and set its view to the user's current location
-var map = L.map('map').fitWorld();
+// Initialize a new leaflet map
+var map = new L.map('map', {zoom: 10}).locate({setView: true, maxZoom: 16});
 
-// Load and display tile layers on the map
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 18,
-    attribution: '© OpenStreetMap contributors'
-}).addTo(map);
-
-// Function to set the view to the user's location
-function onLocationFound(e) {
-    var radius = e.accuracy / 2;
-    L.marker(e.latlng).addTo(map)
-        .bindPopup("You are within " + radius + " meters from this point").openPopup();
-    L.circle(e.latlng, radius).addTo(map);
-}
-
-function onLocationError(e) {
-    alert(e.message);
-}
+// Create a new layer and add the map to the layer
+var layer = new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png");
+map.addLayer(layer);
 
 // Close the incorrect password error message
 function closeError() {
     errorBox = document.getElementById("error-message");
     errorBox.style.display = "none";
 }
-
-map.on('locationfound', onLocationFound);
-map.on('locationerror', onLocationError);
-
-// Request the user's location
-map.locate({setView: true, maxZoom: 16});
