@@ -2,7 +2,8 @@
 {% block title %}Map{% endblock %}
 {% block head %}
     {{ super() }}
-    <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 {% endblock %}
 {% block content %}
     <div id="info-wrapper">
@@ -12,7 +13,4 @@
     <div id="map-wrapper">
         <div id="map"></div>
     </div>
-
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script src="/static/scripts.js"></script>
 {% endblock %}
