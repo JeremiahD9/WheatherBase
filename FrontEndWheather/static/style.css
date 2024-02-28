@@ -41,6 +41,17 @@
 
 #map {
     height: 100%;
+    margin: auto;
+}
+
+#info-wrapper {
+    display: flex;
+    text-align: center;
+    margin: 20px;
+}
+
+#location {
+    margin: auto;
 }
 
 .nav-links a {

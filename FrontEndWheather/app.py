@@ -2,7 +2,7 @@
 
 # Imports
 from flask import Flask
-from flask import render_template, request, redirect, session, url_for
+from flask import render_template, request, redirect, session, url_for, send_from_directory
 import psycopg2
 import random
 import hashlib
@@ -34,6 +34,10 @@ data_conn = psycopg2.connect(
     password = "eyebrow529redm"
 )
 data_cur = data_conn.cursor()
+
+@app.route('/.well-known/acme-challenge/<file>')
+def ssl(file):
+    return send_from_directory('.well-known/acme-challenge', file)
 
 @app.route('/')
 def index():
@@ -125,4 +129,4 @@ def hash(password, salt):
     return sha256.hexdigest()
 
 if __name__ == '__main__':
-    app.run(host = '0.0.0.0', port = PORT, debug = True) 
+    app.run(host = '0.0.0.0', port = PORT, debug = True)
