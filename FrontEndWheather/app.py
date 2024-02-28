@@ -44,13 +44,17 @@ def ssl(file):
 def index():
     return redirect('/login')
 
-@app.route('/user/<username>')
+@app.route('/user/<username>/home')
 def home(username):
-    return render_template("homepage.html", username = username)
+    return render_template("homepage.html", username = username, home = "active")
+
+@app.route('/user/<username>/map')
+def map(username):
+    return render_template("map.html", username = username, map = "active")
 
 @app.route('/user/<username>/horoscopes')
 def horroscopes(username):
-    return render_template("horroscope.html", username = username)
+    return render_template("horroscope.html", username = username, navbar = topbar.format("", "", "active", ""))
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():

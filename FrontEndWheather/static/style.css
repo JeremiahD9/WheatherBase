@@ -39,6 +39,9 @@
     font-weight: bold;
 }
 
+.active {
+    background-color: #238636;
+}
 
 #map {
     height: 700px;

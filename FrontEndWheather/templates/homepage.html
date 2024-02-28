@@ -1,41 +1,11 @@
-<!-- THIS WAS MADE BY NOAH -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WheatherBase Home</title>
-    <!-- LEAFLET LIBRARY FOR MAP -->
-    <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-    <!-- JQUERY LIBRARY -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+{% extends "page.html" %}
+{% block title %}Home{% endblock %}
+{% block head %}
+    {{ super() }}
     <link rel="stylesheet" href="/static/style.css">
-
-</head>
-<body>
-    <div class="top-bar roboto-regular">
-        <div class="logo">WheatherBase</div>
-        <div class="nav-links">
-            <a href="#current">Current</a>
-            <a href="#map">Map</a>
-            <a href="/user/{{username}}/horoscopes">Horoscopes</a>
-            <a href="#about">About</a>
-            <a href="#profile">{{username}}</a>
-        </div>
-    </div>
-    <div class="main-content">
-        <div id="info-wrapper">
-            <p id="location">Location: </p>
-            <input type="text" placeholder="Put a new country...">
-        </div>
-        <div id="map-wrapper">
-            <div id="map"></div>
-        </div>
-        
-    </div>
-
+{% endblock %}
+{% block content %}
+    <h1>Current Weather</h1>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="/static/scripts.js"></script>
-
-</body>
-</html>
+{% endblock %}
