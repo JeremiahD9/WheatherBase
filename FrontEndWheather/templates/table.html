@@ -1,1 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WheatherBase Home</title>
+    <link rel="stylesheet" href="/static/style.css">
 
+    <!-- LINKS TO LEAFLET LIBRARY -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" /> 
+
+</head>
+<body>
+    <div class="top-bar">
+        <div class="logo">WheatherBase</div>
+        <div class="nav-links">
+            <a href="#current">Current</a>
+            <a href="#map">Map</a>
+            <a href="#forecast">Forecast</a>
+            <a href="#about">About</a>
+            <a href="#profile"">{{username}}</a>
+        </div>
+    </div>
+    <div class="main-content">
+        <div id="map"></div>
+        <!-- Add more content here for weather conditions and forecast -->
+        <p>
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+
+            <table id="myTable">
+              <tr class="header">
+                <th style="width:60%;">Name</th>
+                <th style="width:40%;">Country</th>
+              </tr>
+              <tr>
+                <td>Alfreds Futterkiste</td>
+                <td>Germany</td>
+              </tr>
+              <tr>
+                <td>Berglunds snabbkop</td>
+                <td>Sweden</td>
+              </tr>
+              <tr>
+                <td>Island Trading</td>
+                <td>UK</td>
+              </tr>
+              <tr>
+                <td>Koniglich Essen</td>
+                <td>Germany</td>
+              </tr>
+            </table>
+        </p>
+    </div>
+</body>
+</html>
