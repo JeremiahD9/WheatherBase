@@ -47,6 +47,10 @@ def index():
 def home(username):
     return render_template("homepage.html", username = username)
 
+@app.route('/user/<username>/horoscopes')
+def horroscopes(username):
+    return render_template("horroscope.html", username = username)
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
 
