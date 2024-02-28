@@ -39,9 +39,11 @@
     font-weight: bold;
 }
 
+
+
 #map {
-    height: 90%;
-    width: auto;
+    height: 800px;
+    width: 600px;
     margin: auto;
 }
 
