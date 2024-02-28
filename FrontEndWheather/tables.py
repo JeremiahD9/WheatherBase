@@ -1,11 +1,7 @@
-from tkinter.messagebox import RETRY
 from flask import Flask
-from flask import render_template, request
+from flask import render_template
 import psycopg2
-import random
-import hashlib
-import os
-import binascii
+
 
 app = Flask(__name__)
 
