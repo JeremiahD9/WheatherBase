@@ -40,7 +40,6 @@
 }
 
 
-
 #map {
     height: 700px;
     width: 900px;
@@ -51,6 +50,15 @@
     display: flex;
     text-align: center;
     margin: 20px;
+}
+
+#info-wrapper input[type=text] {
+    float: right;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
 }
 
 #location {
