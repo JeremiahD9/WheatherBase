@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+    <head>
+        {% block head %}        
+        <link rel="stylesheet" href="/static/style.css">
+        <title>{% block title %}{% endblock %} - WheatherBase</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        {% endblock %}
+    </head>
+    <body>
+        <div class="top-bar roboto-regular">
+            <div class="logo">WheatherBase</div>
+            <div class="nav-links">
+                <a href="/user/{{username}}/home"       class="{{home}}">Current</a>
+                <a href="/user/{{username}}/map"        class="{{map}}">Map</a>
+                <a href="/user/{{username}}/horoscopes" class="{{horoscope}}">Horoscopes</a>
+                <a href="/user/{{username}}/about"      class="{{about}}">About</a>
+                <a href="/user/{{username}}/profile"    class="{{profile}}">{{username}}</a>
+            </div>
+        </div>
+        <div class="main-content">
+            {% block content %}{% endblock %}
+        </div>
+    </body>
+</html>
