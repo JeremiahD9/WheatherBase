@@ -36,26 +36,22 @@ data_conn = psycopg2.connect(
 )
 data_cur = data_conn.cursor()
 
-@app.route('/.well-known/acme-challenge/<file>')
-def ssl(file):
-    return send_from_directory('.well-known/acme-challenge', file)
-
+# Redirect user to the login page
 @app.route('/')
 def index():
     return redirect('/login')
 
-@app.route('/user/<username>/home')
-def home(username):
-    return render_template("homepage.html", username = username, home = "active")
+# Return each page when user is logged in
+@app.route('/user/<username>/<pagename>.html')
+def get_page(username, pagename):
+    if pagename == 'home':
+        return render_template('homepage.html', username = username, home = "active")
+    elif pagename == 'map':
+        return render_template('map.html', username = username, map = "active")
+    elif pagename == 'horoscope':
+        return render_template('horoscope.html', username = username, horoscope = "active")
 
-@app.route('/user/<username>/map')
-def map(username):
-    return render_template("map.html", username = username, map = "active")
-
-@app.route('/user/<username>/horoscopes')
-def horroscopes(username):
-    return render_template("horroscope.html", username = username, navbar = topbar.format("", "", "active", ""))
-
+# Register a new user
 @app.route('/register', methods=['GET', 'POST'])
 def register():
 
@@ -88,6 +84,7 @@ def register():
     # If the method is GET
     return render_template("register.html")
 
+# Allow user to sign in
 @app.route('/login', methods=['GET', 'POST'])
 def login():
 
@@ -107,10 +104,10 @@ def login():
 
         # Check to see if the user entered password matches the database entry
         if hash(user_password, salt) == correct_pass:
-            return redirect(url_for('home', username = user_username))
+            return redirect(url_for('get_page', username = user_username, pagename = "home"))
         return render_template("login.html", incorrect_pass = True)
 
-    # If the method is POST
+    # If the method is GET
     return render_template("login.html")
 
 # Request a query from the postgres database
