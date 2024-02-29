@@ -58,7 +58,8 @@
 #info-wrapper input[type=text] {
     padding: 6px;
     width:40%;
-    border: none;
+    /* CHANGE LATER */
+    border: 1px; 
     margin-top: 8px;
     margin-right: 16px;
     font-size: 17px;
