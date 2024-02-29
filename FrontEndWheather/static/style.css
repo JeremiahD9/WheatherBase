@@ -55,6 +55,7 @@
     display: flex;
     text-align: center;
     margin: 20px;
+    position:relative;
 }
 
 #secret-country{
