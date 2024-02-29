@@ -132,7 +132,7 @@ def search_countries():
         WHERE LOWER(country) LIKE %s;
         """
         
-        cur.execute(sql, ('%' + user_input + '%',))
+        cur.execute(sql, ( user_input + '%',))
         rows = cur.fetchall()
         cur.close()
         countryNames = [row[0] for row in rows]
