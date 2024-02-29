@@ -70,36 +70,23 @@
     border-radius: 5px;
 }
 
-#suggestions{
-    position:relative;
+.search-suggestions {
+    margin-top: 10px;
 }
 
-.suggestions-list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    background-color: white;
+.suggestion-button {
+    display: block;
+    width: 100%;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    background-color: #f0f0f0;
     border: 1px solid #ddd;
-    border-top: none; /* Remove the top border to attach to the input field */
-    position: absolute;
-    width: calc(100% - 2px); 
-    z-index: 1000; /* Ensure it stacks above other content */
-    max-height: 200px; 
-    overflow-y: auto;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-  }
-  
-/* Styles for each suggestion item */
-.suggestion-item {
-    padding: 10px;
+    text-align: left;
     cursor: pointer;
-    border-bottom: 1px solid #ddd; /* Separate each suggestion with a line */
 }
 
-/* Style for a suggestion item on hover */
-.suggestion-item:hover, .suggestion-item.active {
-    background-color: #f7f7f7;
+.suggestion-button:hover {
+    background-color: #e0e0e0;
 }
 
 #location {
