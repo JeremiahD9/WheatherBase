@@ -56,7 +56,6 @@
 }
 
 #info-wrapper input[type=text] {
-    float: right;
     padding: 6px;
     width:40%;
     border: none;
