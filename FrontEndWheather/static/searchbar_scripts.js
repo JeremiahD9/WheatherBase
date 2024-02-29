@@ -17,10 +17,12 @@ $('#country-searchbar').on('keyup',function() {
                         var button = $('<button>')
                             .addClass('suggestion-button')
                             .text(country)
-                            .click(function() {
+                            .click(function() { //what to do after a country is clicked
                                 $('#secret-country').val($(this).text());
                                 $('#country-searchbar').val($(this).text());
                                 $('#search-suggestions').empty(); // Clear suggestions
+                                $('#location').empty();
+                                $('#location').text('Location: ' + country);
                             });
                         suggestionsContainer.append(button);
                     });
