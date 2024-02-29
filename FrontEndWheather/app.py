@@ -110,11 +110,12 @@ def login():
     # If the method is GET
     return render_template("login.html")
 
-# USED IN searchbar_scripts in map.html
+# USED IN searchbar_scripts in map.html - Noah
 @app.route('/search-countries', methods=['GET']) 
 def search_countries():
     user_input = request.args.get('search')
     # QUERY
+    print("user input received")
     conn = None
     try:
         conn = psycopg2.connect(
@@ -134,9 +135,8 @@ def search_countries():
         cur.execute(sql, (user_input,))
         rows = cur.fetchall()
         cur.close()
-        countryName = [row[0] for row in rows]
-        return jsonify(rows)
-
+        countryNames = [row[0] for row in rows]
+        return jsonify(countryNames)
         
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
