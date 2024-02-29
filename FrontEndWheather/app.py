@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 # Imports
-from flask import Flask
+from flask import Flask, jsonify
 from flask import render_template, request, redirect, session, url_for, send_from_directory
 import psycopg2
 import random
@@ -109,6 +109,42 @@ def login():
 
     # If the method is GET
     return render_template("login.html")
+
+# USED IN searchbar_scripts in map.html
+@app.route('/search-countries', methods=['GET']) 
+def search_countries():
+    user_input = request.args.get('search')
+    # QUERY
+    conn = None
+    try:
+        conn = psycopg2.connect(
+        host="localhost",
+        port=5432,
+        database="dawsonj2",
+        user="dawsonj2",
+        password="eyebrow529redm")
+
+        cur = conn.cursor()
+
+        sql = """
+        SELECT DISTINCT country FROM country
+        WHERE LOWER(country) LIKE LOWER(%s);
+        """
+        
+        cur.execute(sql, (user_input,))
+        rows = cur.fetchall()
+        cur.close()
+        countryName = [row[0] for row in rows]
+        return jsonify(rows)
+
+        
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()
+
+
 
 # Request a query from the postgres database
 def query_result(query):

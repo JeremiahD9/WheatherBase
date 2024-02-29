@@ -1,3 +1,5 @@
+/* Contributors: Noah, Warren */
+
 @keyframes slideDown {
     from {
       transform: translateY(-100%);
@@ -55,16 +57,47 @@
     margin: 20px;
 }
 
-#info-wrapper input[type=text] {
-    padding: 6px;
-    width:40%;
-    /* CHANGE LATER */
-    border: 1px;
-    border-color:#333; 
-    margin-top: 8px;
-    margin-right: 16px;
-    font-size: 17px;
+/* SEARCH BAR */
+#country-searchbar{
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
+
+#suggestions{
+    position:relative;
+}
+
+.suggestions-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-top: none; /* Remove the top border to attach to the input field */
+    position: absolute;
+    width: calc(100% - 2px); /* Matches the width of the search bar minus border */
+    z-index: 1000; /* Ensure it stacks above other content */
+    max-height: 200px; /* Set a max height and scroll for longer lists */
+    overflow-y: auto;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  
+  /* Styles for each suggestion item */
+  .suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd; /* Separate each suggestion with a line */
+  }
+  
+  /* Style for a suggestion item on hover */
+  .suggestion-item:hover,
+  .suggestion-item.active {
+    background-color: #f7f7f7;
+  }
 
 #location {
     margin: auto;
