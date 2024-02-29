@@ -115,7 +115,6 @@ def login():
 def search_countries():
     user_input = request.args.get('search')
     # QUERY
-    print("user input received")
     conn = None
     try:
         conn = psycopg2.connect(

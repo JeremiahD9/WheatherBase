@@ -11,17 +11,23 @@ $('#country-searchbar').on('keyup',function() {
             dataType: 'json',
             data: {'search': user_input},
             success: function(data){
-                console.log("success");
                 if(data){
-                    var suggestionsList = $('<ul>');
+                    var suggestionsContainer = $('<div>').addClass('search-suggestions');
                     $.each(data, function(index, country){
-                        suggestionsList.append($('<li>').text(country));
+                        var button = $('<button>')
+                            .addClass('suggestion-button')
+                            .text(country)
+                            .click(function() {
+                                $('#secret-country').val($(this).text());
+                                $('#country-searchbar').val($(this).text());
+                                $('#search-suggestions').empty(); // Clear suggestions
+                            });
+                        suggestionsContainer.append(button);
                     });
-                    $('#search-suggestions').append(suggestionsList);
+                    $('#search-suggestions').append(suggestionsContainer);
                 }
             },
             error: function(data){
-                console.log("fail");
                 $('#search-suggestions').append('<p>No matching countries found.</p>');
             }
         });
