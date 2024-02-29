@@ -59,7 +59,8 @@
     padding: 6px;
     width:40%;
     /* CHANGE LATER */
-    border: 1px; 
+    border: 1px;
+    border-color:#333; 
     margin-top: 8px;
     margin-right: 16px;
     font-size: 17px;
