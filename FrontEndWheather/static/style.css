@@ -57,6 +57,10 @@
     margin: 20px;
 }
 
+#secret-country{
+    size:0px;
+}
+
 /* SEARCH BAR */
 #country-searchbar{
     width: 100%;
@@ -78,26 +82,25 @@
     border: 1px solid #ddd;
     border-top: none; /* Remove the top border to attach to the input field */
     position: absolute;
-    width: calc(100% - 2px); /* Matches the width of the search bar minus border */
+    width: calc(100% - 2px); 
     z-index: 1000; /* Ensure it stacks above other content */
-    max-height: 200px; /* Set a max height and scroll for longer lists */
+    max-height: 200px; 
     overflow-y: auto;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
   }
   
-  /* Styles for each suggestion item */
-  .suggestion-item {
+/* Styles for each suggestion item */
+.suggestion-item {
     padding: 10px;
     cursor: pointer;
     border-bottom: 1px solid #ddd; /* Separate each suggestion with a line */
-  }
-  
-  /* Style for a suggestion item on hover */
-  .suggestion-item:hover,
-  .suggestion-item.active {
+}
+
+/* Style for a suggestion item on hover */
+.suggestion-item:hover, .suggestion-item.active {
     background-color: #f7f7f7;
-  }
+}
 
 #location {
     margin: auto;

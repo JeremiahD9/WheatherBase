@@ -11,16 +11,16 @@ $('#country-searchbar').on('keyup',function() {
             dataType: 'json',
             data: {'search': user_input},
             success: function(data){
-                if(data>0){
+                if(data){
                     var suggestionsList = $('<ul>');
                     $.each(data, function(index, country){
                         suggestionsList.append($('<li>').text(country));
                     });
-                    $('#suggestions').append(suggestionsList);
+                    $('#search-suggestions').append(suggestionsList);
                 }
             },
             error: function(data){
-                $('#suggestions').append('<p>No matching countries found.</p>');
+                $('#search-suggestions').append('<p>No matching countries found.</p>');
             }
         });
     }
