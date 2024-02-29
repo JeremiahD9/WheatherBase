@@ -129,10 +129,10 @@ def search_countries():
 
         sql = """
         SELECT DISTINCT country FROM country
-        WHERE LOWER(country) LIKE LOWER(%s);
+        WHERE LOWER(country) LIKE %s;
         """
         
-        cur.execute(sql, (user_input,))
+        cur.execute(sql, ('%' + user_input + '%',))
         rows = cur.fetchall()
         cur.close()
         countryNames = [row[0] for row in rows]

@@ -11,6 +11,7 @@ $('#country-searchbar').on('keyup',function() {
             dataType: 'json',
             data: {'search': user_input},
             success: function(data){
+                console.log("success");
                 if(data){
                     var suggestionsList = $('<ul>');
                     $.each(data, function(index, country){
@@ -20,6 +21,7 @@ $('#country-searchbar').on('keyup',function() {
                 }
             },
             error: function(data){
+                console.log("fail");
                 $('#search-suggestions').append('<p>No matching countries found.</p>');
             }
         });
