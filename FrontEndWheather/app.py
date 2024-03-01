@@ -160,10 +160,10 @@ def update_country():
 
         sql = """
         SELECT DISTINCT latitude,longitude FROM country
-        WHERE LOWER(country) LIKE %s;
+        WHERE LOWER(country) = %s;
         """
         
-        cur.execute(sql, ( '%'+countryName.lower()+'%',))
+        cur.execute(sql, ( countryName,))
         coords = cur.fetchall()
         cur.close()
 
