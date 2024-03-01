@@ -159,12 +159,12 @@ def update_country():
         cur = conn.cursor()
 
         sql = """
-        SELECT DISTINCT latitude,longitude FROM country
+        SELECT latitude,longitude FROM country
         WHERE LOWER(country) = %s;
         """
         
         cur.execute(sql, ( countryName,))
-        coords = cur.fetchall()
+        coords = cur.fetchone()
         cur.close()
 
         if(coords):
