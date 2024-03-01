@@ -1,8 +1,6 @@
 /* Contributors: Noah */
 // This code is to add suggestions to the search bar in map with countries that the user is typing into the search bar
 
-var map = document.getElementById('map');
-
 $('#country-searchbar').on('keyup',function() {
     var user_input = $(this).val();
     $('#search-suggestions').empty(); //clears suggestions
