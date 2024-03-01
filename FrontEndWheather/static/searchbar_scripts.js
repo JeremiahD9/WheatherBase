@@ -22,7 +22,7 @@ $('#country-searchbar').on('keyup',function() {
                                 $('#country-searchbar').val($(this).text());
                                 $('#search-suggestions').empty(); // Clear suggestions
                                 $('#location').empty();
-                                $('#location').text('Location: ' + country);
+                                updateMapLocation(country);
                             });
                         suggestionsContainer.append(button);
                     });
@@ -35,3 +35,17 @@ $('#country-searchbar').on('keyup',function() {
         });
     }
 });
+
+function updateMapLocation(country){ 
+    $('#location').text('Location: ' + country);
+    $.getJSON('/update-country', {'country':country}, function(coords){ //goes to app.py
+        if(!coords.error){
+            var newLat = coords.lat;
+            var newLon = coords.lon;
+            map.setView([newLat,newLon],5);
+        }else{
+            console.log("error");
+        }
+    });
+    
+}

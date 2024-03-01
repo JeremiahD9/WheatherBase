@@ -143,6 +143,40 @@ def search_countries():
         if conn is not None:
             conn.close()
 
+@app.route('/update-country', methods=['GET']) 
+def update_country():
+    countryName = request.args.get('country', None)
+    # QUERY
+    conn = None
+    try:
+        conn = psycopg2.connect(
+        host="localhost",
+        port=5432,
+        database="dawsonj2",
+        user="dawsonj2",
+        password="eyebrow529redm")
+
+        cur = conn.cursor()
+
+        sql = """
+        SELECT DISTINCT latitude,longitude FROM country
+        WHERE LOWER(country) LIKE %s;
+        """
+        
+        cur.execute(sql, ( countryName,))
+        coords = cur.fetchall()
+        cur.close()
+
+        if coords:
+            return jsonify({'lat':coords[0], 'lon':coords[1]})
+        else:
+            return jsonify({'error':'country not found'})
+        
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()
 
 
 # Request a query from the postgres database
