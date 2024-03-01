@@ -26,8 +26,14 @@
         <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
             <table id="myTable" onload="initializeTable()">
               <tr class="header">
-                <th style="width:60%;">Name</th>
-                <th style="width:40%;">Country</th>
+                <th>Country</th>
+                <th>Location Name</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Timezone</th>
+
+                {{DropdownOptions|safe}}
+              <!--
               </tr>
               <tr>
                 <td>Alfreds Futterkiste</td>
@@ -45,6 +51,8 @@
                 <td>Koniglich Essen</td>
                 <td>Germany</td>
               </tr>
+            -->
+
             </table>
         <div id="map"></div>
         <!-- Add more content here for weather conditions and forecast -->
