@@ -167,7 +167,7 @@ def update_country():
         coords = cur.fetchall()
         cur.close()
 
-        if coords:
+        if(coords):
             return jsonify({'lat':coords[0], 'lon':coords[1]})
         else:
             return jsonify({'error':'country not found'})
