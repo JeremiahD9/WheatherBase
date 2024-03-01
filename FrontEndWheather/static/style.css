@@ -102,6 +102,10 @@
     margin: auto;
 }
 
+html {
+    overflow: hidden;
+}
+
 .nav-links a {
     color: white;
     text-decoration: none;

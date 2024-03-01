@@ -115,7 +115,7 @@ def login():
 # USED IN searchbar_scripts in map.html - Noah
 @app.route('/search-countries', methods=['GET']) 
 def search_countries():
-    user_input = request.args.get('search')
+    user_input = request.args.get('search').lower()
     # QUERY
     conn = None
     try:
