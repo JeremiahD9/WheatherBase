@@ -1,3 +1,5 @@
+/* Contributors: Noah, Warren */
+
 @keyframes slideDown {
     from {
       transform: translateY(-100%);
@@ -53,15 +55,47 @@
     display: flex;
     text-align: center;
     margin: 20px;
+    position:relative;
 }
 
-#info-wrapper input[type=text] {
-    float: right;
-    padding: 6px;
-    border: none;
-    margin-top: 8px;
-    margin-right: 16px;
-    font-size: 17px;
+#secret-country{
+    size:0px;
+}
+
+/* SEARCH BAR */
+#country-searchbar{
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#searchbar-and-suggestions{
+    position:relative;
+}
+
+#search-suggestions {
+    position: absolute;
+    width: 100%; /* Match the width of the search bar */
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: adds shadow for better visibility */
+    z-index: 1000;
+}
+
+.suggestion-button {
+    display: block;
+    width: 100%;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    text-align: left;
+    cursor: pointer;
+}
+
+.suggestion-button:hover {
+    background-color: #e0e0e0;
 }
 
 #location {

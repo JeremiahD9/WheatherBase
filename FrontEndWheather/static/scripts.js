@@ -14,6 +14,7 @@ $.getJSON('https://ipinfo.io/geo', function(response) {
 
     // Initialize a new leaflet map
     var map = new L.map('map').setView([coords.lat, coords.lon], 13);
+    window.map = map; //making it a global variable to be accessed in searchbar_scripts.js
 
     // Create a new layer and add the map to the layer
     var layer = new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png");

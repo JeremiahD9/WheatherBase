@@ -1,3 +1,4 @@
+<!-- Contributors: Noah -->
 {% extends "page.html" %}
 {% block title %}Map{% endblock %}
 {% block head %}
@@ -8,9 +9,16 @@
 {% block content %}
     <div id="info-wrapper">
         <p id="location">Location: </p>
-        <input type="text" placeholder="Put a new country...">
+        <div id="searchbar-and-suggestions">
+            <input id="country-searchbar" type="text" placeholder="Put a new country...">
+            <div id="search-suggestions"></div>
+        </div>
+
     </div>
     <div id="map-wrapper">
         <div id="map"></div>
     </div>
+    <h4 id="secret-country">{{currentCountry}}</h4>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/static/searchbar_scripts.js"></script>
 {% endblock %}
