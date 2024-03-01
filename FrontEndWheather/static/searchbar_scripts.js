@@ -1,7 +1,7 @@
 /* Contributors: Noah */
 // This code is to add suggestions to the search bar in map with countries that the user is typing into the search bar
 
-var map;
+var map = document.getElementById('map');
 
 $('#country-searchbar').on('keyup',function() {
     var user_input = $(this).val();
@@ -45,11 +45,7 @@ function updateMapLocation(country){
         if(!coords.error){
             var newLat = coords.lat;
             var newLon = coords.lon;
-            if(!map){
-                map = L.map('map').setView([newLat, newLon], 5);
-            }else{
-                map.setView([newLat,newLon],5);
-            }
+            map.setView([newLat,newLon],5);
         }else{
             console.log("error2");
         }
