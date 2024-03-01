@@ -74,6 +74,15 @@
     margin-left: 15px;
 }
 
+.page-content {
+    width: 60%;
+    border-radius: 10px;
+    border-style: solid;
+    margin: auto;
+    text-align: center;
+    min-height: 80%;
+}
+
 .main-content {
     height: calc(100% - 40px); /* Adjust height based on the top bar height */
     position: relative;

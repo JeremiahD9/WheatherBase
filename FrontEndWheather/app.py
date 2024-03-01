@@ -50,6 +50,8 @@ def get_page(username, pagename):
         return render_template('map.html', username = username, map = "active")
     elif pagename == 'horoscope':
         return render_template('horoscope.html', username = username, horoscope = "active")
+    else:
+        return "404"
 
 # Register a new user
 @app.route('/register', methods=['GET', 'POST'])
