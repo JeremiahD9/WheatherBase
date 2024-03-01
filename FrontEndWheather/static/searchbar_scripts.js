@@ -44,7 +44,7 @@ function updateMapLocation(country){
             var newLon = coords.lon;
             var map = new L.map('map').setView([newLat, newLon], 5);
         }else{
-            console.log("error");
+            console.log("error2");
         }
     });
     
