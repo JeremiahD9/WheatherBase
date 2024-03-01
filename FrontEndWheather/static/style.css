@@ -45,6 +45,7 @@
     background-color: #238636;
 }
 
+/* MAP STUFF */
 #map {
     height: 700px;
     width: 900px;
@@ -120,6 +121,7 @@ body{
     height: 100%;
 }
 
+/* LOG IN STUFF */
 #login-body, .register-body {
     background-size: cover;
     background-repeat: no-repeat;
@@ -279,24 +281,24 @@ a:hover{
     margin-bottom: 12px; /* Add some space below the input */
   }
   
-  #myTable {
+#myTable {
     border-collapse: collapse; /* Collapse borders */
     width: 100%; /* Full-width */
     border: 1px solid #ddd; /* Add a grey border */
     font-size: 18px; /* Increase font-size */
   }
   
-  #myTable th, #myTable td {
+#myTable th, #myTable td {
     text-align: left; /* Left-align text */
     padding: 12px; /* Add padding */
   }
   
-  #myTable tr {
+#myTable tr {
     /* Add a bottom border to all table rows */
     border-bottom: 1px solid #ddd;
   }
   
-  #myTable tr.header, #myTable tr:hover {
+#myTable tr.header, #myTable tr:hover {
     /* Add a grey background color to the table header and on hover */
     background-color: #f1f1f1;
   }
