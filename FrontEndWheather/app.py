@@ -160,7 +160,7 @@ def update_country():
 
         sql = """
         SELECT latitude,longitude FROM country
-        WHERE LOWER(country) = %s;
+        WHERE country = %s;
         """
         
         cur.execute(sql, ( countryName,))
