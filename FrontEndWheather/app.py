@@ -163,7 +163,7 @@ def update_country():
         WHERE LOWER(country) LIKE %s;
         """
         
-        cur.execute(sql, ( countryName,))
+        cur.execute(sql, ( '%'+countryName.lower()+'%',))
         coords = cur.fetchall()
         cur.close()
 
@@ -171,7 +171,7 @@ def update_country():
             return jsonify({'lat':coords[0], 'lon':coords[1]})
         else:
             return jsonify({'error':'country not found'})
-        
+
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
     finally:
