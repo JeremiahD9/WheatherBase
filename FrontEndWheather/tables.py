@@ -44,7 +44,7 @@ def get_name_options():
         html = html + f'<tr><td>"{country}</td><td>{location_name}</td><td>{latitude}</td><td>{longitude}</td><td>{timezone}</td>"</tr>'
 
         #Backslash n in a string means New Line
-        html = html + '\n'
+        html = html + "\n"
     
     return html
 
