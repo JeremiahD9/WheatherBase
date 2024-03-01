@@ -182,6 +182,10 @@ def update_country():
         if conn is not None:
             conn.close()
 
+# TABLE STUFF - DAYA AND JEREMIAH
+@app.route('/init-table', methods=['GET']) 
+def initialize_table():
+    return None
 
 # Request a query from the postgres database
 def query_result(query):
