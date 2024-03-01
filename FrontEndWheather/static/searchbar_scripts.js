@@ -10,10 +10,10 @@ $('#country-searchbar').on('keyup',function() {
             type: 'GET',
             dataType: 'json',
             data: {'search': user_input},
-            success: function(data){
-                if(data){
+            success: function(country_names){
+                if(country_names){
                     var suggestionsContainer = $('<div>').addClass('search-suggestions');
-                    $.each(data, function(index, country){
+                    $.each(country_names, function(index, country){
                         var button = $('<button>')
                             .addClass('suggestion-button')
                             .text(country)
