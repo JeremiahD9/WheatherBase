@@ -52,7 +52,7 @@ def get_name_options():
 def home_page():
     html_string = get_name_options()
 
-    return render_template("homepage.html", DropdownOptions = html_string)
+    return render_template("table.html", DropdownOptions = html_string)
 
 if __name__ == '__main__':
     my_port = 5124
