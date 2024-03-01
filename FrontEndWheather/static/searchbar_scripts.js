@@ -43,7 +43,7 @@ function updateMapLocation(country){
         if(!coords.error){
             var newLat = coords.lat;
             var newLon = coords.lon;
-            var map = new L.map('map').setView([newLat, newLon], 5);
+            L.map('map').setView([newLat, newLon], 5);
         }else{
             console.log("error2");
         }
