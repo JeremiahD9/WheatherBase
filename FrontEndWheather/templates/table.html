@@ -11,6 +11,7 @@
 
 </head>
 <body>
+    <script src="/static/tableScripts.js"></script>
     <div class="top-bar">
         <div class="logo">WheatherBase</div>
         <div class="nav-links">
@@ -18,16 +19,19 @@
             <a href="#map">Map</a>
             <a href="#forecast">Forecast</a>
             <a href="#about">About</a>
-            <a href="#profile"">{{username}}</a>
+            <a href="#profile">{{username}}</a>
         </div>
     </div>
     <div class="main-content">
         <div id="map"></div>
         <!-- Add more content here for weather conditions and forecast -->
-        <p>
             <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
 
-            <table id="myTable">
+        <!-- STEP 1: CREATE A JAVA SCRIPT FUNCTION THAT ADDS ALL THE RELEVANT ROWS TO THE TABLE AND THEN ADD THE DATA-->
+        <!-- STEP 2: CREATE FILTER BUTTONS NEXT TO THE TABLE THAT WHEN PRESSED, CALLS A JAVA SCRIPT FUNCTION-->
+        <!-- STEP 3: THE JAVA SCRIPT FUNCTION WILL REMOVE ALL THE ROWS AND RE-ADD THE NEW ROWS WITH THE DATA. -->
+
+            <table id="myTable" onload="initializeTable()">
               <tr class="header">
                 <th style="width:60%;">Name</th>
                 <th style="width:40%;">Country</th>
@@ -49,7 +53,7 @@
                 <td>Germany</td>
               </tr>
             </table>
-        </p>
     </div>
+    
 </body>
 </html>

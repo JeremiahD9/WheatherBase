@@ -48,6 +48,8 @@ def get_page(username, pagename):
         return render_template('homepage.html', username = username, home = "active")
     elif pagename == 'map':
         return render_template('map.html', username = username, map = "active")
+    elif pagename == 'table':
+        return render_template('table.html', username = username, table = "active")
     elif pagename == 'horoscope':
         return render_template('horoscope.html', username = username, horoscope = "active")
     else:
@@ -180,6 +182,10 @@ def update_country():
         if conn is not None:
             conn.close()
 
+# TABLE STUFF - DAYA AND JEREMIAH
+@app.route('/init-table', methods=['GET']) 
+def initialize_table():
+    return None
 
 # Request a query from the postgres database
 def query_result(query):

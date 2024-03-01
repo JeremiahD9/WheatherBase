@@ -1,6 +1,8 @@
 /* Contributors: Noah */
 // This code is to add suggestions to the search bar in map with countries that the user is typing into the search bar
 
+variable = document.getElementById('#country-searchbar')
+
 $('#country-searchbar').on('keyup',function() {
     var user_input = $(this).val();
     $('#search-suggestions').empty(); //clears suggestions
@@ -10,10 +12,10 @@ $('#country-searchbar').on('keyup',function() {
             type: 'GET',
             dataType: 'json',
             data: {'search': user_input},
-            success: function(data){
-                if(data){
+            success: function(country_names){
+                if(country_names){
                     var suggestionsContainer = $('<div>').addClass('search-suggestions');
-                    $.each(data, function(index, country){
+                    $.each(country_names, function(index, country){
                         var button = $('<button>')
                             .addClass('suggestion-button')
                             .text(country)
