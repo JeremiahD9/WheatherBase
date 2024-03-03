@@ -75,7 +75,7 @@
 
 #searchbar-and-suggestions{
     position:relative;
-    margin-right : 1000px;
+    margin-right : 30%;
 }
 
 #search-suggestions {
@@ -102,6 +102,7 @@
 }
 
 #location {
+    position:fixed;
     margin: auto;
 }
 
