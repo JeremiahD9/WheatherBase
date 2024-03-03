@@ -67,7 +67,6 @@
 
 #left-sidebar, #right-sidebar {
     flex: 1; /* This will allow the sidebars to take up equal space on the sides */
-    padding: 20px; /* Adjust padding as needed */
     text-align: left;
 }
 
