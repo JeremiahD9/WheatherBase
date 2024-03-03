@@ -59,7 +59,7 @@
     align-items: start;
 }
 
-#flex-container {
+#flex-container{
     display: flex;
     justify-content: space-between; /* This will place the sidebars at the edges */
     align-items: start;
@@ -73,10 +73,11 @@
 
 #info-wrapper {
     display: flex;
-    text-align: center;
-    margin: 20px;
-    position:relative;
+    justify-content: space-around;
     align-items: center;
+    padding: 10px;
+    margin: 10px; 
+    gap: 10px; 
 }
 
 #secret-country{
@@ -93,8 +94,9 @@
 }
 
 #searchbar-and-suggestions{
-    position:relative;
-    margin-right : 400px;
+    position: relative;
+    margin-right: 0;
+    flex-grow: 2;
 }
 
 #search-suggestions {
@@ -105,7 +107,7 @@
     z-index: 1000;
 }
 
-.suggestion-button {
+.suggestion-button{
     display: block;
     width: 100%;
     padding: 5px 10px;
@@ -154,6 +156,7 @@ body{
     margin: 0;
     padding: 0;
     height: 100%;
+    overflow: auto;
 }
 
 /* LOG IN STUFF */
