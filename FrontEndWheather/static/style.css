@@ -69,9 +69,6 @@
     flex: 1; /* This will allow the sidebars to take up equal space on the sides */
     padding: 20px; /* Adjust padding as needed */
     text-align: left;
-    position: fixed; /* Position fixed to the viewport */
-    right: 0; /* Align it to the right of the viewport */
-    top: 0;
 }
 
 #info-wrapper {
