@@ -57,6 +57,7 @@
     text-align: center;
     margin: 20px;
     position:relative;
+    align-items: center;
 }
 
 #secret-country{
@@ -74,6 +75,7 @@
 
 #searchbar-and-suggestions{
     position:relative;
+    margin-top:-20px;
 }
 
 #search-suggestions {
@@ -316,7 +318,7 @@ a:hover{
     background-color: #f1f1f1;
   }
 
-  /* TABLE STYLESHEETS */
-.header tr{
+ /* TABLE STYLESHEETS */
+ .header tr{
     width:50%;
 }
