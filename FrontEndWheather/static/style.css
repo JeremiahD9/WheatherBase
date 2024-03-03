@@ -95,6 +95,7 @@
 
 #searchbar-and-suggestions{
     position: relative;
+    align-items: center;
     margin-right: 0;
     flex-grow: 2;
 }
