@@ -47,9 +47,23 @@
 
 /* MAP STUFF */
 #map {
-    height: 650px;
-    width: 600px;
+    height: auto;
+    max-width: 100%;
     margin: auto;
+}
+
+#map-wrapper{
+    flex:3;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between; /* This will place the sidebars at the edges */
+}
+
+.left-sidebar, .right-sidebar {
+    flex: 1; /* This will allow the sidebars to take up equal space on the sides */
+    padding: 20px; /* Adjust padding as needed */
 }
 
 #info-wrapper {
