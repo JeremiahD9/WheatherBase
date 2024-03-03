@@ -53,6 +53,7 @@
 }
 
 #map-wrapper{
+    width:auto;
     flex: 3; 
     display: flex;
     justify-content: center; 
@@ -66,6 +67,7 @@
 }
 
 #left-sidebar, #right-sidebar {
+    width:auto;
     flex: 1; /* This will allow the sidebars to take up equal space on the sides */
     padding: 20px; /* Adjust padding as needed */
     text-align: left;
