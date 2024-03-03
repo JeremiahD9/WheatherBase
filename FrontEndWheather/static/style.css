@@ -49,7 +49,7 @@
 #map {
     height: 650px;
     width: 600px;
-    margin: auto;
+    margin: 0;
 }
 
 #map-wrapper{
@@ -76,7 +76,7 @@
     justify-content: space-around;
     align-items: center;
     padding: 10px;
-    margin: 10px; 
+    margin: 10px 0; 
     gap: 10px; 
 }
 
@@ -85,12 +85,13 @@
 }
 
 /* SEARCH BAR */
-#country-searchbar{
-    width: 30%;
+#country-searchbar, #calendar{
+    width: 40%;
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    margin: 0 10px;
 }
 
 #searchbar-and-suggestions{
@@ -101,7 +102,7 @@
 }
 
 #search-suggestions {
-    position: relative;
+    position: fixed;
     width: 100%; /* match the width of the search bar */
     background: #fff;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* shadow for better visibility */
@@ -126,6 +127,7 @@
 #location {
     position:relative;
     margin: auto;
+    flex:1;
 }
 
 html {
