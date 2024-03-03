@@ -59,13 +59,13 @@
     align-items: start;
 }
 
-.flex-container {
+#flex-container {
     display: flex;
     justify-content: space-between; /* This will place the sidebars at the edges */
     align-items: start;
 }
 
-.left-sidebar, .right-sidebar {
+#left-sidebar, #right-sidebar {
     flex: 1; /* This will allow the sidebars to take up equal space on the sides */
     padding: 20px; /* Adjust padding as needed */
 }
