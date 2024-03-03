@@ -101,7 +101,7 @@
 
 #search-suggestions {
     position: absolute;
-    width: 100%; /* match the width of the search bar */
+    width: 20%; /* match the width of the search bar */
     background: #fff;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* shadow for better visibility */
     z-index: 1000;
