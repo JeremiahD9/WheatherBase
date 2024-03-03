@@ -72,12 +72,6 @@
     position: relative;
 }
 
-#right-sidebar h1{
-    position: absolute; /* Absolute position for the heading */
-    left: 100px; /* Adjust as needed to set the distance from the right edge of #left-sidebar */
-    top: 10px;
-}   
-
 #info-wrapper {
     display: flex;
     justify-content: space-around;
