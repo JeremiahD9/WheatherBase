@@ -53,7 +53,7 @@
 }
 
 #map-wrapper{
-    width:auto;
+    width:600px;
     flex: 3; 
     display: flex;
     justify-content: center; 
