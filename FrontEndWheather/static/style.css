@@ -64,7 +64,7 @@
 .left-sidebar, .right-sidebar {
     flex: 1; /* This will allow the sidebars to take up equal space on the sides */
     padding: 20px; /* Adjust padding as needed */
-    border:#2ea043;
+    background-color: #333;
 }
 
 #info-wrapper {
