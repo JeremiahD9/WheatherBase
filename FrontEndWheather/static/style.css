@@ -74,7 +74,7 @@
 
 #right-sidebar h1{
     position: absolute; /* Absolute position for the heading */
-    left: 20px; /* Adjust as needed to set the distance from the right edge of #left-sidebar */
+    left: 40px; /* Adjust as needed to set the distance from the right edge of #left-sidebar */
     top: 10px;
 }   
 
