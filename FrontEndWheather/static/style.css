@@ -184,6 +184,7 @@ h1{
     background-repeat: no-repeat;
     background-position: center center;
     background-image: url("dark-clouds.jpg");
+    opacity: 80%;
 }
 
 .body-div {
