@@ -67,10 +67,13 @@
 }
 
 #left-sidebar{
-    flex: 1; /* This will allow the sidebars to take up equal space on the sides */
+    flex: 2;
     padding: 20px; /* Adjust padding as needed */
     text-align: left;
     position: relative;
+    background-color: #f2f2f2;
+    border-radius: 10px; 
+    margin-right: 20px; 
 }
 
 #info-wrapper {
@@ -78,7 +81,7 @@
     justify-content: space-around;
     align-items: center;
     padding: 10px;
-    margin: 10px 0; 
+    margin: 0; 
     gap: 10px; 
 }
 
@@ -88,12 +91,11 @@
 
 /* SEARCH BAR */
 #country-searchbar, #calendar{
-    width: 40%;
+    flex:1;
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    margin: 0 10px;
 }
 
 #searchbar-and-suggestions{
@@ -104,11 +106,13 @@
 }
 
 #search-suggestions {
-    position: fixed;
-    width: 40%; /* match the width of the search bar */
+    position: absolute;
+    width: auto; /* match the width of the search bar */
+    max-width: 300px;
     background: #fff;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* shadow for better visibility */
     z-index: 1000;
+    top:100%;
 }
 
 .suggestion-button{
@@ -133,7 +137,7 @@
 }
 
 html {
-    overflow: hidden;
+    overflow: auto;
 }
 
 .nav-links a {
@@ -161,7 +165,17 @@ body{
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow: auto;
+    overflow: visible;
+}
+
+h1{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.weather-text{
+    font-size: 1.2em; 
+    color: #0044cc; 
 }
 
 /* LOG IN STUFF */
