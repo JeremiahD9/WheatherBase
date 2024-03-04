@@ -20,7 +20,7 @@ $('#country-searchbar').on('keyup',function() {
                             .addClass('suggestion-button')
                             .text(country)
                             .click(function() { //what to do after a country is clicked
-                                $('#secret-country').val($(this).text());
+                                $('#secret-country').text($(this).text());
                                 $('#country-searchbar').val($(this).text());
                                 $('#search-suggestions').empty(); // Clear suggestions
                                 $('#location').empty();
