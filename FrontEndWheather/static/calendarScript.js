@@ -12,6 +12,18 @@ $('#calendar').on('change', function() {
             var sunrise = data.sunrise;
             var sunset = data.sunset;
             var moonphase = data.moonphase;
+            $('#temp-val').empty();
+            $('#wind-val').empty();
+            $('#precip-val').empty();
+            $('#sunrise-val').empty();
+            $('#sunset-val').empty();
+            $('#moonphase-val').empty();
+            $('#temp-val').val(temp);
+            $('#wind-val').val(wind);
+            $('#precip-val').val(precip);
+            $('#sunrise-val').val(sunrise);
+            $('#sunset-val').val(sunset);
+            $('#moon-val').val(moonphase);
         }else{
             console.log("error2");
         }
