@@ -60,7 +60,7 @@
     align-items: start;
 }
 
-#flex-container{
+#flex-container, .data-box{
     display: flex;
     justify-content: space-between; /* This will place the sidebars at the edges */
     align-items: start;
