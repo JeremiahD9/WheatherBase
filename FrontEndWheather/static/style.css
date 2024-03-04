@@ -179,7 +179,7 @@ h1{
 }
 
 /* LOG IN STUFF */
-#login-body, .register-body, .map-body {
+#login-body, .register-body, #map-body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
