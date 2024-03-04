@@ -16,17 +16,16 @@
             <div id="search-suggestions"></div>
         </div>
         <input id="calendar" type="date" name="calendar" min="2023-08-29" max="2024-01-28">
-
     </div>
     <div id="flex-container">
         <div id="left-sidebar">
             <h1>Weather Data:</h1>
-            <h4 class="weather-text">Temperature: {{temp}}</h4>
-            <h4 class="weather-text">Wind: {{wind}}</h4>
-            <h4 class="weather-text">Precipitation: {{precip}}</h4>
-            <h4 class="weather-text">Sunrise: {{sunrise}}</h4>
-            <h4 class="weather-text">Sunset: {{sunset}}</h4>
-            <h4 class="weather-text">Moon phase: {{moon}}</h4>
+            <h4 class="weather-text">Temperature:</h4>
+            <h4 class="weather-text">Wind:</h4>
+            <h4 class="weather-text">Precipitation:</h4>
+            <h4 class="weather-text">Sunrise:</h4>
+            <h4 class="weather-text">Sunset:</h4>
+            <h4 class="weather-text">Moon phase:</h4>
         </div>
         <div id="map-wrapper">
             <div id="map"></div>
@@ -36,4 +35,5 @@
     <h4 id="secret-country">{{currentCountry}}</h4>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="/static/searchbar_scripts.js"></script>
+    <script src="/static/calendarScript.js"></script>
 {% endblock %}

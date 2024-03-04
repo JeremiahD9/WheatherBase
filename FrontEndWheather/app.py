@@ -182,6 +182,59 @@ def update_country():
         if conn is not None:
             conn.close()
 
+#USED IN calendarScripts.js from map.html
+@app.route('/get-map-data', methods=['GET']) 
+def get_map_data():
+    countryName = request.args.get('country', None)
+    selectedDate = request.args.get('date', None)
+    # QUERY
+    conn = None
+    try:
+        conn = psycopg2.connect(
+        host="localhost",
+        port=5432,
+        database="dawsonj2",
+        user="dawsonj2",
+        password="eyebrow529redm")
+
+        cur = conn.cursor()
+
+        sql = """
+        SELECT 
+            temp.tempc AS temperature_celsius, 
+            wind.wind_kmh AS wind_kph, 
+            prec.precip_mm AS precipitation_mm, 
+            sun.sunrise AS sunrise, 
+            sun.sunset AS sunset, 
+            sun.moon_phase AS moon_phase
+        FROM 
+            weather_r AS wr
+            INNER JOIN country AS c ON wr.country = c.country
+            INNER JOIN temperature_table AS temp ON wr.instance_id = temp.instance_id
+            INNER JOIN wind_table AS wind ON wr.instance_id = wind.instance_id
+            INNER JOIN pressure_others AS prec ON wr.instance_id = prec.instance_id
+            INNER JOIN sunmoon AS sun ON wr.instance_id = sun.instance_id
+        WHERE 
+            wr.country = %s AND 
+            wr.last_updated = %s;
+        """
+        
+        cur.execute(sql, ( countryName, selectedDate))
+        data = cur.fetchone()
+        cur.close()
+
+        if(data):
+            result = {column: value for column, value in data.items()}
+            return jsonify(result)
+        else:
+            return jsonify({'error':'country not found'})
+
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()
+
 # TABLE STUFF - DAYA AND JEREMIAH
 @app.route('/init-table', methods=['GET']) 
 def initialize_table():
