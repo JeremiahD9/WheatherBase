@@ -134,6 +134,9 @@
     position:relative;
     margin: auto;
     flex:1;
+    display: inline-block;
+    padding: .25em 0;
+    background: #f7f2e3;
 }
 
 html {
