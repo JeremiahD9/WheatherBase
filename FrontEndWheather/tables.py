@@ -30,6 +30,7 @@ def get_name_options():
     cur.execute(query)
     
     rows = cur.fetchall()
+    print(rows)
 
     html = ""
     for row in rows:

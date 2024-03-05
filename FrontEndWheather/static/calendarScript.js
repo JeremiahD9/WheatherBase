@@ -2,6 +2,7 @@
 
 $('#calendar').on('change', function() {
     var selectedDate = $(this).val();
+    var formattedDate = formatDate(selectedDate);
     var selectedCountry = $('#secret-country').text();
 
     $.ajax({
@@ -23,3 +24,12 @@ $('#calendar').on('change', function() {
         }
     });
 });
+
+function formatDate(dateString) {
+    var date = new Date(dateString);
+    var day = date.getDate();
+    var month = date.getMonth() + 1; // Months are zero indexed
+    var year = date.getFullYear();
+
+    return month + "/" + day + "/" + year;
+}
