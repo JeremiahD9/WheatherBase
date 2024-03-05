@@ -3,17 +3,23 @@
 $('#calendar').on('change', function() {
     var selectedDate = $(this).val();
     var selectedCountry = $('#secret-country').text();
-    $.getJSON('/get-map-data', {'country':selectedCountry, 'date':selectedDate}, function(data){ //goes to app.py
-        console.log(data);
-        if(!data.error){
-            $('#temp-val').text(data.temp + ' °C');
-            $('#wind-val').text(data.wind + ' km/h');
-            $('#precip-val').text(data.precip + ' mm');
-            $('#sunrise-val').text(data.sunrise);
-            $('#sunset-val').text(data.sunset);
-            $('#moon-val').text(data.moonphase);
-        }else{
-            console.log("error2");
+
+    $.ajax({
+        url: '/get-map-data',
+        type: 'GET',
+        dataType: 'json',
+        data: {
+            'country': selectedCountry,
+            'date': selectedDate
+        },
+        success: function(weatherValues) {
+            console.log(data);
+            $('#temp-val').text(weatherValues[0] + ' °C');
+            $('#wind-val').text(weatherValues[1] + ' km/h');
+            $('#precip-val').text(weatherValues[2] + ' mm');
+            $('#sunrise-val').text(weatherValues[3]);
+            $('#sunset-val').text(weatherValues[4]);
+            $('#moon-val').text(weatherValues[5]);
         }
     });
 });
