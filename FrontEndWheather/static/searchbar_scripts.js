@@ -3,7 +3,7 @@
 
 variable = document.getElementById('#country-searchbar')
 
-$('#country-searchbar').on('keyup',function() {
+$('#country-searchbar').on('input',function() {
     var user_input = $(this).val();
     $('#search-suggestions').empty(); //clears suggestions
     if(user_input.length>0){ 
@@ -12,7 +12,7 @@ $('#country-searchbar').on('keyup',function() {
             type: 'GET',
             dataType: 'json',
             data: {'search': user_input},
-            success: function(country_names){
+            success: function(country_names) {
                 if(country_names){
                     var suggestionsContainer = $('<div>').addClass('search-suggestions');
                     $.each(country_names, function(index, country){
@@ -20,7 +20,7 @@ $('#country-searchbar').on('keyup',function() {
                             .addClass('suggestion-button')
                             .text(country)
                             .click(function() { //what to do after a country is clicked
-                                $('#secret-country').val($(this).text());
+                                $('#secret-country').text($(this).text());
                                 $('#country-searchbar').val($(this).text());
                                 $('#search-suggestions').empty(); // Clear suggestions
                                 $('#location').empty();
@@ -46,6 +46,9 @@ function updateMapLocation(country){
             var newLat = coords.lat;
             var newLon = coords.lon;
             map.setView([newLat,newLon],5);
+
+            var event = new Event('change');
+            document.getElementById("calendar").dispatchEvent(event);
         }else{
             console.log("error2");
         }

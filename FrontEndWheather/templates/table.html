@@ -1,34 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WheatherBase Home</title>
-    <link rel="stylesheet" href="/static/style.css">
-
-    <!-- LINKS TO LEAFLET LIBRARY -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" /> 
-
-</head>
-<body>
+{% extends "page.html" %}
+{% block title %}Table{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
     <script src="/static/tableScripts.js"></script>
-    <div class="top-bar">
-        <div class="logo">WheatherBase</div>
-        <div class="nav-links">
-            <a href="#current">Current</a>
-            <a href="#map">Map</a>
-            <a href="#forecast">Forecast</a>
-            <a href="#about">About</a>
-            <a href="#profile">{{username}}</a>
-        </div>
-    </div>
     <div class="main-content">
-        Testing
         <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
             <table id="myTable" onload="initializeTable()">
               <tr class="header">
-                <th style="width:60%;">Name</th>
-                <th style="width:40%;">Country</th>
+                <th>Country</th>
+                <th>Location Name</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Timezone</th>
+
+                {{DropdownOptions|safe}}
+              <!--
               </tr>
               <tr>
                 <td>Alfreds Futterkiste</td>
@@ -46,6 +34,8 @@
                 <td>Koniglich Essen</td>
                 <td>Germany</td>
               </tr>
+            -->
+
             </table>
         <div id="map"></div>
         <!-- Add more content here for weather conditions and forecast -->
@@ -54,6 +44,4 @@
         <!-- STEP 3: THE JAVA SCRIPT FUNCTION WILL REMOVE ALL THE ROWS AND RE-ADD THE NEW ROWS WITH THE DATA. -->
        
     </div>
-    
-</body>
-</html>
+{% endblock %}

@@ -47,16 +47,42 @@
 
 /* MAP STUFF */
 #map {
-    height: 700px;
+    height: 650px;
     width: 900px;
-    margin: auto;
+    margin: 0;
+}
+
+#map-wrapper{
+    width:600px;
+    flex: 3; 
+    display: flex;
+    justify-content: center; 
+    align-items: start;
+}
+
+#flex-container, .data-box{
+    display: flex;
+    justify-content: space-between; /* This will place the sidebars at the edges */
+    align-items: start;
+}
+
+#left-sidebar{
+    flex: 2;
+    padding: 20px; /* Adjust padding as needed */
+    text-align: left;
+    position: relative;
+    background-color: #f2f2f2;
+    border-radius: 10px; 
+    margin-right: 20px; 
 }
 
 #info-wrapper {
     display: flex;
-    text-align: center;
-    margin: 20px;
-    position:relative;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    margin: 0; 
+    gap: 10px; 
 }
 
 #secret-country{
@@ -64,8 +90,8 @@
 }
 
 /* SEARCH BAR */
-#country-searchbar{
-    width: 100%;
+#country-searchbar, #calendar{
+    flex:1;
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ddd;
@@ -73,18 +99,23 @@
 }
 
 #searchbar-and-suggestions{
-    position:relative;
+    position: relative;
+    align-items: center;
+    margin-right: 0;
+    flex-grow: 2;
 }
 
 #search-suggestions {
     position: absolute;
-    width: 100%; /* match the width of the search bar */
+    width: auto; /* match the width of the search bar */
+    max-width: 300px;
     background: #fff;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* shadow for better visibility */
     z-index: 1000;
+    top:100%;
 }
 
-.suggestion-button {
+.suggestion-button{
     display: block;
     width: 100%;
     padding: 5px 10px;
@@ -100,11 +131,16 @@
 }
 
 #location {
+    position:relative;
     margin: auto;
+    flex:1;
+    display: inline-block;
+    padding: .25em 0;
+    background: #f7f2e3;
 }
 
 html {
-    overflow: hidden;
+    overflow: auto;
 }
 
 .nav-links a {
@@ -132,14 +168,29 @@ body{
     margin: 0;
     padding: 0;
     height: 100%;
+    overflow: visible;
+}
+
+h1{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.weather-text{
+    font-size: 1.2em; 
+    color: #0044cc; 
 }
 
 /* LOG IN STUFF */
-#login-body, .register-body {
+#login-body, .register-body, #map-body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     background-image: url("dark-clouds.jpg");
+}
+
+#secret-country {
+    display: None;
 }
 
 .body-div {
@@ -315,3 +366,8 @@ a:hover{
     /* Add a grey background color to the table header and on hover */
     background-color: #f1f1f1;
   }
+
+ /* TABLE STYLESHEETS */
+ .header tr{
+    width:50%;
+}
