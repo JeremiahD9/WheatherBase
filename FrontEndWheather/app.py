@@ -187,8 +187,8 @@ def update_country():
 def get_map_data():
     countryName = request.args.get('country', None)
     selectedDate = request.args.get('date', None)
-    print("Country Name:", countryName)
-    print("Selected Date:", selectedDate)
+    app.logger.info(f"Country Name: {countryName}")
+    app.logger.info(f"Selected Date: {selectedDate}")
     # QUERY
     conn = None
     try:
