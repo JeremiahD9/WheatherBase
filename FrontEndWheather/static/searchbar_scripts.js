@@ -3,7 +3,7 @@
 
 variable = document.getElementById('#country-searchbar')
 
-$('#country-searchbar').on('keyup',function() {
+$('#country-searchbar').on('input',function() {
     var user_input = $(this).val();
     $('#search-suggestions').empty(); //clears suggestions
     if(user_input.length>0){ 

@@ -10,7 +10,7 @@ import os
 import binascii
 
 # Constants
-PORT = 5128
+PORT = 5127
 DEBUG = True
 
 # Initialize flask app
@@ -119,33 +119,33 @@ def login():
 def search_countries():
     user_input = request.args.get('search').lower()
     # QUERY
-    conn = None
+    #conn = None
     try:
-        conn = psycopg2.connect(
-        host="localhost",
-        port=5432,
-        database="dawsonj2",
-        user="dawsonj2",
-        password="eyebrow529redm")
+    #    conn = psycopg2.connect(
+    #    host="localhost",
+    #    port=5432,
+    #    database="dawsonj2",
+    #   user="dawsonj2",
+    #    password="eyebrow529redm")
 
-        cur = conn.cursor()
+    #    cur = conn.cursor()
 
         sql = """
         SELECT DISTINCT country FROM country
         WHERE LOWER(country) LIKE %s;
         """
         
-        cur.execute(sql, ( user_input + '%',))
-        rows = cur.fetchall()
-        cur.close()
+        data_cur.execute(sql, ( user_input + '%',))
+        rows = data_cur.fetchall()
+        #cur.close()
         countryNames = [row[0] for row in rows]
         return jsonify(countryNames)
         
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
-    finally:
-        if conn is not None:
-            conn.close()
+    #finally:
+    #    if conn is not None:
+    #        conn.close()
 
 @app.route('/update-country', methods=['GET']) 
 def update_country():
