@@ -1,31 +1,48 @@
-var coords = {
-    lat: 0,
-    lon: 0
-}
-
 // Get the current location
-$.getJSON('https://ipinfo.io/geo', function(response) { 
-    var loc = response.loc.split(',');
-    var city = response.city;
-    var region = response.region;
+$.getJSON('https://ipinfo.io/geo', function(response) {
+    var currentCountry = response.country;
+    let regionNames = new Intl.DisplayNames(['en'], {type: 'region'});
+    var currentCountryLong = regionNames.of(currentCountry);
 
-    coords.lat = loc[0];
-    coords.lon = loc[1];
+    $.ajax({
+        url: '/search-countries',
+        type: 'GET',
+        dataType: 'json',
+        data: {'search': currentCountryLong},
+        success: function(countryName) {
+            document.getElementById("location").innerHTML = "Location: " + countryName;
+            document.getElementById("secret-country").innerHTML = countryName;
 
-    // Initialize a new leaflet map
-    var map = new L.map('map').setView([coords.lat, coords.lon], 13);
-    window.map = map; //making it a global variable to be accessed in searchbar_scripts.js
+            $.ajax({
+                url: '/update-country',
+                type: 'GET',
+                dataType: 'json',
+                data: {'country': document.getElementById("secret-country").innerText},
+                success: function(countryData) {
+                    var event = new Event('change');
+                    document.getElementById("calendar").dispatchEvent(event);
 
-    // Create a new layer and add the map to the layer
-    var layer = new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png");
-    map.addLayer(layer);
+                    lat = countryData['lat'];
+                    lon = countryData['lon'];
 
-    // Popup for current location
-    L.marker([coords.lat, coords.lon]).addTo(map)
-        .bindPopup('Current Location')
-        .openPopup();
+                    // Initialize a new leaflet map
+                    var map = new L.map('map').setView([lat, lon], 5);
+                    window.map = map; //making it a global variable to be accessed in searchbar_scripts.js
 
-    document.getElementById("location").innerHTML = "Location: " + city + ", " + region;
+                    // Create a new layer and add the map to the layer
+                    var layer = new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png");
+                    map.addLayer(layer);
+
+                    // Popup for current location
+                    L.marker([lat, lon]).addTo(map)
+                        .bindPopup('Current Location')
+                        .openPopup();
+
+                    //document.getElementById("location").innerHTML = "Location: " + country_long;
+                }
+            })
+        }
+    })
 });
 
 // Close the incorrect password error message

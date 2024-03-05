@@ -1,27 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WheatherBase Home</title>
-    <link rel="stylesheet" href="/static/style.css">
-
-    <!-- LINKS TO LEAFLET LIBRARY -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" /> 
-
-</head>
-<body>
+{% extends "page.html" %}
+{% block title %}Table{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
     <script src="/static/tableScripts.js"></script>
-    <div class="top-bar">
-        <div class="logo">WheatherBase</div>
-        <div class="nav-links">
-            <a href="#current">Current</a>
-            <a href="#map">Map</a>
-            <a href="#forecast">Forecast</a>
-            <a href="#about">About</a>
-            <a href="#profile">{{username}}</a>
-        </div>
-    </div>
     <div class="main-content">
         <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
             <table id="myTable" onload="initializeTable()">
@@ -61,6 +44,4 @@
         <!-- STEP 3: THE JAVA SCRIPT FUNCTION WILL REMOVE ALL THE ROWS AND RE-ADD THE NEW ROWS WITH THE DATA. -->
        
     </div>
-    
-</body>
-</html>
+{% endblock %}

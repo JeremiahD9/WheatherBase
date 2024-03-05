@@ -10,7 +10,7 @@ import os
 import binascii
 
 # Constants
-PORT = 5128
+PORT = 5127
 DEBUG = True
 
 # Initialize flask app
@@ -151,36 +151,36 @@ def search_countries():
 def update_country():
     countryName = request.args.get('country', None)
     # QUERY
-    conn = None
-    try:
-        conn = psycopg2.connect(
-        host="localhost",
-        port=5432,
-        database="dawsonj2",
-        user="dawsonj2",
-        password="eyebrow529redm")
+   #conn = None
+    #try:
+    #    conn = psycopg2.connect(
+    #    host="localhost",
+    #    port=5432,
+    #    database="dawsonj2",
+    #    user="dawsonj2",
+    #    password="eyebrow529redm")
 
-        cur = conn.cursor()
+    #    cur = conn.cursor()
 
-        sql = """
-        SELECT latitude,longitude FROM country
-        WHERE country = %s;
-        """
+    sql = """
+    SELECT latitude,longitude FROM country
+    WHERE country = '{0}';
+    """
         
-        cur.execute(sql, ( countryName,))
-        coords = cur.fetchone()
-        cur.close()
+    data_cur.execute(sql.format(countryName))
+    coords = data_cur.fetchone()
+    #cur.close()
 
-        if(coords):
-            return jsonify({'lat':coords[0], 'lon':coords[1]})
-        else:
-            return jsonify({'error':'country not found'})
+    if(coords):
+        return jsonify({'lat':coords[0], 'lon':coords[1]})
+    else:
+        return jsonify({'error': countryName})
 
-    except (Exception, psycopg2.DatabaseError) as error:
-        print(error)
-    finally:
-        if conn is not None:
-            conn.close()
+    #except (Exception, psycopg2.DatabaseError) as error:
+    #    print(error)
+    #finally:
+    #    if conn is not None:
+    #        conn.close()
 
 #USED IN calendarScripts.js from map.html
 @app.route('/get-map-data', methods=['GET']) 

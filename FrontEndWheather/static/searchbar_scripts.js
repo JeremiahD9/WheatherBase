@@ -12,7 +12,7 @@ $('#country-searchbar').on('input',function() {
             type: 'GET',
             dataType: 'json',
             data: {'search': user_input},
-            success: function(country_names){
+            success: function(country_names) {
                 if(country_names){
                     var suggestionsContainer = $('<div>').addClass('search-suggestions');
                     $.each(country_names, function(index, country){
@@ -46,6 +46,9 @@ function updateMapLocation(country){
             var newLat = coords.lat;
             var newLon = coords.lon;
             map.setView([newLat,newLon],5);
+
+            var event = new Event('change');
+            document.getElementById("calendar").dispatchEvent(event);
         }else{
             console.log("error2");
         }

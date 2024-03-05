@@ -2,7 +2,6 @@
 
 $('#calendar').on('change', function() {
     var selectedDate = $(this).val();
-    var formattedDate = formatDate(selectedDate);
     var selectedCountry = $('#secret-country').text();
 
     $.ajax({
@@ -13,23 +12,13 @@ $('#calendar').on('change', function() {
             'country': selectedCountry,
             'date': selectedDate
         },
-        success: function(weatherValues) {
-            console.log(data);
-            $('#temp-val').text(weatherValues[0] + ' °C');
-            $('#wind-val').text(weatherValues[1] + ' km/h');
-            $('#precip-val').text(weatherValues[2] + ' mm');
-            $('#sunrise-val').text(weatherValues[3]);
-            $('#sunset-val').text(weatherValues[4]);
-            $('#moon-val').text(weatherValues[5]);
+        success: function(data) {
+            $('#temp-val').text(data[0] + ' °C');
+            $('#wind-val').text(data[1] + ' km/h');
+            $('#precip-val').text(data[2] + ' mm');
+            $('#sunrise-val').text(data[3]);
+            $('#sunset-val').text(data[4]);
+            $('#moon-val').text(data[5]);
         }
     });
 });
-
-function formatDate(dateString) {
-    var date = new Date(dateString);
-    var day = date.getDate();
-    var month = date.getMonth() + 1; // Months are zero indexed
-    var year = date.getFullYear();
-
-    return month + "/" + day + "/" + year;
-}
