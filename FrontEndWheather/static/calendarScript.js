@@ -2,10 +2,9 @@
 
 $('#calendar').on('change', function() {
     var selectedDate = $(this).val();
+    var formattedDate = formatDate(selectedDate);
     var selectedCountry = $('#secret-country').text();
-    console.log(selectedDate);
-    console.log(selectedCountry);
-    $.getJSON('/get-map-data', {'country':selectedCountry, 'date':selectedDate}, function(data){ //goes to app.py
+    $.getJSON('/get-map-data', {'country':selectedCountry, 'date':formattedDate}, function(data){ //goes to app.py
         console.log(data);
         if(!data.error){
             $('#temp-val').text(data.temp + ' °C');
@@ -19,3 +18,12 @@ $('#calendar').on('change', function() {
         }
     });
 });
+
+function formatDate(dateString) {
+    var date = new Date(dateString);
+    var day = date.getDate();
+    var month = date.getMonth() + 1; // Months are zero indexed
+    var year = date.getFullYear();
+
+    return month + "/" + day + "/" + year;
+}
