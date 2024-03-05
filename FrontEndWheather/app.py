@@ -203,12 +203,12 @@ def get_map_data():
 
         sql = """
         SELECT 
-            temp.tempc AS temperature_celsius, 
-            wind.wind_kmh AS wind_kph, 
-            prec.precip_mm AS precipitation_mm, 
-            sun.sunrise AS sunrise, 
-            sun.sunset AS sunset, 
-            sun.moon_phase AS moon_phase
+            temp.tempc, 
+            wind.wind_kmh, 
+            prec.precip_mm, 
+            sun.sunrise, 
+            sun.sunset, 
+            sun.moon_phase
         FROM 
             weather_r AS wr
             INNER JOIN country AS c ON wr.country = c.country
