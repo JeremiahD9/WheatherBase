@@ -1,10 +1,10 @@
 // Contributors: Noah, Warren
 
 $('#calendar').on('change', function() {
-    console.log("function ran 1");
+    console.log("function ran 1");  
     var inputDate = $(this).val();
     var selectedCountry = $('#secret-country').text();
-    var selectedDate = convertDateFormat(inputDate);
+    var selectedDate = inputDate;
 
     $.ajax({
         url: '/get-map-data',
