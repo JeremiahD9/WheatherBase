@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 # Imports
-from datetime import date, datetime
+from datetime import date, time, datetime
 from flask import Flask, jsonify
 from flask import render_template, request, redirect, session, url_for, send_from_directory, current_app as app
 import psycopg2
@@ -230,8 +230,8 @@ def get_map_data():
                 'temp':data[0],
                 'wind':data[1],
                 'precip':data[2],
-                'sunrise':data[3].strftime("%Y-%m-%d %H:%M")  if isinstance(data[3], (date, datetime)) else data[3],
-                'sunset':data[4].strftime("%Y-%m-%d %H:%M")  if isinstance(data[4], (date, datetime)) else data[4],
+                'sunrise':data[3].isoformat()  if isinstance(data[3], (date, datetime)) else data[3],
+                'sunset':data[4].isofformat()  if isinstance(data[4], (date, datetime)) else data[4],
                 'moonphase':data[5]}
             return jsonify(result)
         else:
