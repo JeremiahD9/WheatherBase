@@ -38,7 +38,7 @@ def get_name_options():
 
         for r in row:
             temp = r
-            html = html + f'<td>"{temp}</td>"'
+            html = html + f"<td>{temp}</td>"
 
 
         #Here is more info on Python's Formatted Strings
