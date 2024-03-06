@@ -68,7 +68,6 @@
 
 #left-sidebar{
     flex: 2;
-    padding: 20px; /* Adjust padding as needed */
     text-align: left;
     position: relative;
     background-color: #f2f2f2;

@@ -5,6 +5,7 @@ variable = document.getElementById('#country-searchbar')
 
 $('#country-searchbar').on('input',function() {
     var user_input = $(this).val();
+    console.log("function ran 1");
     $('#search-suggestions').empty(); //clears suggestions
     if(user_input.length>0){ 
         $.ajax({
@@ -41,7 +42,7 @@ $('#country-searchbar').on('input',function() {
 function updateMapLocation(country){ 
     $('#location').text('Location: ' + country);
     $.getJSON('/update-country', {'country':country}, function(coords){ //goes to app.py
-        console.log(coords);
+        // console.log(coords);
         if(!coords.error){
             var newLat = coords.lat;
             var newLon = coords.lon;

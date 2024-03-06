@@ -1,8 +1,9 @@
 // Contributors: Noah, Warren
 
 $('#calendar').on('change', function() {
-    var selectedDate = $(this).val();
+    var inputDate = $(this).val();
     var selectedCountry = $('#secret-country').text();
+    var selectedDate = convertDateFormat(inputDate);
 
     $.ajax({
         url: '/get-map-data',
@@ -22,3 +23,15 @@ $('#calendar').on('change', function() {
         }
     });
 });
+
+function convertDateFormat(dateStr) {
+    var dateObj = new Date(dateStr);
+
+    var month = dateObj.getUTCMonth() + 1;
+    var day = dateObj.getUTCDate();
+    var year = dateObj.getUTCFullYear();
+
+    var newDateStr = month + "/" + (day < 10 ? "0" + day : day) + "/" + year;
+
+    return newDateStr;
+}
