@@ -16,12 +16,12 @@ $('#calendar').on('change', function() {
         },
         success: function(data) {
             console.log("function ran 1");
-            $('#temp-val').text(data[0] + ' °C');
-            $('#wind-val').text(data[1] + ' km/h');
-            $('#precip-val').text(data[2] + ' mm');
-            $('#sunrise-val').text(data[3]);
-            $('#sunset-val').text(data[4]);
-            $('#moon-val').text(data[5]);
+            $('#temp-val').text(data.temp + ' °C');
+            $('#wind-val').text(data.wind + ' km/h');
+            $('#precip-val').text(data.precip + ' mm');
+            $('#sunrise-val').text(data.sunrise);
+            $('#sunset-val').text(data.sunset);
+            $('#moon-val').text(data.moonphase);
         }
     });
 });
