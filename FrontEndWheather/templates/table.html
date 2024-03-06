@@ -6,7 +6,7 @@
 {% block content %}
     <script src="/static/tableScripts.js"></script>
     <div class="main-content">
-        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+    <input id="country-searchbar" type="text" placeholder="Put a new country...">
             <table id="myTable" onload="initializeTable()">
               <tr class="header">
                 <th>Instance ID</th>
@@ -80,4 +80,5 @@
         <!-- STEP 3: THE JAVA SCRIPT FUNCTION WILL REMOVE ALL THE ROWS AND RE-ADD THE NEW ROWS WITH THE DATA. -->
        
     </div>
+    <script src="/static/calendarScript.js"></script>
 {% endblock %}
