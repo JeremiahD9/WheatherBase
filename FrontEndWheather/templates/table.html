@@ -6,7 +6,11 @@
 {% block content %}
     <script src="/static/tableScripts.js"></script>
     <div class="main-content">
-    <input id="country-searchbar" type="text" placeholder="Put a new country...">
+      <div id="searchbar-and-suggestions">
+        <input id="country-searchbar" type="text" placeholder="Put a new country...">
+        <div id="search-suggestions"></div>
+    </div>
+    <input id="calendar" type="date" name="calendar" value="2024-01-01" />
             <table id="myTable" onload="initializeTable()">
               <tr class="header">
                 <th>Instance ID</th>
@@ -80,5 +84,7 @@
         <!-- STEP 3: THE JAVA SCRIPT FUNCTION WILL REMOVE ALL THE ROWS AND RE-ADD THE NEW ROWS WITH THE DATA. -->
        
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="/static/calendarScript.js"></script>
+    <script src="/static/searchbar_scripts.js"></script>
 {% endblock %}
