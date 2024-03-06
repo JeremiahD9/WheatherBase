@@ -226,7 +226,7 @@ def get_map_data():
         cur.close()
 
         if(data):
-            result = {column: value for column, value in data.items()}
+            result = {'temp':data[0],'wind':data[1],'precip':data[2],'sunrise':data[3],'sunset':data[4],'moonphase':data[5]}
             return jsonify(result)
         else:
             return jsonify({'error':'country not found'})
