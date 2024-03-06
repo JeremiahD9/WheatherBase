@@ -57,7 +57,7 @@ def home_page():
     return render_template("table.html", DropdownOptions = html_string)
 
 if __name__ == '__main__':
-    my_port = 5124
+    my_port = 5127
     app.run(host='0.0.0.0', port = my_port) 
     
 

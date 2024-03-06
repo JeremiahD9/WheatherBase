@@ -119,100 +119,123 @@ def login():
 def search_countries():
     user_input = request.args.get('search').lower()
     # QUERY
-    #conn = None
+    conn = None
     try:
-    #    conn = psycopg2.connect(
-    #    host="localhost",
-    #    port=5432,
-    #    database="dawsonj2",
-    #   user="dawsonj2",
-    #    password="eyebrow529redm")
+        conn = psycopg2.connect(
+        host="localhost",
+        port=5432,
+        database="dawsonj2",
+        user="dawsonj2",
+        password="eyebrow529redm")
 
-    #    cur = conn.cursor()
+        cur = conn.cursor()
 
         sql = """
         SELECT DISTINCT country FROM country
         WHERE LOWER(country) LIKE %s;
         """
         
-        data_cur.execute(sql, ( user_input + '%',))
-        rows = data_cur.fetchall()
-        #cur.close()
+        cur.execute(sql, ( user_input + '%',))
+        rows = cur.fetchall()
+        cur.close()
         countryNames = [row[0] for row in rows]
         return jsonify(countryNames)
         
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
-    #finally:
-    #    if conn is not None:
-    #        conn.close()
+    finally:
+        if conn is not None:
+            conn.close()
 
 @app.route('/update-country', methods=['GET']) 
 def update_country():
     countryName = request.args.get('country', None)
     # QUERY
-   #conn = None
-    #try:
-    #    conn = psycopg2.connect(
-    #    host="localhost",
-    #    port=5432,
-    #    database="dawsonj2",
-    #    user="dawsonj2",
-    #    password="eyebrow529redm")
+    conn = None
+    try:
+        conn = psycopg2.connect(
+        host="localhost",
+        port=5432,
+        database="dawsonj2",
+        user="dawsonj2",
+        password="eyebrow529redm")
 
-    #    cur = conn.cursor()
+        cur = conn.cursor()
 
-    sql = """
-    SELECT latitude,longitude FROM country
-    WHERE country = '{0}';
-    """
+        sql = """
+        SELECT latitude,longitude FROM country
+        WHERE country = %s;
+        """
         
-    data_cur.execute(sql.format(countryName))
-    coords = data_cur.fetchone()
-    #cur.close()
+        cur.execute(sql, ( countryName,))
+        coords = cur.fetchone()
+        cur.close()
 
-    if(coords):
-        return jsonify({'lat':coords[0], 'lon':coords[1]})
-    else:
-        return jsonify({'error': countryName})
+        if(coords):
+            return jsonify({'lat':coords[0], 'lon':coords[1]})
+        else:
+            return jsonify({'error':'country not found'})
 
-    #except (Exception, psycopg2.DatabaseError) as error:
-    #    print(error)
-    #finally:
-    #    if conn is not None:
-    #        conn.close()
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()
 
 #USED IN calendarScripts.js from map.html
 @app.route('/get-map-data', methods=['GET']) 
 def get_map_data():
     countryName = request.args.get('country', None)
     selectedDate = request.args.get('date', None)
+    app.logger.info(f"Country Name: {countryName}")
+    app.logger.info(f"Selected Date: {selectedDate}")
+    # QUERY
+    conn = None
+    try:
+        conn = psycopg2.connect(
+        host="localhost",
+        port=5432,
+        database="dawsonj2",
+        user="dawsonj2",
+        password="eyebrow529redm")
 
-    sql = """
-    SELECT 
-        tempc, 
-        wind_kmh, 
-        precip_mm,
-        sunrise,
-        sunset,
-        moon_phase,
-        weather_r.country,
-        weather_r.last_updated
-    FROM 
-        weather_r
-        INNER JOIN country ON weather_r.country = country.country
-        INNER JOIN temperature_table ON weather_r.instance_id = temperature_table.instance_id
-        INNER JOIN wind_table ON weather_r.instance_id = wind_table.instance_id
-        INNER JOIN pressure_others ON weather_r.instance_id = pressure_others.instance_id
-        INNER JOIN sunmoon ON weather_r.instance_id = sunmoon.instance_id
-    WHERE weather_r.country='{0}' AND weather_r.last_updated='{1}'
-    """
+        cur = conn.cursor()
+
+        sql = """
+        SELECT 
+            temp.tempc, 
+            wind.wind_kmh, 
+            prec.precip_mm, 
+            sun.sunrise, 
+            sun.sunset, 
+            sun.moon_phase
+        FROM 
+            weather_r AS wr
+            INNER JOIN country AS c ON wr.country = c.country
+            INNER JOIN temperature_table AS temp ON wr.instance_id = temp.instance_id
+            INNER JOIN wind_table AS wind ON wr.instance_id = wind.instance_id
+            INNER JOIN pressure_others AS prec ON wr.instance_id = prec.instance_id
+            INNER JOIN sunmoon AS sun ON wr.instance_id = sun.instance_id
+        WHERE 
+            wr.country = %s AND
+            wr.last_updated = %s;
+        """
         
-    data_cur.execute(sql.format(countryName, selectedDate))
-    data = data_cur.fetchone()
+        cur.execute(sql, ( countryName, selectedDate))
+        data = cur.fetchone()
+        cur.close()
 
-    json_data = [str(value) for value in data]
-    return jsonify(json_data)
+        if(data):
+            result = {column: value for column, value in data.items()}
+            return jsonify(result)
+        else:
+            return jsonify({'error':'country not found'})
+
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()
 
 # TABLE STUFF - DAYA AND JEREMIAH
 @app.route('/init-table', methods=['GET']) 

@@ -1,4 +1,4 @@
-// FILE CREATED BY NOAH
+// Contributors: Noah, Warren
 
 $('#calendar').on('change', function() {
     var selectedDate = $(this).val();
