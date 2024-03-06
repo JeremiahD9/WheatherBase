@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 # Imports
-from datetime import datetime
+from datetime import date, datetime
 from flask import Flask, jsonify
 from flask import render_template, request, redirect, session, url_for, send_from_directory, current_app as app
 import psycopg2
@@ -221,12 +221,18 @@ def get_map_data():
             wr.last_updated = %s;
         """
         
-        cur.execute(sql, ( countryName, selectedDate))
+        cur.execute(sql, (countryName, selectedDate))
         data = cur.fetchone()
         cur.close()
 
         if(data):
-            result = {'temp':data[0],'wind':data[1],'precip':data[2],'sunrise':data[3],'sunset':data[4],'moonphase':data[5]}
+            result = {
+                'temp':data[0],
+                'wind':data[1],
+                'precip':data[2],
+                'sunrise':data[3] if isinstance(data[3], (date, datetime)) else data[3],
+                'sunset':data[4] if isinstance(data[4], (date, datetime)) else data[4],
+                'moonphase':data[5]}
             return jsonify(result)
         else:
             return jsonify({'error':'country not found'})
