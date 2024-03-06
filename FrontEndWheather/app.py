@@ -2,7 +2,7 @@
 
 # Imports
 from flask import Flask, jsonify
-from flask import render_template, request, redirect, session, url_for, send_from_directory
+from flask import render_template, request, redirect, session, url_for, send_from_directory, current_app as app
 import psycopg2
 import random
 import hashlib
@@ -232,9 +232,10 @@ def get_map_data():
             return jsonify({'error':'country not found'})
 
     except (Exception, psycopg2.DatabaseError) as error:
-        print(error)
+        app.logger.error(f"Database error: {error}")
+        return jsonify({'error': str(error)}), 500
     finally:
-        if conn is not None:
+        if conn:
             conn.close()
 
 # TABLE STUFF - DAYA AND JEREMIAH
