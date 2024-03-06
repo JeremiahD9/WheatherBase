@@ -1,6 +1,7 @@
 // Contributors: Noah, Warren
 
 $('#calendar').on('change', function() {
+    console.log("function ran 1");
     var inputDate = $(this).val();
     var selectedCountry = $('#secret-country').text();
     var selectedDate = convertDateFormat(inputDate);
@@ -14,6 +15,7 @@ $('#calendar').on('change', function() {
             'date': selectedDate
         },
         success: function(data) {
+            console.log("function ran 1");
             $('#temp-val').text(data[0] + ' °C');
             $('#wind-val').text(data[1] + ' km/h');
             $('#precip-val').text(data[2] + ' mm');
