@@ -26,23 +26,24 @@ def get_name_options():
     
     cur = conn.cursor()
 
-    query = "SELECT * FROM country;"
+    query = "SELECT * FROM complete_table;"
     cur.execute(query)
     
     rows = cur.fetchall()
-    print(rows)
+    
 
     html = ""
     for row in rows:
-        country = row[0]
-        location_name = row[1]
-        latitude = row[2]
-        longitude = row[3]
-        timezone = row[4]
+        html = html + "<tr>"
+
+        for r in row:
+            temp = r
+            html = html + f'<td>"{temp}</td>"'
+
 
         #Here is more info on Python's Formatted Strings
         #    https://docs.python.org/3/tutorial/inputoutput.html
-        html = html + f'<tr><td>"{country}</td><td>{location_name}</td><td>{latitude}</td><td>{longitude}</td><td>{timezone}</td>"</tr>'
+        html = html + "</tr>"
 
         #Backslash n in a string means New Line
         
@@ -58,3 +59,7 @@ def home_page():
 if __name__ == '__main__':
     my_port = 5124
     app.run(host='0.0.0.0', port = my_port) 
+    
+
+
+#        html = html + f'<tr><td>"{country}</td><td>{location_name}</td><td>{latitude}</td><td>{longitude}</td><td>{timezone}</td>"</tr>'
