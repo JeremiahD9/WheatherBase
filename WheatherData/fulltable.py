@@ -40,10 +40,10 @@ def create_tables():
             pm10 REAL NOT NULL,
             epa INT NOT NULL,
             defra INT NOT NULL,
-	        sunrise TIMESTAMP NOT NULL,
-            sunset TIMESTAMP NOT NULL,
-            moonrise TIMESTAMP NOT NULL,
-            moonset TIMESTAMP NOT NULL,
+	        sunrise VARCHAR(255) NOT NULL,
+            sunset VARCHAR(255) NOT NULL,
+            moonrise VARCHAR(255) NOT NULL,
+            moonset VARCHAR(255) NOT NULL,
             moon_phase TEXT NOT NULL,
             moon_illumination INT NOT NULL
         )"""
