@@ -263,7 +263,8 @@ def calculate_horoscope():
                            birthplace=birthplace,
                            moon_phase="Waxing Crescent",
                            sunset="18:45",            
-                           temperature="23°C")           
+                           temperature="23°C",
+                           horoscope_final="ugly hoe")           
 
 
 # TABLE STUFF - DAYA AND JEREMIAH
