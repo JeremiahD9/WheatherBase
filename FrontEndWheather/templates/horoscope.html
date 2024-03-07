@@ -7,7 +7,7 @@
 <div id="horroscope-body">
 <h1 id="horroscope-header">Get a Weather-based Horroscope!</h1>
 <div class="form-container">
-    <form action="/user/{{username}}/horoscope-result.html" method="get">
+    <form action="{{ url_for('calculate_horoscope', username=username) }}" method="get">
         <div class="form-input">
             <label for="birthdate">Birthdate:</label>
             <input type="date" id="birthdate" name="birthdate" value="2005-01-01" required >
