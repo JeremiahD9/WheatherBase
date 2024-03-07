@@ -52,6 +52,8 @@ def get_page(username, pagename):
         return render_template('table.html', username = username, table = "active")
     elif pagename == 'horoscope':
         return render_template('horoscope.html', username = username, horoscope = "active")
+    elif pagename == 'profile':
+        return render_template('profile.html', username = username, profile = "active")
     else:
         return "404"
 
@@ -87,6 +89,11 @@ def register():
 
     # If the method is GET
     return render_template("register.html")
+
+# Sign user out
+@app.route('/logout')
+def logout():
+    return redirect("/")
 
 # Allow user to sign in
 @app.route('/login', methods=['GET', 'POST'])

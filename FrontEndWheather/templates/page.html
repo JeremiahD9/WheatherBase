@@ -10,12 +10,17 @@
         <div class="top-bar roboto-regular">
             <div class="logo">WheatherBase</div>
             <div class="nav-links">
-                <a href="/user/{{username}}/home.html"       class="{{home}}">Home</a>
-                <a href="/user/{{username}}/map.html"        class="{{map}}">Map</a>
-                <a href="/user/{{username}}/table.html"        class="{{table}}">Table</a>
-                <a href="/user/{{username}}/horoscope.html"  class="{{horoscope}}">Horoscope</a>
-                <a href="/user/{{username}}/about.html"      class="{{about}}">About</a>
-                <a href="/user/{{username}}/profile.html"    class="{{profile}}">{{username}}</a>
+                <a href="/user/{{username}}/home.html"       class="{{home}} topbtn">Home</a>
+                <a href="/user/{{username}}/map.html"        class="{{map}} topbtn">Map</a>
+                <a href="/user/{{username}}/table.html"        class="{{table}} topbtn">Table</a>
+                <a href="/user/{{username}}/horoscope.html"  class="{{horoscope}} topbtn">Horoscope</a>
+                <a href="/user/{{username}}/about.html"      class="{{about}} topbtn">About</a>
+                <div class="dropdown">
+                    <a href="/user/{{username}}/profile.html"    class="{{profile}} dropbtn topbtn">{{username}}</a>
+                    <div class="dropdown-content">
+                      <a href="/logout">logout</a>
+                    </div>
+                  </div> 
             </div>
         </div>
         <div class="main-content">
