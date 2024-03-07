@@ -10,6 +10,7 @@ import hashlib
 import os
 import binascii
 import json
+import sys
 
 # Constants
 PORT = 5127
@@ -224,6 +225,9 @@ def get_map_data():
         cur.execute(sql, (countryName, selectedDate))
         data = cur.fetchone()
         cur.close()
+
+        print( type(data[3]), file=sys.stderr)
+
 
         if(data):
             result = {
