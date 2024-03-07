@@ -10,10 +10,14 @@
     <form action="horoscope.html" method="post">
         <div class="form-input">
             <label for="birthdate">Birthdate:</label>
-            <input type="date" id="birthdate" name="birthdate" required>
+            <input type="date" id="birthdate" name="birthdate" value="2024-01-01" required >
         </div>
         <div class="form-input">
             <label for="birthplace">Birthplace:</label>
+            <div id="searchbar-and-suggestions">
+                <input id="country-searchbar" type="text" placeholder="Put a new country..." required>
+                <div id="search-suggestions"></div>
+            </div>
             <input type="text" id="birthplace" name="birthplace" required>
         </div>
         <div class="form-input">
@@ -22,4 +26,5 @@
     </form>
 </div>
 </div>
+<script src="/static/searchbar_scripts.js"></script>
 {% endblock %}
