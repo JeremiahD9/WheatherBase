@@ -227,7 +227,7 @@ def get_map_data():
         cur.close()
 
         sunrise_time = data[3]
-        print( sunrise_time.strftime(), file=sys.stderr)
+        print( sunrise_time.strftime('%I:%M:%p'), file=sys.stderr)
 
 
         if(data):
