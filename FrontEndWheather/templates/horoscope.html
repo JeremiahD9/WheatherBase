@@ -4,6 +4,8 @@
     {{ super() }}
 {% endblock %}
 {% block content %}
+<div id="horroscope-body">
+<h1 id="horroscope-header">Get a Weather-based Horroscope!</h1>
 <div class="form-container">
     <form action="horoscope.html" method="post">
         <div class="form-input">
@@ -18,5 +20,6 @@
             <button type="submit">Get Horoscope</button>
         </div>
     </form>
+</div>
 </div>
 {% endblock %}

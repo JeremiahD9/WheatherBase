@@ -372,7 +372,7 @@ a:hover{
 }
 
 /* HORROSCOPE */
-body {
+#horroscope-body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
@@ -417,4 +417,8 @@ body {
 
 .form-input button:hover {
     background-color: #4a4ae6;
+}
+
+#horroscope-header{
+    font-weight: bold;
 }
