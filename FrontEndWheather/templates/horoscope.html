@@ -4,5 +4,19 @@
     {{ super() }}
 {% endblock %}
 {% block content %}
-    <h2>Poopy</h2>
+<div class="form-container">
+    <form action="horoscope.html" method="post">
+        <div class="form-input">
+            <label for="birthdate">Birthdate:</label>
+            <input type="date" id="birthdate" name="birthdate" required>
+        </div>
+        <div class="form-input">
+            <label for="birthplace">Birthplace:</label>
+            <input type="text" id="birthplace" name="birthplace" required>
+        </div>
+        <div class="form-input">
+            <button type="submit">Get Horoscope</button>
+        </div>
+    </form>
+</div>
 {% endblock %}
