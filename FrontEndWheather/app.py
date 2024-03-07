@@ -55,8 +55,6 @@ def get_page(username, pagename):
         return render_template('table.html', username = username, table = "active")
     elif pagename == 'horoscope':
         return render_template('horoscope.html', username = username, horoscope = "active")
-    elif pagename == 'horoscope-results':
-        return render_template('horoscope-results.html', username = username, horoscope = "active")
     else:
         return "404"
 
@@ -249,6 +247,24 @@ def get_map_data():
     finally:
         if conn:
             conn.close()
+
+#HORROSCOPE STUFF - NOAH
+@app.route('/calculate-horoscope', methods=['GET'])
+def calculate_horoscope():
+    # Get the data from the form
+    birthdate = request.args.get('birthdate')
+    birthplace = request.args.get('birthplace')
+
+    # Here you would have some logic to calculate the horoscope based on the provided data
+    
+    # For demonstration, we'll just pass the form data to the results page
+    return render_template('horoscope-results.html', 
+                           birthdate=birthdate, 
+                           birthplace=birthplace,
+                           moon_phase="Waxing Crescent",
+                           sunset="18:45",            
+                           temperature="23°C")           
+
 
 # TABLE STUFF - DAYA AND JEREMIAH
 @app.route('/init-table', methods=['GET']) 
