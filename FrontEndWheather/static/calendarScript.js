@@ -1,4 +1,5 @@
 // Contributors: Noah, Warren
+// Takes calendar info to update the weather data
 
 $('#calendar').on('change', function() {
     console.log("function ran 1");  
