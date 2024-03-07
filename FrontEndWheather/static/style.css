@@ -105,8 +105,8 @@
 }
 
 #search-suggestions {
-    position: absolute;
-    width: auto; /* match the width of the search bar */
+    position: relative;
+    width: auto; 
     max-width: 300px;
     background: #fff;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* shadow for better visibility */
