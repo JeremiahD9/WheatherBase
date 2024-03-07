@@ -230,8 +230,8 @@ def get_map_data():
                 'temp':data[0],
                 'wind':data[1],
                 'precip':data[2],
-                'sunrise':data[3].isoformat()  if isinstance(data[3], (date, datetime)) else data[3],
-                'sunset':data[4].isofformat()  if isinstance(data[4], (date, datetime)) else data[4],
+                'sunrise':data[3],
+                'sunset':data[4],
                 'moonphase':data[5]}
             return jsonify(result)
         else:
