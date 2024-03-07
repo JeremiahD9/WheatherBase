@@ -2,6 +2,7 @@
 
 # Imports
 from datetime import date, time, datetime
+from re import U
 from flask import Flask, jsonify
 from flask import render_template, request, redirect, session, url_for, send_from_directory, current_app as app
 import psycopg2
@@ -249,8 +250,8 @@ def get_map_data():
             conn.close()
 
 #HORROSCOPE STUFF - NOAH
-@app.route('/calculate-horoscope', methods=['GET'])
-def calculate_horoscope():
+@app.route('/user/{{username}}/horoscope-result', methods=['GET'])
+def calculate_horoscope(username):
     # Get the data from the form
     birthdate = request.args.get('birthdate')
     birthplace = request.args.get('birthplace')
@@ -259,6 +260,7 @@ def calculate_horoscope():
     
     # For demonstration, we'll just pass the form data to the results page
     return render_template('horoscope-results.html', 
+                           username=username,
                            birthdate=birthdate, 
                            birthplace=birthplace,
                            moon_phase="Waxing Crescent",
