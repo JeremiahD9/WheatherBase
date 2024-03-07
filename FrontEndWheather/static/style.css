@@ -106,6 +106,7 @@
 
 #search-suggestions {
     position: absolute;
+    right:40px;
     width: auto; 
     max-width: 300px;
     background: #fff;
