@@ -424,3 +424,35 @@ body {
 #horroscope-header{
     font-weight: bold;
 }
+
+#results-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.results-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.results-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.results-list li:last-child {
+    border-bottom: none;
+}
+
+.results-list strong {
+    color: #555;
+}
+
+.results-list span {
+    float: right;
+    color: #777;
+}

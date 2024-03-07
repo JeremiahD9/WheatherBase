@@ -55,6 +55,8 @@ def get_page(username, pagename):
         return render_template('table.html', username = username, table = "active")
     elif pagename == 'horoscope':
         return render_template('horoscope.html', username = username, horoscope = "active")
+    elif pagename == 'horoscope-results':
+        return render_template('horoscope-results.html', username = username, horoscope = "active")
     else:
         return "404"
 

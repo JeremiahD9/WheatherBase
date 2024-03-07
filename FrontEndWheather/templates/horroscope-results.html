@@ -1,0 +1,17 @@
+{% extends "page.html" %}
+{% block title %}Horoscope{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+<div id="results-container">
+    <h1>Your Horoscope Results</h1>
+    <ul class="results-list">
+        <li><strong>Birthdate:</strong> <span id="birthdate">--/--/----</span></li>
+        <li><strong>Country:</strong> <span id="country">----</span></li>
+        <li><strong>Moon Phase:</strong> <span id="moon-phase">----</span></li>
+        <li><strong>Sunset:</strong> <span id="sunset">--:--</span></li>
+        <li><strong>Temperature:</strong> <span id="temperature">--°</span></li>
+    </ul>
+</div>
+{% endblock %}
