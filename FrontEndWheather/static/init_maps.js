@@ -1,28 +1,52 @@
-//THIS IS FOR THE GOOGLE MAPS MAP
-// Initialize and add the map
-let map;
+// Get the current location
+$.getJSON('https://ipinfo.io/geo', function(response) {
+    var currentCountry = response.country;
+    let regionNames = new Intl.DisplayNames(['en'], {type: 'region'});
+    var currentCountryLong = regionNames.of(currentCountry);
 
-async function initMap() {
-  // The location of Uluru
-  const position = { lat: -25.344, lng: 131.031 };
-  // Request needed libraries.
-  //@ts-ignore
-  const { Map } = await google.maps.importLibrary("maps");
-  const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+    $.ajax({
+        url: '/search-countries',
+        type: 'GET',
+        dataType: 'json',
+        data: {'search': currentCountryLong},
+        success: function(countryName) {
+            document.getElementById("location").innerHTML = "Location: " + countryName;
+            document.getElementById("secret-country").innerHTML = countryName;
 
-  // The map, centered at Uluru
-  map = new Map(document.getElementById("map"), {
-    zoom: 4,
-    center: position,
-    mapId: "DEMO_MAP_ID",
-  });
+            $.ajax({
+                url: '/update-country',
+                type: 'GET',
+                dataType: 'json',
+                data: {'country': document.getElementById("secret-country").innerText},
+                success: function(countryData) {
+                    var event = new Event('change');
+                    document.getElementById("calendar").dispatchEvent(event);
 
-  // The marker, positioned at Uluru
-  const marker = new AdvancedMarkerElement({
-    map: map,
-    position: position,
-    title: "Uluru",
-  });
+                    lat = countryData['lat'];
+                    lon = countryData['lon'];
+
+                    // Initialize a new leaflet map
+                    var map = new L.map('map').setView([lat, lon], 5);
+                    window.map = map; //making it a global variable to be accessed in searchbar_scripts.js
+
+                    // Create a new layer and add the map to the layer
+                    var layer = new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png");
+                    map.addLayer(layer);
+
+                    // Popup for current location
+                    L.marker([lat, lon]).addTo(map)
+                        .bindPopup('Current Location')
+                        .openPopup();
+
+                    //document.getElementById("location").innerHTML = "Location: " + country_long;
+                }
+            })
+        }
+    })
+});
+
+// Close the incorrect password error message
+function closeError() {
+    errorBox = document.getElementById("error-message");
+    errorBox.style.display = "none";
 }
-
-initMap();
