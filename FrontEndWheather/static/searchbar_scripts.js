@@ -41,7 +41,7 @@ $('#country-searchbar').on('input',function() {
 function updateMapLocation(country){ 
     $('#location').text('Location: ' + country);
     $.getJSON('/update-country', {'country':country}, function(coords){ //goes to app.py
-        console.log(coords);
+        // console.log(coords);
         if(!coords.error){
             var newLat = coords.lat;
             var newLon = coords.lon;

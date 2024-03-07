@@ -6,14 +6,53 @@
 {% block content %}
     <script src="/static/tableScripts.js"></script>
     <div class="main-content">
-        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+      <div id="searchbar-and-suggestions2"></div>
+    <input id="country-searchbar2" type="text" placeholder="Put a new country...">\   <div id="search-suggestions"></div>
+  </div>
+  <input id="calendar2" type="date" name="calendar" value="2024-01-01" />
             <table id="myTable" onload="initializeTable()">
               <tr class="header">
+                <th>Instance ID</th>
                 <th>Country</th>
                 <th>Location Name</th>
                 <th>Latitude</th>
                 <th>Longitude</th>
                 <th>Timezone</th>
+                <th>Last Updated</th>
+                <th>Wind mph</th>
+                <th>Wind kmh</th>
+                <th>Wind Degree</th>
+                <th>Wind Direction</th>
+                <th>Gust mph</th>
+                <th>Gust kmh</th>
+                <th>Temperature C</th>
+                <th>Temperature F</th>
+                <th>Feels Like C</th>
+                <th>Feels Like F</th>
+                <th>Pressure mb</th>
+                <th>Pressure in</th>
+                <th>Precip mm</th>
+                <th>Precip in</th>
+                <th>Humidity</th>
+                <th>Cloud</th>
+                <th>Visibility km</th>
+                <th>Visibility miles</th>
+                <th>UV Index</th>
+                <th>Condition</th>
+                <th>CO</th>
+                <th>Ozone</th>
+                <th>NO2</th>
+                <th>SO2</th>
+                <th>PM25</th>
+                <th>PM10</th>
+                <th>EPA</th>
+                <th>Defra</th>
+                <th>Sunrise</th>
+                <th>Sunset</th>
+                <th>Moonrise</th>
+                <th>Moonset</th>
+                <th>Moonphase</th>
+                <th>Moon Illumination</th>
 
                 {{DropdownOptions|safe}}
               <!--
@@ -44,4 +83,5 @@
         <!-- STEP 3: THE JAVA SCRIPT FUNCTION WILL REMOVE ALL THE ROWS AND RE-ADD THE NEW ROWS WITH THE DATA. -->
        
     </div>
+    <script src="/static/calendarScript.js"></script>
 {% endblock %}
