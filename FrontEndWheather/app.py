@@ -1,3 +1,10 @@
+'''
+THIS IS THE PYTHON FILE THAT WILL BE RAN TO RUN THE WEBSITE. TYPE PYTHON3 APP.PY IN THE STEARNS SERVER TO RUN THIS WEBSITE AND USE
+http://stearns.mathcs.carleton.edu:5127/ TO GO TO THE MAIN PAGE.
+THIS IS WHERE ALL THE PYTHON FUNCTIONS TO GO FROM PAGE TO PAGE OR COLLECT DATA FROM THE DATABASE IS HELD.
+
+'''
+
 #!/usr/bin/python
 
 # Imports
@@ -151,7 +158,7 @@ def search_countries():
         if conn is not None:
             conn.close()
 
-@app.route('/update-country', methods=['GET']) 
+@app.route('/update-country', methods=['GET'])  
 def update_country():
     countryName = request.args.get('country', None)
     # QUERY
@@ -249,16 +256,14 @@ def get_map_data():
         if conn:
             conn.close()
 
-#HORROSCOPE STUFF - NOAH
+#HORROSCOPE STUFF - NOAH - FROM HORROSCOPE.HTML travels to HORROSCOPE-RESULTS.HTML
 @app.route('/user/<username>/calculate-horoscope', methods=['GET'])
 def calculate_horoscope(username):
     # Get the data from the form
     birthdate = request.args.get('birthdate')
     birthplace = request.args.get('birthplace')
-
-    # Here you would have some logic to calculate the horoscope based on the provided data
     
-    # For demonstration, we'll just pass the form data to the results page
+    # TEMP
     return render_template('horoscope-results.html', 
                            username=username,
                            birthdate=birthdate, 
