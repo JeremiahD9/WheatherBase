@@ -5,6 +5,7 @@ $('#calendar').on('change', function() {
     var inputDate = $(this).val();
     var selectedCountry = $('#secret-country').text();
     var selectedDate = convertDateFormat(inputDate);
+    console.log(selectedCountry, selectedDate);
 
     $.ajax({
         url: '/get-map-data',
