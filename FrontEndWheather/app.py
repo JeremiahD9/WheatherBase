@@ -266,7 +266,8 @@ def calculate_horoscope(username):
                            moon_phase="Waxing Crescent",
                            sunset="18:45",            
                            temperature="23°C",
-                           horoscope_final="ugly hoe")           
+                           horoscope_final="ugly hoe",
+                           horoscope = "active")           
 
 
 # TABLE STUFF - DAYA AND JEREMIAH
