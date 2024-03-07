@@ -227,16 +227,15 @@ def get_map_data():
         cur.close()
 
         sunrise_time = data[3]
-        print( sunrise_time.strftime('%I:%M:%p'), file=sys.stderr)
-
+        sunset_time = data[4]
 
         if(data):
             result = {
                 'temp':data[0],
                 'wind':data[1],
                 'precip':data[2],
-                'sunrise':data[3],
-                'sunset':data[4],
+                'sunrise':sunrise_time.strftime('%I:%M %p'),
+                'sunset':sunset_time.strftime('%I:%M %p'),
                 'moonphase':data[5]}
             return jsonify(result)
         else:
