@@ -63,6 +63,8 @@ def get_page(username, pagename):
         return render_template('table.html', username = username, table = "active")
     elif pagename == 'horoscope':
         return render_template('horoscope.html', username = username, horoscope = "active")
+    elif pagename == 'map':
+        return render_template('about.html', username = username, about = "active")
     else:
         return "404"
 
