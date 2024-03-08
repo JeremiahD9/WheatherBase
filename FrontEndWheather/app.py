@@ -19,6 +19,7 @@ import os
 import binascii
 import json
 import sys
+import hashlib
 
 # Constants
 PORT = 5127
@@ -271,16 +272,31 @@ def calculate_horoscope(username):
     # Get the data from the form
     birthdate = request.args.get('birthdate')
     birthplace = request.args.get('birthplace')
+
+    moonPhases = ["Waxing Crescent", "First Quarter", "Waxing Gibbous", "Full Moon", "Waning Gibbous", "Last Quarter", "Waning Crescent", "New Moon"]
+    sunSets = ["18:45", "19:00", "19:15", "19:30", "19:45", "20:00", "20:15", "20:30"]
+    temps = ["23°C", "24°C", "25°C", "26°C", "27°C", "28°C", "29°C", "30°C"]
+    horoscopes = ["ugly loser", "beautiful soul", "ambitious achiever", "kind-hearted", "mysterious wanderer", "creative mind", "logical thinker", "empathetic listener", "dumb as a rock"]
     
+    hasher = hashlib.sha256()
+    hasher.update(birthdate.encode('utf-8'))
+    hasher.update(birthplace.encode('utf-8'))
+    hash_digest = hasher.digest()
+
+    moon_phase_index = hash_digest[0] % len(moonPhases)
+    sunset_index = hash_digest[1] % len(sunSets)
+    temperature_index = hash_digest[2] % len(temps)
+    horoscope_index = hash_digest[3] % len(horoscopes)
+
     # TEMP
     return render_template('horoscope-results.html', 
                            username=username,
                            birthdate=birthdate, 
                            birthplace=birthplace,
-                           moon_phase="Waxing Crescent",
-                           sunset="18:45",            
-                           temperature="23°C",
-                           horoscope_final="ugly hoe",
+                           moon_phase=moonPhases[moon_phase_index],
+                           sunset=sunSets[sunset_index],            
+                           temperature=temps[temperature_index],
+                           horoscope_final=horoscopes[horoscope_index],
                            horoscope = "active")           
 
 
@@ -289,6 +305,7 @@ def calculate_horoscope(username):
 def set_data_with_date():
 
     selectedDate = request.args.get('date', None)
+    print(selectedDate + "In Python", file=sys.stderr)
 
     # QUERY
     conn = None
@@ -303,7 +320,7 @@ def set_data_with_date():
         cur = conn.cursor()
 
         sql = """
-            SELECT 
+            SELECT DISTINCT 
                 c.country,
                 c.location_name,
                 c.latitude,
@@ -322,81 +339,93 @@ def set_data_with_date():
                 pres.cloud,
                 pres.visibility_miles,
                 pres.uv_index,
-                pres.condition_text AS condition,
+                pres.condition_text,
                 air.co,
                 air.ozone,
                 air.no2,
                 air.so2,
                 air.pm25,
                 air.pm10,
-                air.epa_index AS EPA,
-                air.defra_index AS Defra,
+                air.epa,
+                air.defra,
                 sun.sunrise,
                 sun.sunset,
                 sun.moonrise,
                 sun.moonset,
-                sun.moon_phase AS Moonphase,
-                sun.moon_illumination AS MoonIllumination
+                sun.moon_phase,
+                sun.moon_illumination
             FROM 
                 country c
-            JOIN 
+            INNER JOIN 
                 weather_r w ON c.country = w.country
-            JOIN 
+            INNER JOIN 
                 wind_table wind ON w.instance_id = wind.instance_id
-            JOIN 
+            INNER JOIN 
                 temperature_table temp ON w.instance_id = temp.instance_id
-            JOIN 
+            INNER JOIN 
                 pressure_others pres ON w.instance_id = pres.instance_id
-            JOIN 
+            INNER JOIN 
                 airqual air ON w.instance_id = air.instance_id
-            JOIN 
+            INNER JOIN 
                 sunmoon sun ON w.instance_id = sun.instance_id
             WHERE 
-                w.last_updated = %s; 
+                w.last_updated = %s;
         """
         cur.execute(sql, (selectedDate,))
-        data = cur.fetchall()
+        rows = cur.fetchall()  # Fetch all rows
         cur.close()
 
-        if(data):
-            result = {
-                'country': str(data[0]),
-                'location_name': str(data[1]),
-                'lat': str(data[2]),
-                'lon': str(data[3]),
-                'timezone': str(data[4]),
-                'last_updated': data[5].strftime('%Y-%m-%d'),
-                'wind_mph': str(data[6]),
-                'wind_degree': str(data[7]),
-                'wind_direction': str(data[8]),
-                'gust_mph': str(data[9]),
-                'tempF': str(data[10]),
-                'feels_like': str(data[11]),
-                'pressure_in': str(data[12]),
-                'precip_in': str(data[13]),
-                'humidity': str(data[14]),
-                'cloud': str(data[15]),
-                'visibility_miles': str(data[16]),
-                'uv_index': str(data[17]),
-                'condition': str(data[18]),
-                'co': str(data[19]),
-                'ozone': str(data[20]),
-                'no2': str(data[21]),
-                'so2': str(data[22]),
-                'pm25': str(data[23]),
-                'pm10': str(data[24]),
-                'epa': str(data[25]),
-                'defra': str(data[26]),
-                'sunrise': data[27].strftime('%Y-%m-%d %H:%M:%S'),  
-                'sunset': data[28].strftime('%Y-%m-%d %H:%M:%S'), 
-                'moonrise': data[29].strftime('%Y-%m-%d %H:%M:%S'), 
-                'moonset': data[30].strftime('%Y-%m-%d %H:%M:%S'), 
-                'moonphase': str(data[31]),
-                'moon_illumination': str(data[32])
-                }
-            return jsonify(result)
+        print(len(rows), file=sys.stderr)
+
+        results = []
+        for row in rows:
+
+            sunrise_time = row[27]
+            sunset_time = row[28]
+            moonrise_time = row[29]
+            moonset_time = row[30]
+
+            single_result = {
+                'country': str(row[0]),
+                'location_name': str(row[1]),
+                'lat': str(row[2]),
+                'lon': str(row[3]),
+                'timezone': str(row[4]),
+                'last_updated': row[5].strftime('%Y-%m-%d'),
+                'wind_mph': str(row[6]),
+                'wind_degree': str(row[7]),
+                'wind_direction': str(row[8]),
+                'gust_mph': str(row[9]),
+                'tempF': str(row[10]),
+                'feels_like': str(row[11]),
+                'pressure_in': str(row[12]),
+                'precip_in': str(row[13]),
+                'humidity': str(row[14]),
+                'cloud': str(row[15]),
+                'visibility_miles': str(row[16]),
+                'uv_index': str(row[17]),
+                'condition': str(row[18]),
+                'co': str(row[19]),
+                'ozone': str(row[20]),
+                'no2': str(row[21]),
+                'so2': str(row[22]),
+                'pm25': str(row[23]),
+                'pm10': str(row[24]),
+                'epa': str(row[25]),
+                'defra': str(row[26]),
+                'sunrise': sunrise_time.strftime('%I:%M %p'),  
+                'sunset': sunset_time.strftime('%I:%M %p'), 
+                'moonrise': moonrise_time.strftime('%I:%M %p'), 
+                'moonset': moonset_time.strftime('%I:%M %p'), 
+                'moonphase': str(row[31]),
+                'moon_illumination': str(row[32])
+            }
+            results.append(single_result)
+
+        if results:
+            return jsonify(results)
         else:
-            return jsonify({'error':'country not found'})
+            return jsonify({'error':'No data found for the given date'})
 
     except (Exception, psycopg2.DatabaseError) as error:
         app.logger.error(f"Database error: {error}")
@@ -404,6 +433,7 @@ def set_data_with_date():
     finally:
         if conn:
             conn.close()
+
 
 
 # Request a query from the postgres database
