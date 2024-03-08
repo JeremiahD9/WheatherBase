@@ -92,6 +92,7 @@ $('#horro-searchbar').on('input',function() {
 });
 
 $('#country-searchbar2').on('input',function() {
+    console.log("THIS RAN");
     var user_input = $(this).val();
     $('#search-suggestions2').empty(); //clears suggestions
     if(user_input.length>0){ 
@@ -115,7 +116,7 @@ $('#country-searchbar2').on('input',function() {
                     });
                     $('#search-suggestions2').append(suggestionsContainer);
                 }
-            }
+            },
             error: function(data){
                 $('#search-suggestions2').append('<p>No matching countries found.</p>');
             }
