@@ -404,7 +404,7 @@ def set_data_with_date():
                 'moonphase': str(row[31]),
                 'moon_illumination': str(row[32])
             }
-        results.append(single_result)
+            results.append(single_result)
 
         if results:
             return jsonify(results)
