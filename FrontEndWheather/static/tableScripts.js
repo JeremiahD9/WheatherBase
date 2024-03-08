@@ -9,7 +9,8 @@ $('#calendar2').on('change',function() {
   }else{
     isACountryChosen = true;
   }
-  if(user_input.length>0){ 
+  if(isACountryChosen){ 
+
       $.ajax({
           url: '/use-date-to-get-data', //app.route function called in app.py
           type: 'GET',
