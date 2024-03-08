@@ -353,7 +353,8 @@ def set_data_with_date():
             JOIN 
                 sunmoon sun ON w.instance_id = sun.instance_id
             WHERE 
-                w.last_updated = %s; 
+                w.last_updated = %s
+            LIMIT 10; 
         """
         cur.execute(sql, (selectedDate,))
         rows = cur.fetchall()  # Fetch all rows
