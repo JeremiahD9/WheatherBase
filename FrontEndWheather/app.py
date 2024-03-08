@@ -271,7 +271,7 @@ def get_map_data():
 def calculate_horoscope(username):
     # Get the data from the form
     birthdate = request.args.get('birthdate')
-    birthplace = request.args.get('horro-searchbar')
+    birthplace = request.args.get('birthplace')
 
     moonPhases = ["Waxing Crescent", "First Quarter", "Waxing Gibbous", "Full Moon", "Waning Gibbous", "Last Quarter", "Waning Crescent", "New Moon"]
     sunSets = ["18:45", "19:00", "19:15", "19:30", "19:45", "20:00", "20:15", "20:30"]
