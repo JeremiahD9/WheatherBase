@@ -164,8 +164,6 @@ html {
 
 .main-content {
     height: 100%; 
-    display:block;
-    content: '';
     position: relative;
 }
 
