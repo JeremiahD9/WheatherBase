@@ -26,7 +26,7 @@ $('#calendar2').on('change',function() {
             // Check if data is not empty
             if (Array.isArray(data) && data.length > 0) {
                 
-                $.forEach(data, function(index, row) {
+                $.each(data, function(index, row) {
                     console.log("Added row");
                     // Create a table row
                     var $tr = $('<tr>');
