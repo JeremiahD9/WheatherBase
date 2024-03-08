@@ -2,7 +2,7 @@
 
 $('#calendar2').on('change',function() {
   var chosen_date = $(this).val();
-  var chosen_country = $('#country-searchbar2').text();
+  var chosen_country = "";
   var isACountryChosen = false;
   if(chosen_country === ""){
     isACountryChosen = false;

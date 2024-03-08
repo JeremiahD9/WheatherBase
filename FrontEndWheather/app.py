@@ -340,21 +340,20 @@ def set_data_with_date():
                 sun.moon_illumination
             FROM 
                 country c
-            JOIN 
+            INNER JOIN 
                 weather_r w ON c.country = w.country
-            JOIN 
+            INNER JOIN 
                 wind_table wind ON w.instance_id = wind.instance_id
-            JOIN 
+            INNER JOIN 
                 temperature_table temp ON w.instance_id = temp.instance_id
-            JOIN 
+            INNER JOIN 
                 pressure_others pres ON w.instance_id = pres.instance_id
-            JOIN 
+            INNER JOIN 
                 airqual air ON w.instance_id = air.instance_id
-            JOIN 
+            INNER JOIN 
                 sunmoon sun ON w.instance_id = sun.instance_id
             WHERE 
-                w.last_updated = %s
-            LIMIT 10; 
+                w.last_updated = %s;
         """
         cur.execute(sql, (selectedDate,))
         rows = cur.fetchall()  # Fetch all rows
