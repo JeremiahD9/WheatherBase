@@ -356,48 +356,58 @@ def set_data_with_date():
                 w.last_updated = %s; 
         """
         cur.execute(sql, (selectedDate,))
-        data = cur.fetchall()
+        rows = cur.fetchall()  # Fetch all rows
         cur.close()
 
-        if(data):
-            result = {
-                'country': str(data[0]),
-                'location_name': str(data[1]),
-                'lat': str(data[2]),
-                'lon': str(data[3]),
-                'timezone': str(data[4]),
-                'last_updated': data[5].strftime('%Y-%m-%d'),
-                'wind_mph': str(data[6]),
-                'wind_degree': str(data[7]),
-                'wind_direction': str(data[8]),
-                'gust_mph': str(data[9]),
-                'tempF': str(data[10]),
-                'feels_like': str(data[11]),
-                'pressure_in': str(data[12]),
-                'precip_in': str(data[13]),
-                'humidity': str(data[14]),
-                'cloud': str(data[15]),
-                'visibility_miles': str(data[16]),
-                'uv_index': str(data[17]),
-                'condition': str(data[18]),
-                'co': str(data[19]),
-                'ozone': str(data[20]),
-                'no2': str(data[21]),
-                'so2': str(data[22]),
-                'pm25': str(data[23]),
-                'pm10': str(data[24]),
-                'epa': str(data[25]),
-                'defra': str(data[26]),
-                'sunrise': data[27].strftime('%Y-%m-%d %H:%M:%S'),  
-                'sunset': data[28].strftime('%Y-%m-%d %H:%M:%S'), 
-                'moonrise': data[29].strftime('%Y-%m-%d %H:%M:%S'), 
-                'moonset': data[30].strftime('%Y-%m-%d %H:%M:%S'), 
-                'moonphase': str(data[31]),
-                'moon_illumination': str(data[32])
-                }
-            return jsonify(result)
+        results = []
+        for row in rows:
+
+            sunrise_time = data[27]
+            sunset_time = data[28]
+            moonrise_time = data[29]
+            moonset_time = data[30]
+
+            single_result = {
+                'country': str(row[0]),
+                'location_name': str(row[1]),
+                'lat': str(row[2]),
+                'lon': str(row[3]),
+                'timezone': str(row[4]),
+                'last_updated': row[5].strftime('%Y-%m-%d'),
+                'wind_mph': str(row[6]),
+                'wind_degree': str(row[7]),
+                'wind_direction': str(row[8]),
+                'gust_mph': str(row[9]),
+                'tempF': str(row[10]),
+                'feels_like': str(row[11]),
+                'pressure_in': str(row[12]),
+                'precip_in': str(row[13]),
+                'humidity': str(row[14]),
+                'cloud': str(row[15]),
+                'visibility_miles': str(row[16]),
+                'uv_index': str(row[17]),
+                'condition': str(row[18]),
+                'co': str(row[19]),
+                'ozone': str(row[20]),
+                'no2': str(row[21]),
+                'so2': str(row[22]),
+                'pm25': str(row[23]),
+                'pm10': str(row[24]),
+                'epa': str(row[25]),
+                'defra': str(row[26]),
+                'sunrise': sunrise_time.strftime('%I:%M %p'),  
+                'sunset': sunset_time.strftime('%I:%M %p'), 
+                'moonrise': moonrise_time.strftime('%I:%M %p'), 
+                'moonset': moonset_time.strftime('%I:%M %p'), 
+                'moonphase': str(row[31]),
+                'moon_illumination': str(row[32])
+            }
+        results.append(single_result)
+
+        if results:
+            return jsonify(results)
         else:
-            return jsonify({'error':'country not found'})
+            return jsonify({'error':'No data found for the given date'})
 
     except (Exception, psycopg2.DatabaseError) as error:
         app.logger.error(f"Database error: {error}")
@@ -405,6 +415,7 @@ def set_data_with_date():
     finally:
         if conn:
             conn.close()
+
 
 
 # Request a query from the postgres database
