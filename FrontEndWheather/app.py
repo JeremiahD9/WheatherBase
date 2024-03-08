@@ -322,21 +322,21 @@ def set_data_with_date():
                 pres.cloud,
                 pres.visibility_miles,
                 pres.uv_index,
-                pres.condition_text AS condition,
+                pres.condition_text,
                 air.co,
                 air.ozone,
                 air.no2,
                 air.so2,
                 air.pm25,
                 air.pm10,
-                air.epa_index AS EPA,
-                air.defra_index AS Defra,
+                air.epa_index,
+                air.defra_index,
                 sun.sunrise,
                 sun.sunset,
                 sun.moonrise,
                 sun.moonset,
-                sun.moon_phase AS Moonphase,
-                sun.moon_illumination AS MoonIllumination
+                sun.moon_phase,
+                sun.moon_illumination
             FROM 
                 country c
             JOIN 
