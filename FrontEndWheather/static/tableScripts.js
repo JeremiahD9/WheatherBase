@@ -1,17 +1,46 @@
 // THIS FILE WILL BE EDITED BY JEREMIAH AND DAYA - LINKED TO TABLE.HTML
 
-function initializeTable(){
-    $.getJSON('/init-table', {'country':None}, function(rows){ //goes to app.py - ADD MORE ROWS YOU WANT TO ADD
-        console.log("PYTHON CODE RAN");
-        if(!rows.error){
-            var newLat = coords.lat;
-            var newLon = coords.lon;
-            map.setView([newLat,newLon],5);
-        }else{
-            console.log("error2");
-        }
-    });
-}
+$('#calendar2').on('change',function() {
+  var chosen_date = $(this).val();
+  var chosen_country = $('#country-searchbar2').text();
+  var isACountryChosen = false;
+  if(chosen_country.equals("Put a new country...")){
+    isACountryChosen = false;
+  }else{
+    isACountryChosen = true;
+  }
+  if(user_input.length>0){ 
+      $.ajax({
+          url: '/use-date-to-get-data', //app.route function called in app.py
+          type: 'GET',
+          dataType: 'json',
+          data: {
+            'date': chosen_date,
+            'country': chosen_country,
+            'isACountryChosen': isACountryChosen
+          },
+          success: function(data) {
+              if(data){
+                  var suggestionsContainer = $('<div>').addClass('search-suggestions');
+                  $.each(country_names, function(index, country){
+                      var button = $('<button>')
+                          .addClass('suggestion-button')
+                          .text(country)
+                          .click(function() { //what to do after a country is clicked
+                              $('#country-searchbar2').val($(this).text());
+                              $('#search-suggestions2').empty(); // Clear suggestions
+                          });
+                      suggestionsContainer.append(button);
+                  });
+                  $('#search-suggestions2').append(suggestionsContainer);
+              }
+          },
+          error: function(data){
+              $('#search-suggestions2').append('<p>No matching countries found.</p>');
+          }
+      });
+  }
+});
 
 function myFunction() {
   // Declare variables

@@ -285,9 +285,57 @@ def calculate_horoscope(username):
 
 
 # TABLE STUFF - DAYA AND JEREMIAH
-@app.route('/init-table', methods=['GET']) 
-def initialize_table():
-    return None
+@app.route('/use-date-to-get-data', methods=['GET']) 
+def set_data_with_date():
+    countryName = request.args.get('country', None)
+    isCountrySelected = request.args.get('isACountryChosen', None)
+    selectedDate = request.args.get('date', None)
+
+    # QUERY
+    conn = None
+    try:
+        conn = psycopg2.connect(
+        host="localhost",
+        port=5432,
+        database="dawsonj2",
+        user="dawsonj2",
+        password="eyebrow529redm")
+
+        cur = conn.cursor()
+
+        if(isCountrySelected == False):
+            sql = """
+                
+            """
+        
+        
+        
+        cur.execute(sql, (countryName, selectedDate))
+        data = cur.fetchone()
+        cur.close()
+
+        sunrise_time = data[3]
+        sunset_time = data[4]
+
+        if(data):
+            result = {
+                'temp':data[0],
+                'wind':data[1],
+                'precip':data[2],
+                'sunrise':sunrise_time.strftime('%I:%M %p'),
+                'sunset':sunset_time.strftime('%I:%M %p'),
+                'moonphase':data[5]}
+            return jsonify(result)
+        else:
+            return jsonify({'error':'country not found'})
+
+    except (Exception, psycopg2.DatabaseError) as error:
+        app.logger.error(f"Database error: {error}")
+        return jsonify({'error': str(error)}), 500
+    finally:
+        if conn:
+            conn.close()
+
 
 # Request a query from the postgres database
 def query_result(query):
