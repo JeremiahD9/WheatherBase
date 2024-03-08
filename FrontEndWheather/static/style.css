@@ -36,8 +36,10 @@
     justify-content: space-between;
     position:fixed;
     top:0;
+    width:100%;
     height:40px;
     padding: 10px 10px;
+    z-index: 1000;
 }
 
 .logo {
@@ -165,6 +167,7 @@ html {
 .main-content {
     height: 100%; 
     position: relative;
+    padding-top:60px;
 }
 
 body{
