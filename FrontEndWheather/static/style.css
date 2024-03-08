@@ -34,6 +34,8 @@
     color: white;
     display: flex;
     justify-content: space-between;
+    position:fixed;
+    top:0;
     height:40px;
     padding: 10px 10px;
 }
@@ -161,7 +163,9 @@ html {
 }
 
 .main-content {
-    height: 100%; /* Adjust height based on the top bar height */
+    height: 100%; 
+    display:block;
+    content: '';
     position: relative;
 }
 
