@@ -10,7 +10,7 @@ import os
 import binascii
 
 # Constants
-PORT = 5127
+PORT = 5136
 DEBUG = True
 
 # Initialize flask app
