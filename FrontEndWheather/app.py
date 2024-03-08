@@ -289,6 +289,7 @@ def calculate_horoscope(username):
 def set_data_with_date():
 
     selectedDate = request.args.get('date', None)
+    print(selectedDate + "In Python", file=sys.stderr)
 
     # QUERY
     conn = None
