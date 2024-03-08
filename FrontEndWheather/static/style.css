@@ -34,20 +34,11 @@
     color: white;
     display: flex;
     justify-content: space-between;
-<<<<<<< HEAD
     padding: 0;
     z-index: 1;
     position: fixed;
     width: 100%;
     height: 50px;
-=======
-    /* position:fixed; */
-    top:0;
-    width:100%;
-    height:40px;
-    padding: 10px 10px;
-    z-index: 1000;
->>>>>>> 1240deb5bef3a6205c01b59095288b2010f34cca
 }
 
 .logo {
