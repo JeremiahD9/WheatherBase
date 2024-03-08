@@ -106,7 +106,7 @@
     flex-grow: 2;
 }
 
-#search-suggestions {
+#search-suggestions, #search-suggestions2 {
     position: absolute;
     width: auto; 
     max-width: 300px;

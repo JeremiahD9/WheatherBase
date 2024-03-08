@@ -285,9 +285,126 @@ def calculate_horoscope(username):
 
 
 # TABLE STUFF - DAYA AND JEREMIAH
-@app.route('/init-table', methods=['GET']) 
-def initialize_table():
-    return None
+@app.route('/use-date-to-get-data', methods=['GET']) 
+def set_data_with_date():
+
+    selectedDate = request.args.get('date', None)
+
+    # QUERY
+    conn = None
+    try:
+        conn = psycopg2.connect(
+        host="localhost",
+        port=5432,
+        database="dawsonj2",
+        user="dawsonj2",
+        password="eyebrow529redm")
+
+        cur = conn.cursor()
+
+        sql = """
+            SELECT 
+                c.country,
+                c.location_name,
+                c.latitude,
+                c.longitude,
+                c.timezone,
+                w.last_updated,
+                wind.wind_mph,
+                wind.wind_degree,
+                wind.wind_direction,
+                wind.gust_mph,
+                temp.tempf,
+                temp.feelslikef,
+                pres.pressure_in,
+                pres.precip_in,
+                pres.humidity,
+                pres.cloud,
+                pres.visibility_miles,
+                pres.uv_index,
+                pres.condition_text AS condition,
+                air.co,
+                air.ozone,
+                air.no2,
+                air.so2,
+                air.pm25,
+                air.pm10,
+                air.epa_index AS EPA,
+                air.defra_index AS Defra,
+                sun.sunrise,
+                sun.sunset,
+                sun.moonrise,
+                sun.moonset,
+                sun.moon_phase AS Moonphase,
+                sun.moon_illumination AS MoonIllumination
+            FROM 
+                country c
+            JOIN 
+                weather_r w ON c.country = w.country
+            JOIN 
+                wind_table wind ON w.instance_id = wind.instance_id
+            JOIN 
+                temperature_table temp ON w.instance_id = temp.instance_id
+            JOIN 
+                pressure_others pres ON w.instance_id = pres.instance_id
+            JOIN 
+                airqual air ON w.instance_id = air.instance_id
+            JOIN 
+                sunmoon sun ON w.instance_id = sun.instance_id
+            WHERE 
+                w.last_updated = %s; 
+        """
+        cur.execute(sql, (selectedDate,))
+        data = cur.fetchall()
+        cur.close()
+
+        if(data):
+            result = {
+                'country': str(data[0]),
+                'location_name': str(data[1]),
+                'lat': str(data[2]),
+                'lon': str(data[3]),
+                'timezone': str(data[4]),
+                'last_updated': data[5].strftime('%Y-%m-%d'),
+                'wind_mph': str(data[6]),
+                'wind_degree': str(data[7]),
+                'wind_direction': str(data[8]),
+                'gust_mph': str(data[9]),
+                'tempF': str(data[10]),
+                'feels_like': str(data[11]),
+                'pressure_in': str(data[12]),
+                'precip_in': str(data[13]),
+                'humidity': str(data[14]),
+                'cloud': str(data[15]),
+                'visibility_miles': str(data[16]),
+                'uv_index': str(data[17]),
+                'condition': str(data[18]),
+                'co': str(data[19]),
+                'ozone': str(data[20]),
+                'no2': str(data[21]),
+                'so2': str(data[22]),
+                'pm25': str(data[23]),
+                'pm10': str(data[24]),
+                'epa': str(data[25]),
+                'defra': str(data[26]),
+                'sunrise': data[27].strftime('%Y-%m-%d %H:%M:%S'),  
+                'sunset': data[28].strftime('%Y-%m-%d %H:%M:%S'), 
+                'moonrise': data[29].strftime('%Y-%m-%d %H:%M:%S'), 
+                'moonset': data[30].strftime('%Y-%m-%d %H:%M:%S'), 
+                'moonphase': str(data[31]),
+                'moon_illumination': str(data[32])
+                }
+            return jsonify(result)
+        else:
+            return jsonify({'error':'country not found'})
+
+    except (Exception, psycopg2.DatabaseError) as error:
+        app.logger.error(f"Database error: {error}")
+        return jsonify({'error': str(error)}), 500
+    finally:
+        if conn:
+            conn.close()
+
 
 # Request a query from the postgres database
 def query_result(query):

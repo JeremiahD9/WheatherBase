@@ -4,10 +4,9 @@
     {{ super() }}
 {% endblock %}
 {% block content %}
-    <script src="/static/tableScripts.js"></script>
     <div class="main-content">
       <div id="searchbar-and-suggestions"></div>
-      <input class="country-searchbar2" type="text" placeholder="Put a new country...">   
+      <input id="country-searchbar2" type="text" placeholder="Put a new country...">   
     <div id="search-suggestions2"></div>
   </div>
   <input id="calendar2" type="date" name="calendar" value="2024-01-01" />
@@ -79,4 +78,5 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="/static/searchbar_scripts.js"></script>
     <script src="/static/calendarScript.js"></script>
+    <script src="/static/tableScripts.js"></script>
 {% endblock %}
