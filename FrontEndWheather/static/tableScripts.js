@@ -20,20 +20,57 @@ $('#calendar2').on('change',function() {
             'isACountryChosen': isACountryChosen
           },
           success: function(data) {
-              if(data){
-                  var suggestionsContainer = $('<div>').addClass('search-suggestions');
-                  $.each(country_names, function(index, country){
-                      var button = $('<button>')
-                          .addClass('suggestion-button')
-                          .text(country)
-                          .click(function() { //what to do after a country is clicked
-                              $('#country-searchbar2').val($(this).text());
-                              $('#search-suggestions2').empty(); // Clear suggestions
-                          });
-                      suggestionsContainer.append(button);
-                  });
-                  $('#search-suggestions2').append(suggestionsContainer);
-              }
+            $("#myTable tr:not(.header)").remove();
+
+            // Check if data is not empty
+            if (data && data.length > 0) {
+                // Iterate over each entry in the data
+                $.each(data, function(index, row) {
+                    // Create a table row
+                    var $tr = $('<tr>');
+                    // Append table cells to the row
+                    $tr.append($('<td>').text(row.instance_id));
+                    $tr.append($('<td>').text(row.country));
+                    $tr.append($('<td>').text(row.location_name));
+                    $tr.append($('<td>').text(row.lat));
+                    $tr.append($('<td>').text(row.lon));
+                    $tr.append($('<td>').text(row.timezone));
+                    $tr.append($('<td>').text(row.last_updated));
+                    $tr.append($('<td>').text(row.wind_mph));
+                    $tr.append($('<td>').text(row.wind_degree));
+                    $tr.append($('<td>').text(row.wind_direction));
+                    $tr.append($('<td>').text(row.gust_mph));
+                    $tr.append($('<td>').text(row.tempF));
+                    $tr.append($('<td>').text(row.feels_like));
+                    $tr.append($('<td>').text(row.pressure_in));
+                    $tr.append($('<td>').text(row.precip_in));
+                    $tr.append($('<td>').text(row.humidity));
+                    $tr.append($('<td>').text(row.cloud));
+                    $tr.append($('<td>').text(row.visibility_miles));
+                    $tr.append($('<td>').text(row.uv_index));
+                    $tr.append($('<td>').text(row.condition));
+                    $tr.append($('<td>').text(row.co));
+                    $tr.append($('<td>').text(row.ozone));
+                    $tr.append($('<td>').text(row.no2));
+                    $tr.append($('<td>').text(row.so2));
+                    $tr.append($('<td>').text(row.pm25));
+                    $tr.append($('<td>').text(row.pm10));
+                    $tr.append($('<td>').text(row.epa));
+                    $tr.append($('<td>').text(row.defra));
+                    $tr.append($('<td>').text(row.sunrise));
+                    $tr.append($('<td>').text(row.sunset));
+                    $tr.append($('<td>').text(row.moonrise));
+                    $tr.append($('<td>').text(row.moonset));
+                    $tr.append($('<td>').text(row.moonphase));
+                    $tr.append($('<td>').text(row.moon_illumination));
+                    
+                    // Append the row to the table
+                    $('#myTable').append($tr);
+                });
+            } else {
+                // If no data, append a message to that effect
+                $('#myTable').append($('<tr>').append($('<td>').attr('colspan', '34').text('No data available for the selected date and country')));
+            }
           },
           error: function(data){
               $('#search-suggestions2').append('<p>No matching countries found.</p>');
