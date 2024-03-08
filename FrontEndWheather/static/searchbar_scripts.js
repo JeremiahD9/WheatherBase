@@ -58,7 +58,6 @@ function updateMapLocation(country){
     
 }
 
-variable2 = document.getElementById('#horro-searchbar')
 
 $('#horro-searchbar').on('input',function() {
     var user_input = $(this).val();
@@ -92,8 +91,6 @@ $('#horro-searchbar').on('input',function() {
     }
 });
 
-variable3 = document.getElementById('#country-searchbar2')
-
 $('#country-searchbar2').on('input',function() {
     var user_input = $(this).val();
     $('#search-suggestions2').empty(); //clears suggestions
@@ -105,7 +102,7 @@ $('#country-searchbar2').on('input',function() {
             data: {'search': user_input},
             success: function(country_names) {
                 if(country_names){
-                    var suggestionsContainer = $('<div>').addClass('search-suggestions2');
+                    var suggestionsContainer = $('<div>').addClass('search-suggestions');
                     $.each(country_names, function(index, country){
                         var button = $('<button>')
                             .addClass('suggestion-button')
@@ -118,7 +115,7 @@ $('#country-searchbar2').on('input',function() {
                     });
                     $('#search-suggestions2').append(suggestionsContainer);
                 }
-            },
+            }
             error: function(data){
                 $('#search-suggestions2').append('<p>No matching countries found.</p>');
             }
