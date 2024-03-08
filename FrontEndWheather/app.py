@@ -276,7 +276,7 @@ def calculate_horoscope(username):
     moonPhases = ["Waxing Crescent", "First Quarter", "Waxing Gibbous", "Full Moon", "Waning Gibbous", "Last Quarter", "Waning Crescent", "New Moon"]
     sunSets = ["18:45", "19:00", "19:15", "19:30", "19:45", "20:00", "20:15", "20:30"]
     temps = ["23°C", "24°C", "25°C", "26°C", "27°C", "28°C", "29°C", "30°C"]
-    horoscopes = ["ugly loser", "beautiful soul", "ambitious achiever", "kind-hearted", "mysterious wanderer", "creative mind", "logical thinker", "empathetic listener"]
+    horoscopes = ["ugly loser", "beautiful soul", "ambitious achiever", "kind-hearted", "mysterious wanderer", "creative mind", "logical thinker", "empathetic listener", "dumb as a rock"]
     
     hasher = hashlib.sha256()
     hasher.update(birthdate.encode('utf-8'))
