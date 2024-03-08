@@ -366,7 +366,7 @@ def set_data_with_date():
             INNER JOIN 
                 sunmoon sun ON lw.latest_instance_id = sun.instance_id
             ORDER BY 
-                c.country;
+                c.country
             LIMIT 100;
         """
         cur.execute(sql, (selectedDate,))
