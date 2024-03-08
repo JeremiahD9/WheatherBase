@@ -21,7 +21,7 @@ import json
 import sys
 
 # Constants
-PORT = 5128
+PORT = 5127
 DEBUG = True
 
 # Initialize flask app
