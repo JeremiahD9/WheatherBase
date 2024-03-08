@@ -19,6 +19,7 @@ import os
 import binascii
 import json
 import sys
+import hashlib
 
 # Constants
 PORT = 5127
@@ -270,17 +271,32 @@ def get_map_data():
 def calculate_horoscope(username):
     # Get the data from the form
     birthdate = request.args.get('birthdate')
-    birthplace = request.args.get('birthplace')
+    birthplace = request.args.get('horro-searchbar')
+
+    moonPhases = ["Waxing Crescent", "First Quarter", "Waxing Gibbous", "Full Moon", "Waning Gibbous", "Last Quarter", "Waning Crescent", "New Moon"]
+    sunSets = ["18:45", "19:00", "19:15", "19:30", "19:45", "20:00", "20:15", "20:30"]
+    temps = ["23°C", "24°C", "25°C", "26°C", "27°C", "28°C", "29°C", "30°C"]
+    horoscopes = ["ugly loser", "beautiful soul", "ambitious achiever", "kind-hearted", "mysterious wanderer", "creative mind", "logical thinker", "empathetic listener"]
     
+    hasher = hashlib.sha256()
+    hasher.update(birthdate.encode('utf-8'))
+    hasher.update(birthplace.encode('utf-8'))
+    hash_digest = hasher.digest()
+
+    moon_phase_index = hash_digest[0] % len(moonPhases)
+    sunset_index = hash_digest[1] % len(sunSets)
+    temperature_index = hash_digest[2] % len(temps)
+    horoscope_index = hash_digest[3] % len(horoscopes)
+
     # TEMP
     return render_template('horoscope-results.html', 
                            username=username,
                            birthdate=birthdate, 
                            birthplace=birthplace,
-                           moon_phase="Waxing Crescent",
-                           sunset="18:45",            
-                           temperature="23°C",
-                           horoscope_final="ugly hoe",
+                           moon_phase=moonPhases[moon_phase_index],
+                           sunset=sunSets[sunset_index],            
+                           temperature=temps[temperature_index],
+                           horoscope_final=horoscopes[horoscope_index],
                            horoscope = "active")           
 
 
