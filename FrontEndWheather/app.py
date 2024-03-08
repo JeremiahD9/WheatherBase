@@ -304,18 +304,7 @@ def set_data_with_date():
         cur = conn.cursor()
 
         sql = """
-            WITH LatestWeather AS (
-                SELECT 
-                    MAX(w.instance_id) as latest_instance_id,
-                    w.country
-                FROM 
-                    weather_r w
-                WHERE 
-                    w.last_updated = %s
-                GROUP BY 
-                    w.country
-            )
-            SELECT 
+            SELECT DISTINCT 
                 c.country,
                 c.location_name,
                 c.latitude,
@@ -349,25 +338,22 @@ def set_data_with_date():
                 sun.moonset,
                 sun.moon_phase,
                 sun.moon_illumination
-            FROM
-                LatestWeather lw
+            FROM 
+                country c
             INNER JOIN 
-                weather_r w ON lw.latest_instance_id = w.instance_id
+                weather_r w ON c.country = w.country
             INNER JOIN 
-                country c ON lw.country = c.country
+                wind_table wind ON w.instance_id = wind.instance_id
             INNER JOIN 
-                wind_table wind ON lw.latest_instance_id = wind.instance_id
+                temperature_table temp ON w.instance_id = temp.instance_id
             INNER JOIN 
-                temperature_table temp ON lw.latest_instance_id = temp.instance_id
+                pressure_others pres ON w.instance_id = pres.instance_id
             INNER JOIN 
-                pressure_others pres ON lw.latest_instance_id = pres.instance_id
+                airqual air ON w.instance_id = air.instance_id
             INNER JOIN 
-                airqual air ON lw.latest_instance_id = air.instance_id
-            INNER JOIN 
-                sunmoon sun ON lw.latest_instance_id = sun.instance_id
-            ORDER BY 
-                c.country
-            LIMIT 100;
+                sunmoon sun ON w.instance_id = sun.instance_id
+            WHERE 
+                w.last_updated = %s;
         """
         cur.execute(sql, (selectedDate,))
         rows = cur.fetchall()  # Fetch all rows
