@@ -31,7 +31,6 @@ $('#calendar2').on('change',function() {
                     // Create a table row
                     var $tr = $('<tr>');
                     // Append table cells to the row
-                    $tr.append($('<td>').text(row.instance_id));
                     $tr.append($('<td>').text(row.country));
                     $tr.append($('<td>').text(row.location_name));
                     $tr.append($('<td>').text(row.lat));
