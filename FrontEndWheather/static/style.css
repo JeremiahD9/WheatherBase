@@ -39,6 +39,7 @@
     position: fixed;
     width: 100%;
     height: 50px;
+    padding-right: 10px;
 }
 
 .logo {
@@ -394,13 +395,14 @@ a:hover{
     display: inline-block;
   }
 
-  .topbtn {
+  .topbtn-inner {
     display: inline-flex;
     align-items: center;
     /*width: 100px;*/
     margin-left: 15px;
     margin-right: 15px;
     justify-content: center;
+    text-decoration: none;
   }
   
   .topbtn-container {
