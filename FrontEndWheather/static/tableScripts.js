@@ -10,6 +10,7 @@ $('#calendar2').on('change',function() {
     isACountryChosen = true;
   }
   if(isACountryChosen==false){ 
+    console.log(chosen_date,chosen_country,isACountryChosen)
       $.ajax({
           url: '/use-date-to-get-data', //app.route function called in app.py
           type: 'GET',
