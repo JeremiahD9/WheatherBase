@@ -359,6 +359,8 @@ def set_data_with_date():
         rows = cur.fetchall()  # Fetch all rows
         cur.close()
 
+        print(rows, file=sys.stderr)
+
         results = []
         for row in rows:
 
