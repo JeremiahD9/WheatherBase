@@ -362,10 +362,10 @@ def set_data_with_date():
         results = []
         for row in rows:
 
-            sunrise_time = data[27]
-            sunset_time = data[28]
-            moonrise_time = data[29]
-            moonset_time = data[30]
+            sunrise_time = row[27]
+            sunset_time = row[28]
+            moonrise_time = row[29]
+            moonset_time = row[30]
 
             single_result = {
                 'country': str(row[0]),
