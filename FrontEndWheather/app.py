@@ -1,11 +1,11 @@
+#!/usr/bin/python
+
 '''
 THIS IS THE PYTHON FILE THAT WILL BE RAN TO RUN THE WEBSITE. TYPE PYTHON3 APP.PY IN THE STEARNS SERVER TO RUN THIS WEBSITE AND USE
 http://stearns.mathcs.carleton.edu:5127/ TO GO TO THE MAIN PAGE.
 THIS IS WHERE ALL THE PYTHON FUNCTIONS TO GO FROM PAGE TO PAGE OR COLLECT DATA FROM THE DATABASE IS HELD.
 
 '''
-
-#!/usr/bin/python
 
 # Imports
 from datetime import date, time, datetime
@@ -21,7 +21,7 @@ import json
 import sys
 
 # Constants
-PORT = 5136
+PORT = 5128
 DEBUG = True
 
 # Initialize flask app
