@@ -340,6 +340,18 @@ def set_data_with_date():
                 sun.moon_illumination
             FROM 
                 country c
+            INNER JOIN (
+                SELECT 
+                    country, 
+                    MAX(instance_id) AS latest_instance_id
+                FROM 
+                    weather_r
+                WHERE 
+                    last_updated = %s
+                GROUP BY 
+                    country
+            ) 
+            w_latest ON c.country = w_latest.country
             INNER JOIN 
                 weather_r w ON c.country = w.country
             INNER JOIN 
@@ -351,9 +363,7 @@ def set_data_with_date():
             INNER JOIN 
                 airqual air ON w.instance_id = air.instance_id
             INNER JOIN 
-                sunmoon sun ON w.instance_id = sun.instance_id
-            WHERE 
-                w.last_updated = %s;
+                sunmoon sun ON w.instance_id = sun.instance_id;
         """
         cur.execute(sql, (selectedDate,))
         rows = cur.fetchall()  # Fetch all rows
