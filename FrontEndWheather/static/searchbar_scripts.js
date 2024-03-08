@@ -92,6 +92,8 @@ $('#horro-searchbar').on('input',function() {
     }
 });
 
+variable3 = document.getElementById('#country-searchbar2')
+
 $('#country-searchbar2').on('input',function() {
     var user_input = $(this).val();
     $('#search-suggestions2').empty(); //clears suggestions
