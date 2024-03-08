@@ -152,6 +152,7 @@ html {
     color: white;
     text-decoration: none;
     height: 100%;
+    text-align: center;
 }
 
 .page-content {
@@ -395,10 +396,10 @@ a:hover{
   .topbtn {
     display: inline-flex;
     align-items: center;
-    width: 100px;
-    padding-left: auto;
-    padding-right: auto;
-    text-align: center;
+    /*width: 100px;*/
+    margin-left: 15px;
+    margin-right: 15px;
+    justify-content: center;
   }
   
   .topbtn-container {
@@ -406,7 +407,6 @@ a:hover{
     padding-right: auto;
     display: inline-flex;
     height: 100%;
-    text-align: center;
   }
 
   .topbtn:hover {
