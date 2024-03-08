@@ -1,7 +1,15 @@
+'''
+THIS IS THE PYTHON FILE THAT WILL BE RAN TO RUN THE WEBSITE. TYPE PYTHON3 APP.PY IN THE STEARNS SERVER TO RUN THIS WEBSITE AND USE
+http://stearns.mathcs.carleton.edu:5127/ TO GO TO THE MAIN PAGE.
+THIS IS WHERE ALL THE PYTHON FUNCTIONS TO GO FROM PAGE TO PAGE OR COLLECT DATA FROM THE DATABASE IS HELD.
+
+'''
+
 #!/usr/bin/python
 
 # Imports
 from datetime import date, time, datetime
+from re import U
 from flask import Flask, jsonify
 from flask import render_template, request, redirect, session, url_for, send_from_directory, current_app as app
 import psycopg2
@@ -13,7 +21,7 @@ import json
 import sys
 
 # Constants
-PORT = 5127
+PORT = 5136
 DEBUG = True
 
 # Initialize flask app
@@ -57,6 +65,8 @@ def get_page(username, pagename):
         return render_template('horoscope.html', username = username, horoscope = "active")
     elif pagename == 'profile':
         return render_template('profile.html', username = username, profile = "active")
+    elif pagename == 'about':
+        return render_template('about.html', username = username, about = "active")
     else:
         return "404"
 
@@ -157,7 +167,7 @@ def search_countries():
         if conn is not None:
             conn.close()
 
-@app.route('/update-country', methods=['GET']) 
+@app.route('/update-country', methods=['GET'])  
 def update_country():
     countryName = request.args.get('country', None)
     # QUERY
@@ -254,6 +264,25 @@ def get_map_data():
     finally:
         if conn:
             conn.close()
+
+#HORROSCOPE STUFF - NOAH - FROM HORROSCOPE.HTML travels to HORROSCOPE-RESULTS.HTML
+@app.route('/user/<username>/calculate-horoscope', methods=['GET'])
+def calculate_horoscope(username):
+    # Get the data from the form
+    birthdate = request.args.get('birthdate')
+    birthplace = request.args.get('birthplace')
+    
+    # TEMP
+    return render_template('horoscope-results.html', 
+                           username=username,
+                           birthdate=birthdate, 
+                           birthplace=birthplace,
+                           moon_phase="Waxing Crescent",
+                           sunset="18:45",            
+                           temperature="23°C",
+                           horoscope_final="ugly hoe",
+                           horoscope = "active")           
+
 
 # TABLE STUFF - DAYA AND JEREMIAH
 @app.route('/init-table', methods=['GET']) 

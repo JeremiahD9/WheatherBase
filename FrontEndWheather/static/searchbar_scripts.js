@@ -57,3 +57,37 @@ function updateMapLocation(country){
     });
     
 }
+
+variable2 = document.getElementById('#horro-searchbar')
+
+$('#horro-searchbar').on('input',function() {
+    var user_input = $(this).val();
+    $('#horro-suggestions').empty(); //clears suggestions
+    if(user_input.length>0){ 
+        $.ajax({
+            url: '/search-countries', //app.route function called in app.py
+            type: 'GET',
+            dataType: 'json',
+            data: {'search': user_input},
+            success: function(country_names) {
+                if(country_names){
+                    var suggestionsContainer = $('<div>').addClass('search-suggestions');
+                    $.each(country_names, function(index, country){
+                        var button = $('<button>')
+                            .addClass('suggestion-button')
+                            .text(country)
+                            .click(function() { //what to do after a country is clicked
+                                $('#horro-searchbar').val($(this).text());
+                                $('#horro-suggestions').empty(); // Clear suggestions
+                            });
+                        suggestionsContainer.append(button);
+                    });
+                    $('#horro-suggestions').append(suggestionsContainer);
+                }
+            },
+            error: function(data){
+                $('#horro-suggestions').append('<p>No matching countries found.</p>');
+            }
+        });
+    }
+});

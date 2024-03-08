@@ -103,13 +103,12 @@
 #searchbar-and-suggestions{
     position: relative;
     align-items: center;
-    margin-right: 0;
     flex-grow: 2;
 }
 
 #search-suggestions {
     position: absolute;
-    width: auto; /* match the width of the search bar */
+    width: auto; 
     max-width: 300px;
     background: #fff;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* shadow for better visibility */
@@ -427,3 +426,95 @@ a:hover{
   
   /* Change the background color of the dropdown button when the dropdown content is shown */
   .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+/* HORROSCOPE */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-input {
+    margin-bottom: 20px;
+}
+
+.form-input label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-input input {
+    width: 95%;
+    padding: 10px;
+    margin: 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.form-input button {
+    width: 100%;
+    padding: 10px;
+    background-color: #5c5ced;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+}
+
+.form-input button:hover {
+    background-color: #4a4ae6;
+}
+
+#horroscope-header{
+    font-weight: bold;
+}
+
+#results-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.results-list {
+    text-align: left;
+    list-style-type: none;
+    padding: 0;
+}
+
+.results-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.results-list li:last-child {
+    border-bottom: none;
+}
+
+.results-list strong {
+    color: #555;
+}
+
+.results-list span {
+    float: right;
+    color: #777;
+}
+
+#final-result{
+    color:blueviolet;
+}
