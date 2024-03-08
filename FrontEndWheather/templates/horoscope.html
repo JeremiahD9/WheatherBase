@@ -4,5 +4,27 @@
     {{ super() }}
 {% endblock %}
 {% block content %}
-    <h2>Poopy</h2>
+<div id="horroscope-body">
+<h1 id="horroscope-header">Get a Weather-based Horroscope!</h1>
+<div class="form-container">
+    <form action="{{ url_for('calculate_horoscope', username=username) }}" method="get">
+        <div class="form-input">
+            <label for="birthdate">Birthdate:</label>
+            <input type="date" id="birthdate" name="birthdate" value="2005-01-01" required >
+        </div>
+        <div class="form-input">
+            <label for="birthplace">Birthplace:</label>
+            <div id="searchbar-and-suggestions">
+                <input id="horro-searchbar" type="text" placeholder="Put a new country..." required>
+                <div id="horro-suggestions"></div>
+            </div>
+        </div>
+        <div class="form-input">
+            <button type="submit">Get Horoscope</button>
+        </div>
+    </form>
+</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="/static/searchbar_scripts.js"></script>
 {% endblock %}
