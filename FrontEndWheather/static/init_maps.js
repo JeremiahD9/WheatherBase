@@ -34,9 +34,7 @@ $.getJSON('https://ipinfo.io/geo', function(response) {
                     map.addLayer(layer);
 
                     // Popup for current location
-                    L.marker([lat, lon]).addTo(map)
-                        .bindPopup('Current Location')
-                        .openPopup();
+                    L.marker([lat, lon]).addTo(map);
 
                     //document.getElementById("location").innerHTML = "Location: " + country_long;
                 }

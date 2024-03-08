@@ -1,0 +1,10 @@
+{% extends "page.html" %}
+{% block title %}Profile - {{ username }}{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <a href="/logout">
+        <input type="submit" name="logout" value="Sign Out" id="sign-out-button">
+    </a>
+{% endblock %}

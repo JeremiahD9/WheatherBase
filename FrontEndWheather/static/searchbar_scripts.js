@@ -47,6 +47,8 @@ function updateMapLocation(country){
             var newLon = coords.lon;
             map.setView([newLat,newLon],5);
 
+            L.marker([coords.lat, coords.lon]).addTo(map);
+
             var event = new Event('change');
             document.getElementById("calendar").dispatchEvent(event);
         }else{
