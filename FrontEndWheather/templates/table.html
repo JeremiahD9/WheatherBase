@@ -6,8 +6,9 @@
 {% block content %}
     <script src="/static/tableScripts.js"></script>
     <div class="main-content">
-      <div id="searchbar-and-suggestions2"></div>
-    <input id="country-searchbar2" type="text" placeholder="Put a new country...">\   <div id="search-suggestions"></div>
+      <div id="searchbar-and-suggestions"></div>
+    <input class="country-searchbar2" type="text" placeholder="Put a new country...">   
+    <div id="search-suggestions2"></div>
   </div>
   <input id="calendar2" type="date" name="calendar" value="2024-01-01" />
             <table id="myTable" onload="initializeTable()">
@@ -20,22 +21,15 @@
                 <th>Timezone</th>
                 <th>Last Updated</th>
                 <th>Wind mph</th>
-                <th>Wind kmh</th>
                 <th>Wind Degree</th>
                 <th>Wind Direction</th>
                 <th>Gust mph</th>
-                <th>Gust kmh</th>
-                <th>Temperature C</th>
                 <th>Temperature F</th>
-                <th>Feels Like C</th>
                 <th>Feels Like F</th>
-                <th>Pressure mb</th>
                 <th>Pressure in</th>
-                <th>Precip mm</th>
                 <th>Precip in</th>
                 <th>Humidity</th>
                 <th>Cloud</th>
-                <th>Visibility km</th>
                 <th>Visibility miles</th>
                 <th>UV Index</th>
                 <th>Condition</th>
@@ -83,5 +77,7 @@
         <!-- STEP 3: THE JAVA SCRIPT FUNCTION WILL REMOVE ALL THE ROWS AND RE-ADD THE NEW ROWS WITH THE DATA. -->
        
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/static/searchbar_scripts.js"></script>
     <script src="/static/calendarScript.js"></script>
 {% endblock %}

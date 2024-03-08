@@ -89,3 +89,35 @@ $('#horro-searchbar').on('input',function() {
         });
     }
 });
+
+$('#country-searchbar2').on('input',function() {
+    var user_input = $(this).val();
+    $('#search-suggestions2').empty(); //clears suggestions
+    if(user_input.length>0){ 
+        $.ajax({
+            url: '/search-countries', //app.route function called in app.py
+            type: 'GET',
+            dataType: 'json',
+            data: {'search': user_input},
+            success: function(country_names) {
+                if(country_names){
+                    var suggestionsContainer = $('<div>').addClass('search-suggestions2');
+                    $.each(country_names, function(index, country){
+                        var button = $('<button>')
+                            .addClass('suggestion-button')
+                            .text(country)
+                            .click(function() { //what to do after a country is clicked
+                                $('#country-searchbar2').val($(this).text());
+                                $('#search-suggestions2').empty(); // Clear suggestions
+                            });
+                        suggestionsContainer.append(button);
+                    });
+                    $('#search-suggestions2').append(suggestionsContainer);
+                }
+            },
+            error: function(data){
+                $('#search-suggestions2').append('<p>No matching countries found.</p>');
+            }
+        });
+    }
+});

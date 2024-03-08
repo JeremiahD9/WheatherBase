@@ -89,7 +89,7 @@
 }
 
 /* SEARCH BAR */
-#country-searchbar, #calendar{
+#country-searchbar, #calendar, #calendar2{
     flex:1;
     padding: 10px;
     font-size: 16px;
