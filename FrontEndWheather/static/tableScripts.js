@@ -24,9 +24,10 @@ $('#calendar2').on('change',function() {
             $("#myTable tr:not(.header)").remove();
 
             // Check if data is not empty
-            if (data && data.length > 0) {
-                // Iterate over each entry in the data
-                $.each(data, function(index, row) {
+            if (Array.isArray(data) && data.length > 0) {
+                
+                $.forEach(data, function(index, row) {
+                    console.log("Added row");
                     // Create a table row
                     var $tr = $('<tr>');
                     // Append table cells to the row
