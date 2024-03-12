@@ -1,5 +1,7 @@
 // THIS FILE WILL BE EDITED BY JEREMIAH AND DAYA - LINKED TO TABLE.HTML
 
+
+
 $('#calendar2').on('change',function() {
   var chosen_date = $(this).val();
   var chosen_country = "";
@@ -80,6 +82,10 @@ $('#calendar2').on('change',function() {
   }
 });
 
+var event = new Event('change');
+calendar2 = document.getElementById("calendar2");
+calendar2.dispatchEvent(event);
+
 function myFunction() {
   // Declare variables
   var input, filter, table, tr, td, i, txtValue;
@@ -102,3 +108,4 @@ function myFunction() {
   }
     
 }
+

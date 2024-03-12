@@ -18,6 +18,27 @@
     flex:1;
 }
 
+#sign-out-button {
+    width: 20%;
+}
+
+#profile-title {
+    padding-top: 40px;
+}
+
+#description {
+    width: 70%;
+    background-color: rgb(202, 194, 194);
+    margin: auto;
+    margin-top: 40px;
+    padding: 30px;
+    border-radius: 7px;
+}
+
+#about-background {
+    text-align: center;
+}
+
 .footer {
     position: fixed;
     bottom: 0;
@@ -43,7 +64,11 @@
 }
 
 .logo {
+    display: inline-flex;
     font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    padding-left: 10px;
 }
 
 .active {
@@ -78,7 +103,9 @@
     background-color: #f2f2f2;
     border-radius: 10px; 
     margin: 20px;
+    padding: 20px;
     max-width: 300px;
+    margin-left: 100px;
 }
 
 #info-wrapper {
@@ -116,8 +143,9 @@
     max-width: 300px;
     background: #fff;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* shadow for better visibility */
-    z-index: 1000;
+    z-index: 10000000;
     top:100%;
+    margin-left: 150px;
 }
 
 .suggestion-button{
@@ -150,6 +178,10 @@ html {
     overflow: auto;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 .nav-links a {
     color: white;
     text-decoration: none;
@@ -169,7 +201,7 @@ html {
 .main-content {
     height: 100%; 
     position: relative;
-    padding-top:60px;
+    padding-top: 50px;
 }
 
 body{
@@ -404,6 +436,10 @@ a:hover{
     justify-content: center;
     text-decoration: none;
   }
+
+  .topbtn-inner:hover {
+    text-decoration: none;
+  }
   
   .topbtn-container {
     padding-left: auto;
@@ -445,10 +481,6 @@ a:hover{
   /* Change the background color of the dropdown button when the dropdown content is shown */
   .dropdown:hover .dropbtn {background-color: #3e8e41;}
 
-.main-content {
-    padding-top: 40px;
-}
-
 /* HORROSCOPE */
 body {
     font-family: Arial, sans-serif;
@@ -458,6 +490,7 @@ body {
     text-align: center;
     height: 100%;
     width: 100%;
+    overflow: hidden;
 }
 
 .form-container {

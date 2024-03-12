@@ -4,8 +4,7 @@
     {{ super() }}
 {% endblock %}
 {% block content %}
-    <div class="page-content">
-        <h1 id="current-weather">Current Weather: Rainy<h1>
-    </div>
+    <p id="current-weather">Loading...</p>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="/static/homepage.js"></script>
 {% endblock %}

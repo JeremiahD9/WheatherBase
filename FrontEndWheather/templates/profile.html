@@ -4,7 +4,10 @@
     {{ super() }}
 {% endblock %}
 {% block content %}
-    <a href="/logout">
+    <h2 id="profile-title">
+        {{username}}
+    </h2>
+    <a id="profile-logout" href="/logout">
         <input type="submit" name="logout" value="Sign Out" id="sign-out-button">
     </a>
 {% endblock %}

@@ -4,20 +4,24 @@
     {{ super() }}
 {% endblock %}
 {% block content %}
-<h1>
-    About the project:
-</h1>
-<p>This is a weather repository created by Noah Lee, Warren Kozak, Daya Tucker and Jeremiah Dawson as the final project for CS 257 Software Design taught by Matt Lepinski (March 7th 2024).</p>
+<div id="about-background">
+    <div id="description">
+        <h1>
+            About the project:
+        </h1>
+        <p>This is a weather repository created by Noah Lee, Warren Kozak, Daya Tucker and Jeremiah Dawson as the final project for CS 257 Software Design taught by Matt Lepinski (March 7th 2024).</p>
 
-<p>In order to run this program, on a stearns server, run the file app.py in the terminal. To view the website, go to a browser and paste the following url: http://stearns.mathcs.carleton.edu:5127/</p>
-    
-<p>This project was done using a Flask python API, PSQL, HTML, CSS and JavaScript. The data used for this project was downloaded from kaggle - https://www.kaggle.com/datasets/nelgiriyewithana/global-weather-repository and the map used in map.html uses google maps existing technology. </p>    
+        <p>In order to run this program, on a stearns server, run the file app.py in the terminal. To view the website, go to a browser and paste the following url: http://stearns.mathcs.carleton.edu:5127/</p>
+        
+        <p>This project was done using a Flask python API, PSQL, HTML, CSS and JavaScript. The data used for this project was downloaded from kaggle - https://www.kaggle.com/datasets/nelgiriyewithana/global-weather-repository and the map used in map.html uses google maps existing technology. </p>    
 
-<p>This website allows users to register to create an account to login.  Upon login, the site directs the user to the homepage which displays ...</p>
-    
-<p>The 'Map' section prompts the user to enter the name of a country as well as a specific date, and displays the selected country on the map, with the weather information for the selected date listed on the left side of the screen.</p>    
-    
-<p>The 'Table' section displays a table containing the weather data for every country on the date specified by the user.  </p>    
-    
-<p>In the 'Horoscope' section, users are able to view past weather data on map and table form, as well as calculate an arbitrary 'horoscope' value, using weather data calculated with their birthday and birthplace.</p>
+        <p>This website allows users to register to create an account to login.  Upon login, the site directs the user to the homepage which displays ...</p>
+        
+        <p>The 'Map' section prompts the user to enter the name of a country as well as a specific date, and displays the selected country on the map, with the weather information for the selected date listed on the left side of the screen.</p>    
+        
+        <p>The 'Table' section displays a table containing the weather data for every country on the date specified by the user.  </p>    
+        
+        <p>In the 'Horoscope' section, users are able to view past weather data on map and table form, as well as calculate an arbitrary 'horoscope' value, using weather data calculated with their birthday and birthplace.</p>
+    </div>
+</div>
 {% endblock %}
