@@ -6,7 +6,7 @@ In order to run this program, on a stearns server, run the file app.py in the te
 
 This project was done using a Flask python API, PSQL, HTML, CSS and JavaScript. The data used for this project was downloaded from kaggle - https://www.kaggle.com/datasets/nelgiriyewithana/global-weather-repository and the map used in map.html uses google maps existing technology. 
 
-This website allows users to register to create an account to login.  Upon login, the site directs the user to the homepage which displays ...
+This website allows users to register to create an account to login.  Upon login, the site directs the user to the homepage which displays the current weather as well as the forecast for the next two days.
 
 The 'Map' section prompts the user to enter the name of a country as well as a specific date, and displays the selected country on the map, with the weather information for the selected date listed on the left side of the screen.
 
