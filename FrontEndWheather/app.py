@@ -41,7 +41,7 @@ cur = conn.cursor()
 # Initialize connection to the database with the weather data
 data_conn = psycopg2.connect(
     host = "localhost",
-    port = 5127,
+    port = 5432,
     database = "dawsonj2",
     user = "dawsonj2",
     password = "eyebrow529redm"
@@ -144,7 +144,7 @@ def search_countries():
     try:
         conn = psycopg2.connect(
         host="localhost",
-        port=5127,
+        port=5432,
         database="dawsonj2",
         user="dawsonj2",
         password="eyebrow529redm")
@@ -176,7 +176,7 @@ def update_country():
     try:
         conn = psycopg2.connect(
         host="localhost",
-        port=5127,
+        port=5432,
         database="dawsonj2",
         user="dawsonj2",
         password="eyebrow529redm")
