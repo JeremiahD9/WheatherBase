@@ -22,7 +22,7 @@ import sys
 import hashlib
 
 # Constants
-PORT = 5127
+PORT = 5432
 DEBUG = True
 
 # Initialize flask app
